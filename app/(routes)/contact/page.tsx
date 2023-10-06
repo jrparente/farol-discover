@@ -102,12 +102,18 @@ export default function Contact() {
                 <CardContent className="flex flex-col items-center justify-center">
                   <ul className="flex space-x-4 mb-6">
                     <li>
-                      <Link href="#">
+                      <Link
+                        href="#"
+                        className="text-muted-foreground hover:opacity-80"
+                      >
                         <Instagram />
                       </Link>
                     </li>
                     <li>
-                      <Link href="#">
+                      <Link
+                        href="#"
+                        className="text-muted-foreground hover:opacity-80"
+                      >
                         <Facebook />
                       </Link>
                     </li>

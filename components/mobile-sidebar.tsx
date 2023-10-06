@@ -53,7 +53,7 @@ export default function MobileSidebar() {
       <SheetContent side="left" className="p-0 border-0">
         <div className="space-y-4 py-4 flex flex-col h-full ">
           <div className="px-3 py-2 flex-1">
-            <Link href="/dashboard" className="flex items-center pl-3 mb-14">
+            <Link href="/" className="flex items-center pl-3 mb-14">
               <h1 className={cn("text-xl font-bold", font.className)}>
                 Farol Discover
               </h1>
@@ -64,9 +64,9 @@ export default function MobileSidebar() {
                   href={route.href}
                   key={index}
                   className={cn(
-                    "text-sm flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                    "text-sm flex p-3 w-full justify-start font-medium cursor-pointer hover:text-muted-foreground hover:bg-muted rounded-lg transition",
                     pathname === route.href
-                      ? "text-white bg-white/10"
+                      ? "text-muted-foreground bg-muted"
                       : "text-zinc-400"
                   )}
                 >

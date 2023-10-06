@@ -16,18 +16,21 @@ export default function Footer() {
       <Separator className="my-6 lg:my-8" />
       <div className="max-w-screen-xl mx-auto">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-2">
             <Link href="/">
               <h1
                 className={cn(
-                  "hidden md:block text-2xl font-extrabold tracking-tight leading-none",
+                  "md:block text-2xl font-extrabold tracking-tight leading-none",
                   font.className
                 )}
               >
                 Farol Discover
               </h1>
             </Link>
-            <span className="text-sm text-muted-foreground sm:text-center dark:text-gray-400">
+            <span className="text-sm text-muted-foreground">
+              License Number: RNAVT: 10982
+            </span>
+            <span className="text-sm text-muted-foreground sm:text-center">
               © {new Date().getFullYear()}{" "}
               <Link href="/" className="hover:underline">
                 Farol Discover™

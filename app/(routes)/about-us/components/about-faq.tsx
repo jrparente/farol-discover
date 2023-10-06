@@ -18,11 +18,14 @@ export default function AboutFaq() {
           {faq.map((question, index) => (
             <AccordionItem value={`item-${index}`} key={index}>
               <AccordionTrigger>
-                <div className="flex items-center">
-                  <HelpCircle className="w-4 h-4 mr-1" /> {question.title}
+                <div className="flex items-center text-left">
+                  <HelpCircle className="w-4 h-4 mr-1 hidden sm:inline-block" />{" "}
+                  {question.title}
                 </div>
               </AccordionTrigger>
-              <AccordionContent>{question.question}</AccordionContent>
+              <AccordionContent>
+                <p className="text-left">{question.question}</p>
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

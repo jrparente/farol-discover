@@ -3,7 +3,7 @@ import { Compass, MapPin, Smile } from "lucide-react";
 export default function LandingStats() {
   return (
     <section className="bg-secondary py-12">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl mx-auto px-4">
         <div className="lg:text-center">
           <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
             Farol Discover

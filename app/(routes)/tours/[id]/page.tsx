@@ -25,7 +25,7 @@ export default function TourDetail({ params }: { params: { id: string } }) {
         subtitle={program.description}
         image={program.image}
       />
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-screen-xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="md:col-span-2 flex flex-col space-y-10">

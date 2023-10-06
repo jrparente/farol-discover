@@ -13,7 +13,7 @@ export default function AboutUs() {
       />
 
       <section className="my-2 py-2">
-        <div className="gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16 lg:px-6">
+        <div className="gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16">
           <div className="font-light sm:text-lg lg:col-span-2">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
               Meet Paulo

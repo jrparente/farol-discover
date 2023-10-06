@@ -56,7 +56,7 @@ export default function Contact() {
         subtitle="Have questions or special requests? We are here to help."
       />
       <section className="my-8 py-12">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-xl mx-auto px-4">
           <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
             Reach Out to Us!
           </h2>

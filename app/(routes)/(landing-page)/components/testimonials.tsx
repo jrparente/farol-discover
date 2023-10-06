@@ -26,7 +26,7 @@ export default function Testimonials() {
 
   return (
     <section className="my-8 bg-secondary py-12">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl mx-auto px-4">
         {testimonials.map((testimonial, index) => (
           <Transition
             key={testimonial.name}

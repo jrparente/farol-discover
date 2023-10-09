@@ -1,4 +1,3 @@
-import { programs } from "@/constants";
 import { Badge } from "@/components/ui/badge";
 import Hero from "@/components/page-hero";
 import { Check, Clock, Flag, HelpCircle, X } from "lucide-react";
@@ -8,15 +7,23 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { getPrograms } from "@/sanity/sanity-utils";
 
-export default function TourDetail({ params }: { params: { id: string } }) {
+export default async function TourDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const programs = await getPrograms();
   const { id } = params;
 
-  const program = programs.find((item) => item.id === id);
+  const program = programs.find((item) => item.slug === id);
 
   if (!program) {
     return <div>Loading or not found...</div>;
   }
+
+  console.log("program expanded description", program.expandedDescription);
 
   return (
     <div className="h-full">
@@ -34,9 +41,7 @@ export default function TourDetail({ params }: { params: { id: string } }) {
               <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Details
               </h2>
-              <p className="text-muted-foreground text-base mb-2">
-                {program.expandedDescription}
-              </p>
+              <p className="text-muted-foreground text-base mb-2"></p>
             </div>
 
             {/* Itinerary */}

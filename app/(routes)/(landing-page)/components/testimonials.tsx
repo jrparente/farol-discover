@@ -1,16 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Quote, User2 } from "lucide-react";
 import { Transition } from "@headlessui/react";
 
-import { testimonials } from "@/constants";
+import { getTestimonials } from "@/sanity/sanity-utils";
+import { Testimonial } from "@/sanity/types/types";
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [active, setActive] = useState<number>(0);
+
+  useEffect(() => {
+    async function fetchData() {
+      const fectchedTestimonials = await getTestimonials();
+      setTestimonials(fectchedTestimonials);
+    }
+  }, []);
 
   const prevSlide = () => {
     setActive((prevActive) =>

@@ -2,13 +2,36 @@ import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import schemas from "./sanity/schemas";
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
+
+if (!projectId || !dataset || !apiVersion) {
+  throw new Error("Sanity environment variables are missing");
+}
+
 const config = defineConfig({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId,
+  dataset,
   title: "Farol Discover",
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
+  apiVersion,
   basePath: "/admin",
-  plugins: [deskTool()],
+  plugins: [
+    deskTool({
+      structure: (S) =>
+        S.list()
+          .title("Base")
+          .items([
+            S.listItem()
+              .title("About Us")
+              .child(S.document().schemaType("aboutUs").documentId("aboutUs")),
+            ...S.documentTypeListItems().filter((listItem) => {
+              const id = listItem.getId();
+              return id ? !["aboutUs"].includes(id) : false;
+            }),
+          ]),
+    }),
+  ],
   schema: { types: schemas },
 });
 

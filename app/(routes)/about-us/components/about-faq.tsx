@@ -1,4 +1,3 @@
-import { faq } from "@/constants";
 import {
   Accordion,
   AccordionContent,
@@ -6,8 +5,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
+import { getFaqs } from "@/sanity/sanity-utils";
 
-export default function AboutFaq() {
+export default async function AboutFaq() {
+  const faq = await getFaqs();
+
   return (
     <section className="my-8 bg-secondary py-12">
       <div className="max-w-screen-xl mx-auto px-4">
@@ -20,11 +22,11 @@ export default function AboutFaq() {
               <AccordionTrigger>
                 <div className="flex items-center text-left">
                   <HelpCircle className="w-4 h-4 mr-1 hidden sm:inline-block" />{" "}
-                  {question.title}
+                  {question.question}
                 </div>
               </AccordionTrigger>
               <AccordionContent>
-                <p className="text-left">{question.question}</p>
+                <p className="text-left">{question.answer}</p>
               </AccordionContent>
             </AccordionItem>
           ))}

@@ -1,4 +1,4 @@
-import { Stars, User } from "lucide-react";
+import { User } from "lucide-react";
 
 const aboutUs = {
   icon: User,

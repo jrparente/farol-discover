@@ -7,14 +7,20 @@ const features = {
   type: "document",
   fields: [
     {
-      name: "question",
-      title: "Question",
+      name: "icon",
+      title: "Icon",
       type: "string",
     },
     {
-      name: "answer",
-      title: "Answer",
-      type: "text",
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
+    {
+      name: "items",
+      title: "Items",
+      type: "array",
+      of: [{ type: "string" }],
     },
   ],
 };

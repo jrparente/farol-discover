@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { PortableTextBlock } from "sanity";
+import { AboutUs, Faq, Program, Testimonial } from "./types/types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -10,37 +10,6 @@ const clientConfig = {
   dataset,
   apiVersion,
   useCdn: true,
-};
-
-type Program = {
-  _id: string;
-  _createdAt: string;
-  name: string;
-  slug: string;
-  location: string;
-  description: string;
-  expandedDescription: PortableTextBlock[];
-  image: string;
-  difficulty: string;
-  duration: number;
-  price: string;
-  highlights: string[];
-  featured: boolean;
-  whatsIncluded: string[];
-  whatsNotIncluded: string[];
-  faqs: {
-    question: string;
-    answer: string;
-  }[];
-  itinerary: {
-    day: number;
-    title: string;
-    description: string;
-    meals: string[];
-    notes: string;
-  }[];
-  mapUrl: string;
-  gallery: string[];
 };
 
 export async function getPrograms(): Promise<Program[]> {
@@ -65,6 +34,43 @@ export async function getPrograms(): Promise<Program[]> {
         itinerary,
         mapUrl,
         gallery
+    }`
+  );
+}
+
+export async function getTestimonials(): Promise<Testimonial[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "testimonials"]{
+      _id,
+      _createdAt,
+      name,
+      message,
+      location,
+      "avatar": image.asset->url
+    }`
+  );
+}
+
+export async function getFaqs(): Promise<Faq[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "faq"]{
+      _id,
+      _createdAt,
+      question,
+      answer,
+    }`
+  );
+}
+
+export async function getAboutUs(): Promise<AboutUs[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "aboutUs"]{
+      _id,
+      _createdAt,
+      title,
+      subtitle,
+      description,
+      "image": image.asset->url,
     }`
   );
 }

@@ -1,7 +1,7 @@
-import { FileQuestion } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 
 const faq = {
-  icon: FileQuestion,
+  icon: HelpCircle,
   name: "faq",
   title: "FAQ",
   type: "document",

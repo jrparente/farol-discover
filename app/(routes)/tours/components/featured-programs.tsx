@@ -1,10 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
-import { programs } from "@/constants";
 import Link from "next/link";
+import { getPrograms } from "@/sanity/sanity-utils";
 
-export default function FeaturedPrograms() {
+export default async function FeaturedPrograms() {
+  const programs = await getPrograms();
+
   return (
     <section className="my-8 py-12">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +15,7 @@ export default function FeaturedPrograms() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-5">
           {programs.map((program, index) => (
-            <Link key={index} href={`/tours/${program.id}`}>
+            <Link key={index} href={`/tours/${program.slug}`}>
               <Card className="relative">
                 {program.featured && (
                   <Badge

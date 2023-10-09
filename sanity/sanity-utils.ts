@@ -1,4 +1,5 @@
 import { createClient, groq } from "next-sanity";
+import { PortableTextBlock } from "sanity";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -18,7 +19,7 @@ type Program = {
   slug: string;
   location: string;
   description: string;
-  expandedDescription: any[];
+  expandedDescription: PortableTextBlock[];
   image: string;
   difficulty: string;
   duration: number;

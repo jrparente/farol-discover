@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getPrograms } from "@/sanity/sanity-utils";
+import { PortableText } from "@portabletext/react";
 
 export default async function TourDetail({
   params,
@@ -22,8 +23,6 @@ export default async function TourDetail({
   if (!program) {
     return <div>Loading or not found...</div>;
   }
-
-  console.log("program expanded description", program.expandedDescription);
 
   return (
     <div className="h-full">
@@ -41,7 +40,9 @@ export default async function TourDetail({
               <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Details
               </h2>
-              <p className="text-muted-foreground text-base mb-2"></p>
+              <p className="text-muted-foreground text-base mb-2">
+                <PortableText value={program.expandedDescription} />
+              </p>
             </div>
 
             {/* Itinerary */}

@@ -9,7 +9,7 @@ import { HelpCircle } from "lucide-react";
 
 export default function AboutFaq() {
   return (
-    <section className="my-8 py-12">
+    <section className="my-8 bg-secondary py-12">
       <div className="max-w-screen-xl mx-auto px-4">
         <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           Frequently Asked Questions

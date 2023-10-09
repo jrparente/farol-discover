@@ -1,4 +1,7 @@
+import { Footprints } from "lucide-react";
+
 const program = {
+  icon: Footprints,
   name: "program",
   title: "Programs",
   type: "document",

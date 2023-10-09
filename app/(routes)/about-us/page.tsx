@@ -37,7 +37,7 @@ export default function AboutUs() {
         </div>
       </section>
       <AboutFaq />
-      <section className="my-2 bg-secondary py-12">
+      <section className="my-2 py-12">
         <div className="max-w-screen-xl px-4 py-10 mx-auto flex flex-col items-start lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 space-y-8">
           <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
             Let&apos;s Connect!

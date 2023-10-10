@@ -58,6 +58,7 @@ export async function getAboutUs(): Promise<AboutUs[]> {
       _createdAt,
       pageHeading,
       pageTagline,
+      pageDescription,
       title,
       subtitle,
       description,

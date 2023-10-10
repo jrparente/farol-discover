@@ -11,6 +11,11 @@ export default async function AboutUs() {
   return (
     <div className="h-full">
       <Hero title={aboutUs[0].pageHeading} subtitle={aboutUs[0].pageTagline} />
+      <section className="bg-secondary py-2">
+        <div className="px-4 py-10 mx-auto max-w-screen-xl text-center">
+          <p>{aboutUs[0].pageDescription}</p>
+        </div>
+      </section>
 
       <section className="my-2 py-2">
         <div className="gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16">

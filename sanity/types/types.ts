@@ -52,6 +52,7 @@ export type AboutUs = {
   _createdAt: string;
   pageHeading: string;
   pageTagline: string;
+  pageDescription: string;
   title: string;
   subtitle: string;
   description: string;

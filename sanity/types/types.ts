@@ -57,6 +57,7 @@ export type AboutUs = {
   subtitle: string;
   description: string;
   image: string;
+  faqs: string[];
   ctaTitle: string;
   ctaDescription: string;
   ctaButtonText: string;

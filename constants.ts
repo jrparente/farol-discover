@@ -18,48 +18,6 @@ export const routes = [
   },
 ];
 
-export const faq = [
-  {
-    title: "What kind of tours do you offer?",
-    question:
-      "We offer a range of tours, from city excursions to countryside explorations.",
-  },
-  {
-    title: "How experienced are your guides?",
-    question:
-      " Our guides are highly trained and have extensive knowledge of local cultures and geography.",
-  },
-  {
-    title: "Is it possible to personalize my Farol Discover tour experience?",
-    question:
-      "Absolutely! We offer customizable options for all our tours to meet your individual interests and requirements.",
-  },
-];
-
-export const testimonials = [
-  {
-    name: "Alice Johnson",
-    message:
-      "Our experience with Farol Discover was absolutely magical. The Algarve Coastal Trails tour was a highlight of our trip!",
-    location: "London, UK",
-    avatar: "/alice.jpg",
-  },
-  {
-    name: "Hans Müller",
-    message:
-      "Die Azoren Inselabenteuer-Tour war ein unvergessliches Erlebnis. Die Reiseleiter waren sehr kompetent und die Landschaft war atemberaubend.",
-    location: "Berlin, Germany",
-    avatar: "/hans.jpg",
-  },
-  {
-    name: "Sofia und Markus",
-    message:
-      "Wir hatten eine wundervolle Zeit auf der Minho Green Walks Tour. Die Wanderwege waren wunderschön und die Tour war gut organisiert.",
-    location: "Munich, Germany",
-    avatar: "/sofia_markus.jpg",
-  },
-];
-
 export const tourFeatures = [
   {
     icon: Map,

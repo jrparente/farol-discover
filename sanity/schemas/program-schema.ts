@@ -35,7 +35,7 @@ const program = {
     },
     {
       name: "image",
-      title: "Image",
+      title: "Featured Image",
       type: "image",
       options: { hotspot: true },
       fields: [

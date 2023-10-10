@@ -5,10 +5,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
-import { getFaqs } from "@/sanity/sanity-utils";
+import { getAboutUs } from "@/sanity/sanity-utils";
+type Faq = {
+  _id: string;
+  _createdAt: string;
+  question: string;
+  answer: string;
+};
 
 export default async function AboutFaq() {
-  const faq = await getFaqs();
+  const aboutUsArray = await getAboutUs();
+  const faq: Faq[] = (aboutUsArray[0]?.faqs as unknown as Faq[]) || [];
 
   return (
     <section className="my-8 bg-secondary py-12">

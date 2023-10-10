@@ -50,8 +50,14 @@ export type Faq = {
 export type AboutUs = {
   _id: string;
   _createdAt: string;
+  pageHeading: string;
+  pageTagline: string;
   title: string;
   subtitle: string;
   description: string;
   image: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonLink: string;
 };

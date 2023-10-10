@@ -1,31 +1,124 @@
-import { User } from "lucide-react";
+import { DocumentTextIcon } from "@sanity/icons";
 
 const aboutUs = {
-  icon: User,
+  icon: DocumentTextIcon,
   name: "aboutUs",
-  title: "About Us",
+  title: "About Us Page",
   type: "document",
-  fields: [
+  groups: [
     {
-      name: "title",
-      title: "Title",
-      type: "string",
-    },
-    {
-      name: "subtitle",
-      title: "Subtitle",
-      type: "string",
+      name: "header",
+      title: "Header",
     },
     {
       name: "description",
       title: "Description",
+    },
+    {
+      name: "team",
+      title: "Team",
+    },
+    {
+      name: "faq",
+      title: "FAQ",
+    },
+    {
+      name: "callToAction",
+      title: "Call To Action",
+    },
+  ],
+  fields: [
+    {
+      name: "pageHeading",
+      title: "Page Heading",
+      type: "string",
+      group: "header",
+    },
+    {
+      name: "pageTagline",
+      title: "Page Tagline",
+      type: "string",
+      group: "header",
+    },
+    {
+      name: "pageDescription",
+      title: "Company Description",
       type: "text",
+      group: "description",
+    },
+    {
+      name: "title",
+      title: "Section Title",
+      type: "string",
+      group: "team",
+    },
+    {
+      name: "subtitle",
+      title: "Section Subtitle",
+      type: "string",
+      group: "team",
+    },
+    {
+      name: "description",
+      title: "Section Description",
+      type: "text",
+      group: "team",
     },
     {
       name: "image",
-      title: "Image",
+      title: "Section Image",
       type: "image",
       options: { hotspot: true },
+      group: "team",
+    },
+    {
+      name: "faqs",
+      title: "Frequently Asked Questions",
+      type: "array",
+      group: "faq",
+      of: [
+        {
+          type: "object",
+          name: "faqItem",
+          title: "FAQ Item",
+          fields: [
+            {
+              name: "question",
+              title: "Question",
+              type: "string",
+            },
+            {
+              name: "answer",
+              title: "Answer",
+              type: "text",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "ctaTitle",
+      title: "Call to Action Title",
+      type: "string",
+      group: "callToAction",
+    },
+    {
+      name: "ctaDescription",
+      title: "Call to Action Description",
+      type: "text",
+      group: "callToAction",
+    },
+    {
+      name: "ctaButtonText",
+      title: "Call to Action Button Text",
+      type: "string",
+      group: "callToAction",
+    },
+    {
+      name: "ctaButtonLink",
+      title: "Call to Action Button Link",
+      type: "string",
+      group: "callToAction",
     },
   ],
 };

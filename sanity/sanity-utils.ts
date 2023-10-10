@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { AboutUs, Faq, Program, Testimonial } from "./types/types";
+import { AboutUs, Program, Testimonial } from "./types/types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -51,26 +51,22 @@ export async function getTestimonials(): Promise<Testimonial[]> {
   );
 }
 
-export async function getFaqs(): Promise<Faq[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "faq"]{
-      _id,
-      _createdAt,
-      question,
-      answer,
-    }`
-  );
-}
-
 export async function getAboutUs(): Promise<AboutUs[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "aboutUs"]{
       _id,
       _createdAt,
+      pageHeading,
+      pageTagline,
       title,
       subtitle,
       description,
       "image": image.asset->url,
+      faqs,
+      ctaTitle,
+      ctaDescription,
+      ctaButtonText,
+      ctaButtonLink,
     }`
   );
 }

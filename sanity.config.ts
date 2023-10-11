@@ -23,11 +23,16 @@ const config = defineConfig({
           .title("Base")
           .items([
             S.listItem()
-              .title("About Us")
+              .title("Page: Home")
+              .child(
+                S.document().schemaType("homepage").documentId("homepage")
+              ),
+            S.listItem()
+              .title("Page: About Us")
               .child(S.document().schemaType("aboutUs").documentId("aboutUs")),
             ...S.documentTypeListItems().filter((listItem) => {
               const id = listItem.getId();
-              return id ? !["aboutUs"].includes(id) : false;
+              return id ? !["homepage", "aboutUs"].includes(id) : false;
             }),
           ]),
     }),

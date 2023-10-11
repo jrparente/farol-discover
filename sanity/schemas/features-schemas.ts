@@ -4,23 +4,28 @@ const features = {
   icon: Check,
   name: "features",
   title: "Features",
-  type: "document",
-  fields: [
+  type: "array",
+  of: [
     {
-      name: "icon",
-      title: "Icon",
-      type: "string",
-    },
-    {
-      name: "title",
-      title: "Title",
-      type: "string",
-    },
-    {
-      name: "items",
-      title: "Items",
-      type: "array",
-      of: [{ type: "string" }],
+      type: "object",
+      fields: [
+        {
+          name: "icon",
+          title: "Icon",
+          type: "string",
+        },
+        {
+          name: "title",
+          title: "Title",
+          type: "string",
+        },
+        {
+          name: "items",
+          title: "Items",
+          type: "array",
+          of: [{ type: "string" }],
+        },
+      ],
     },
   ],
 };

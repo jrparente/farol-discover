@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { AboutUs, Program, Testimonial } from "./types/types";
+import { AboutUs, Homepage, Program, Testimonial } from "./types/types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -64,6 +64,29 @@ export async function getAboutUs(): Promise<AboutUs[]> {
       description,
       "image": image.asset->url,
       faqs,
+      ctaTitle,
+      ctaDescription,
+      ctaButtonText,
+      ctaButtonLink,
+    }`
+  );
+}
+
+export async function getHomepage(): Promise<Homepage[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "homepage"]{
+      _id,
+      _createdAt,
+      pageHeading,
+      pageTagline,
+      statsTitle,
+      statsSubtitle,
+      statsDescription,
+      statsTours,
+      statsCustomers,
+      statsDestinations,
+      featuresTitle,
+      featuresSubtitle,
       ctaTitle,
       ctaDescription,
       ctaButtonText,

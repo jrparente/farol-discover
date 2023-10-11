@@ -36,16 +36,36 @@ export default function Contact() {
 
   const { isSubmitSuccessful, isSubmitting } = form.formState;
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof contactSchema>) {
+    try {
+      console.log(values);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (isSubmitSuccessful) {
+      if (!response.ok) {
+        throw new Error("HTTP error! status: " + response.status);
+      }
+
+      console.log(response);
+
       toast({
         title: "Success!",
         description: "Your message has been sent.",
       });
 
       form.reset();
+    } catch (error: any) {
+      console.log("There was a problem with the fecth: " + error.message);
+      toast({
+        variant: "destructive",
+        title: "There has been an error.",
+        description: "Your message has not been sent.",
+      });
     }
   }
 

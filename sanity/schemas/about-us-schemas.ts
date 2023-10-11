@@ -3,7 +3,7 @@ import { DocumentTextIcon } from "@sanity/icons";
 const aboutUs = {
   icon: DocumentTextIcon,
   name: "aboutUs",
-  title: "About Us Page",
+  title: "Page: About Us",
   type: "document",
   groups: [
     {

@@ -1,19 +1,34 @@
 import { Compass, MapPin, Smile } from "lucide-react";
 
-export default function LandingStats() {
+type LandingStatsProps = {
+  statsTitle: string;
+  statsSubtitle: string;
+  statsDescription: string;
+  statsTours: string;
+  statsCustomers: string;
+  statsDestinations: string;
+};
+
+export default function LandingStats({
+  statsTitle,
+  statsSubtitle,
+  statsDescription,
+  statsTours,
+  statsCustomers,
+  statsDestinations,
+}: LandingStatsProps) {
   return (
     <section className="bg-secondary py-12">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="lg:text-center">
           <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
-            Farol Discover
+            {statsTitle}
           </h2>
           <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight  sm:text-4xl">
-            Where Your Adventure Begins
+            {statsSubtitle}
           </h3>
           <p className="mt-4 max-w-2xl text-xl lg:mx-auto text-muted-foreground">
-            Farol Discover is your trusted guide to Portugal&apos;s hidden
-            treasures, offering unparalleled experiences crafted by locals.
+            {statsDescription}
           </p>
         </div>
 
@@ -29,7 +44,7 @@ export default function LandingStats() {
                 </p>
               </dt>
               <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
-                2K+
+                {statsTours}
               </dd>
             </div>
 
@@ -43,7 +58,7 @@ export default function LandingStats() {
                 </p>
               </dt>
               <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
-                100%
+                {statsCustomers}
               </dd>
             </div>
 
@@ -57,7 +72,7 @@ export default function LandingStats() {
                 </p>
               </dt>
               <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
-                10+
+                {statsDestinations}
               </dd>
             </div>
           </dl>

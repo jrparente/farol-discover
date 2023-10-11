@@ -63,3 +63,22 @@ export type AboutUs = {
   ctaButtonText: string;
   ctaButtonLink: string;
 };
+
+export type Homepage = {
+  _id: string;
+  _createdAt: string;
+  pageHeading: string;
+  pageTagline: string;
+  statsTitle: string;
+  statsSubtitle: string;
+  statsDescription: string;
+  statsTours: string;
+  statsCustomers: string;
+  statsDestinations: string;
+  featuresTitle: string;
+  featuresSubtitle: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonLink: string;
+};

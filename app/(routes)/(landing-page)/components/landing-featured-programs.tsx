@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getPrograms } from "@/sanity/sanity-utils";
 
-export default async function LandingFeatures() {
+export default async function FeaturedPrograms() {
   const programs = await getPrograms();
 
   return (

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { AspectRatio } from "./ui/aspect-ratio";
 
 type GalleryProps = {
   galleryHeading?: string;
@@ -7,7 +6,7 @@ type GalleryProps = {
 };
 
 export default function ImageGallery({
-  galleryHeading = "Explore Portugal's Untouched Beauty: A Visual Journey",
+  galleryHeading = "Get Inspired",
   images,
 }: GalleryProps) {
   return (

@@ -28,7 +28,11 @@ export type Program = {
     notes?: string;
   }[];
   mapUrl?: string;
-  gallery?: string[];
+  gallery?: Array<{
+    _type: string;
+    images?: string[];
+    galleryHeading?: string;
+  }>;
 };
 
 export type Testimonial = {

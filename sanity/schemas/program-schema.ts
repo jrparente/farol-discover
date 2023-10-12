@@ -155,9 +155,13 @@ const program = {
     },
     {
       name: "gallery",
-      title: "Gallery",
       type: "array",
-      of: [{ type: "image" }],
+      title: "Image Gallery",
+      of: [
+        {
+          type: "gallery",
+        },
+      ],
     },
   ],
 };

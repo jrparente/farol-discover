@@ -6,12 +6,12 @@ import { getPrograms } from "@/sanity/sanity-utils";
 
 export default async function FeaturedPrograms() {
   const programs = await getPrograms();
-
+  console.log("programs:", programs);
   return (
     <section className="my-8 py-12">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-          Featured Programs
+          Our Programs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-5">
           {programs.map((program, index) => (

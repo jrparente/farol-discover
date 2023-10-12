@@ -33,7 +33,12 @@ export async function getPrograms(): Promise<Program[]> {
         faqs,
         itinerary,
         mapUrl,
-        gallery
+        "gallery": gallery[]{
+          _type == "gallery" => {
+            _type,
+            "images": images[].asset->url
+          },
+        },
     }`
   );
 }
@@ -129,7 +134,7 @@ export async function getPages(): Promise<Page[]> {
         },
         _type == "gallery" => {
           _type,
-          images
+          "images": images[].asset->url
         },
       },
   }`

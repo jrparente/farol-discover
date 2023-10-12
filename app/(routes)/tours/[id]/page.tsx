@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { getPrograms } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
+import ImageGallery from "@/components/image-gallery";
 
 export default async function TourDetail({
   params,
@@ -23,7 +24,6 @@ export default async function TourDetail({
   if (!program) {
     return <div>Loading or not found...</div>;
   }
-
   return (
     <div className="h-full">
       <Hero
@@ -82,7 +82,6 @@ export default async function TourDetail({
               </div>
             )}
           </div>
-
           {/* Sidebar */}
           <div className="md:col-span-1 flex flex-col gap-8 bg-muted rounded-lg p-4 lg:p-8">
             {/* Aditional Info */}
@@ -173,7 +172,14 @@ export default async function TourDetail({
               </div>
             )}
           </div>
+          {/* Close Sidebar */}
         </div>
+        {/* Close main grid */}
+        {program.gallery &&
+          program.gallery.length > 0 &&
+          program.gallery[0].images && (
+            <ImageGallery images={program.gallery[0].images} />
+          )}
       </div>
     </div>
   );

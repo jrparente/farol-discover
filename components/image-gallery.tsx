@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 type GalleryProps = {
   galleryHeading?: string;
@@ -22,13 +23,16 @@ export default function ImageGallery({
       </div>
       <div className="gap-8 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16">
         {images.map((image, imgIndex) => (
-          <Image
-            key={imgIndex}
-            src={image}
-            alt={`Gallery image ${imgIndex + 1}`}
-            width={500}
-            height={300}
-          />
+          <div className="mb-4 lg:mb-0" key={imgIndex}>
+            <div className="relative pb-[60%]">
+              <Image
+                className="absolute inset-0 w-full h-full object-cover"
+                src={image}
+                alt={`Gallery image ${imgIndex + 1}`}
+                layout="fill"
+              />
+            </div>
+          </div>
         ))}
       </div>
     </section>

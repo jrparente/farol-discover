@@ -3,18 +3,23 @@ import testimonials from "./testimonial-schemas";
 import aboutUs from "./about-us-schemas";
 import homepage from "./homepage-schemas";
 import features from "./features-schemas";
-import pageType from "./page-builder-schemas";
+import page from "./page-builder-schemas";
 import sectionInfo from "./page-section-info-type";
 import callToAction from "./page-section-cta-type";
 import testimonialsSection from "./page-section-testimonials-type";
 
 const schemas = [
+  // Singletons
+  aboutUs,
+  homepage,
+
+  // Documents
+  page,
   project,
   testimonials,
   features,
-  aboutUs,
-  homepage,
-  pageType,
+
+  // Objects
   sectionInfo,
   callToAction,
   testimonialsSection,

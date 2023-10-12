@@ -71,11 +71,7 @@ export default function Navbar() {
         <div className="flex items-center gap-x-2">
           <ModeToggle scrolled={scrolled} />
           <Link href="/contact">
-            <Button
-              variant="default"
-              className="rounded-full text-lg"
-              size="lg"
-            >
+            <Button variant="default" className="rounded-full md:text-lg">
               Book Now
             </Button>
           </Link>

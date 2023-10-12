@@ -1,7 +1,7 @@
-import { DocumentTextIcon } from "@sanity/icons";
+import { HomeIcon } from "@sanity/icons";
 
 const homepage = {
-  icon: DocumentTextIcon,
+  icon: HomeIcon,
   name: "homepage",
   title: "Page: Home",
   type: "document",
@@ -29,12 +29,14 @@ const homepage = {
       title: "Page Heading",
       type: "string",
       group: "header",
+      validation: (rule: any) => rule.required(),
     },
     {
       name: "pageTagline",
       title: "Page Tagline",
       type: "string",
       group: "header",
+      validation: (rule: any) => rule.required(),
     },
     {
       name: "statsTitle",

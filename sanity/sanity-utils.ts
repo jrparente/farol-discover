@@ -94,3 +94,36 @@ export async function getHomepage(): Promise<Homepage[]> {
     }`
   );
 }
+
+export async function getPages() {
+  groq`*[_type == "page"]{
+    _id,
+    _createdAt,
+    pageHeading,
+    pageTagline,
+    pageBuilder[]{
+        _type == "sectionInfo" => {
+          _type,
+          heading,
+          tagline,
+          image
+        },
+        _type == "callToAction" => @-> {
+          _type,
+          ctaTitle,
+          ctaDescription,
+          ctaButtonText,
+          ctaButtonLink,
+        }
+        // "testimonialsObject" is a "reference"
+        // We can resolve "itself" with the @ operator
+        _type == "testimonialsObject" => @-> {
+          _type,
+          name,
+          message,
+          location,
+          avatar,
+        }
+      },
+  }`;
+}

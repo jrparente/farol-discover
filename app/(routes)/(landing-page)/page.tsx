@@ -1,13 +1,15 @@
 import LandingHero from "./components/landing-hero";
 import LandingStats from "./components/landing-stats";
 import Testimonials from "./components/testimonials";
-import { getHomepage } from "@/sanity/sanity-utils";
+import { getHomepage, getPages } from "@/sanity/sanity-utils";
 import FeaturedPrograms from "./components/landing-featured-programs";
 import CompanyFeatures from "./components/landing-company-features";
 import Cta from "./components/cta";
 
 export default async function Home() {
   const homepage = await getHomepage();
+  const pages = await getPages();
+  console.log(pages);
 
   if (!homepage) {
     return <div>No homepage data available</div>;

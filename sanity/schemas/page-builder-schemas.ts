@@ -1,10 +1,10 @@
 import { DocumentTextIcon } from "@sanity/icons";
 
-const pageType = {
+const page = {
   icon: DocumentTextIcon,
-  name: "pages",
+  name: "page",
   type: "document",
-  title: "Pages",
+  title: "Page builder",
   fields: [
     {
       name: "pageHeading",
@@ -23,10 +23,22 @@ const pageType = {
       of: [
         { name: "Info Section", type: "sectionInfo" },
         { name: "Call to Action", type: "callToAction" },
-        // { name: "Testimonials", type: "testimonialsSection" },
+        {
+          name: "testimonialsObject",
+          title: "Testimonials",
+          type: "object",
+          fields: [
+            {
+              name: "testimonials",
+              title: "Testimonials Section",
+              type: "reference",
+              to: [{ type: "testimonials" }],
+            },
+          ],
+        },
       ],
     },
   ],
 };
 
-export default pageType;
+export default page;

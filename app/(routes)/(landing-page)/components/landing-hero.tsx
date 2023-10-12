@@ -27,12 +27,12 @@ export default function LandingHero({
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-40 z-1"></div>
       {/* Content */}
-      <div className="relative z-10 grid max-w-screen-xl px-4 py-20 md:py-32 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12">
-        <div className="mr-auto place-self-center lg:col-span-7">
-          <h1 className="max-w-2xl mb-4 text-5xl font-extrabold tracking-tight leading-none md:text-6xl xl:text-7xl text-white">
+      <div className="relative z-10  max-w-screen-xl px-4 py-20 md:py-32 mx-auto">
+        <div className="mr-auto place-self-center mt-12 lg:mt-20">
+          <h1 className="mb-4 text-5xl font-extrabold tracking-tight leading-none md:text-6xl xl:text-8xl text-white ">
             {pageHeading}
           </h1>
-          <p className="max-w-2xl mb-6 font-light  lg:mb-8 md:text-lg lg:text-xl text-white">
+          <p className="mb-6 font-light  lg:mb-8 md:text-lg lg:text-xl text-white">
             {pageTagline}
           </p>
           <div className="flex items-center gap-x-4">
@@ -47,7 +47,7 @@ export default function LandingHero({
             </Link>
           </div>
         </div>
-        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex"></div>
+        <div className="hidden lg:mt-0 lg:flex"></div>
       </div>
     </section>
   );

@@ -57,7 +57,7 @@ export default function Navbar() {
           <Link href="/">
             <h1
               className={cn(
-                "hidden md:block text-2xl font-extrabold tracking-tight leading-none",
+                "hidden lg:block text-2xl font-extrabold tracking-tight leading-none",
                 font.className,
                 scrolled ? "" : "text-white"
               )}
@@ -66,7 +66,7 @@ export default function Navbar() {
             </h1>
           </Link>
         </div>
-        <div className="hidden md:flex items-center gap-x-2">
+        <div className="hidden lg:flex items-center gap-x-2">
           {routes.map((route, index) => (
             <Link href={route.href} key={index}>
               <Button

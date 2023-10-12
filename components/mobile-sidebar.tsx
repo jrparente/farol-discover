@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Menu } from "lucide-react";
+import { FileText, Menu } from "lucide-react";
 import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { routes } from "@/constants";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Page } from "@/sanity/types/types";
+import { getPages } from "@/sanity/sanity-utils";
 
 const font = Montserrat({
   weight: "900",
@@ -16,6 +18,7 @@ const font = Montserrat({
 });
 
 export default function MobileSidebar() {
+  const [pages, setPages] = useState<Page[]>([]);
   const pathname = usePathname();
 
   const [scrolled, setScrolled] = useState(false);
@@ -30,6 +33,14 @@ export default function MobileSidebar() {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      const result = await getPages();
+      setPages(result);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -41,7 +52,7 @@ export default function MobileSidebar() {
       <SheetTrigger asChild>
         <Button
           className={cn(
-            "md:hidden z-10",
+            "lg:hidden z-10",
             scrolled ? "text-current" : "text-white"
           )}
           variant="ghost"
@@ -76,6 +87,25 @@ export default function MobileSidebar() {
                   </div>
                 </Link>
               ))}
+              {pages && pages.length > 0
+                ? pages.map((page, index) => (
+                    <Link
+                      href={`/${page.slug}`}
+                      key={index}
+                      className={cn(
+                        "text-sm flex p-3 w-full justify-start font-medium cursor-pointer hover:text-muted-foreground hover:bg-muted rounded-lg transition",
+                        pathname === `/${page.slug}`
+                          ? "text-muted-foreground bg-muted"
+                          : "text-zinc-400"
+                      )}
+                    >
+                      <div className="flex items-center flex-1">
+                        <FileText className={cn("h-5 w-5 mr-3")} />
+                        {page.pageHeading}
+                      </div>
+                    </Link>
+                  ))
+                : null}
             </div>
           </div>
         </div>

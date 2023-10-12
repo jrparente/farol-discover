@@ -12,7 +12,7 @@ export default function ImageGallery({
 }: GalleryProps) {
   return (
     <section className="my-2 py-2">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16">
+      <div className="pt-8 px-4 mx-auto max-w-screen-xl sm:pt-16">
         <div className="mx-auto max-w-screen-sm text-center">
           {galleryHeading && (
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-gray-900 dark:text-white">
@@ -21,7 +21,7 @@ export default function ImageGallery({
           )}
         </div>
       </div>
-      <div className="gap-8 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16">
+      <div className="gap-8 items-center px-4 py-6 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-8">
         {images.map((image, imgIndex) => (
           <div className="mb-4 lg:mb-0" key={imgIndex}>
             <div className="relative pb-[60%]">

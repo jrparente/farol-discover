@@ -17,24 +17,28 @@ const page = {
       type: "string",
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "pageHeading", maxLength: 96 },
+    },
+    {
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [{ type: "block" }],
+    },
+    {
       name: "pageBuilder",
       type: "array",
-      title: "Page builder",
+      title: "Page Sections",
       of: [
         { name: "Info Section", type: "sectionInfo" },
         { name: "Call to Action", type: "callToAction" },
         {
-          name: "testimonialsObject",
-          title: "Testimonials",
-          type: "object",
-          fields: [
-            {
-              name: "testimonials",
-              title: "Testimonials Section",
-              type: "reference",
-              to: [{ type: "testimonials" }],
-            },
-          ],
+          name: "gallery",
+          title: "Image Gallery",
+          type: "gallery",
         },
       ],
     },

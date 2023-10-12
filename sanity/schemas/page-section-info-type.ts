@@ -1,4 +1,7 @@
+import { ImageIcon } from "@sanity/icons";
+
 const sectionInfo = {
+  icon: ImageIcon,
   name: "sectionInfo",
   type: "object",
   title: "Info Section",
@@ -10,6 +13,10 @@ const sectionInfo = {
     {
       name: "tagline",
       type: "string",
+    },
+    {
+      name: "description",
+      type: "text",
     },
     {
       name: "image",
@@ -24,6 +31,19 @@ const sectionInfo = {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: "heading",
+      image: "image",
+    },
+    prepare(selected: any) {
+      return {
+        title: selected.title || "Untitled",
+        subtitle: "Info Section",
+        media: selected.image || ImageIcon,
+      };
+    },
+  },
 };
 
 export default sectionInfo;

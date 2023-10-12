@@ -31,7 +31,7 @@ export default async function FeaturedPrograms() {
                     <Image
                       width={500}
                       height={500}
-                      src={program.image}
+                      src={program.image!}
                       alt={program.name}
                     />
                   </Link>
@@ -46,10 +46,12 @@ export default async function FeaturedPrograms() {
                   <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
                     {program.description}
                   </p>
-                  <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
-                    <span className="font-bold">Highlights: </span>
-                    {program.highlights.join(", ")}
-                  </p>
+                  {program.highlights && program.highlights?.length > 0 && (
+                    <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
+                      <span className="font-bold">Highlights: </span>
+                      {program.highlights.join(", ")}
+                    </p>
+                  )}
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline">
                       <Flag className="w-3 h-3 mr-1" />

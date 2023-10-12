@@ -1,5 +1,5 @@
 import { createClient, groq } from "next-sanity";
-import { AboutUs, Homepage, Program, Testimonial } from "./types/types";
+import { AboutUs, Homepage, Page, Program, Testimonial } from "./types/types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -58,7 +58,7 @@ export async function getAboutUs(): Promise<AboutUs[]> {
       _createdAt,
       pageHeading,
       pageTagline,
-      pageDescription,
+      overview,
       title,
       subtitle,
       description,
@@ -87,6 +87,14 @@ export async function getHomepage(): Promise<Homepage[]> {
       statsDestinations,
       featuresTitle,
       featuresSubtitle,
+      "testimonials": testimonials[]->{ 
+        _id,
+        _createdAt,
+        name,
+        message,
+        location,
+        "avatar": avatar.asset->url
+      },
       ctaTitle,
       ctaDescription,
       ctaButtonText,
@@ -95,35 +103,70 @@ export async function getHomepage(): Promise<Homepage[]> {
   );
 }
 
-export async function getPages() {
-  groq`*[_type == "page"]{
+export async function getPages(): Promise<Page[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "page"]{
     _id,
     _createdAt,
     pageHeading,
     pageTagline,
-    pageBuilder[]{
-        _type == "sectionInfo" => {
+    "slug": slug.current,
+    content,
+    "pageBuilder": pageBuilder[]{
+        _type == "Info Section" => {
           _type,
           heading,
           tagline,
-          image
+          description,
+          "image": image.asset->url
         },
-        _type == "callToAction" => @-> {
+        _type == "Call to Action" => {
           _type,
           ctaTitle,
           ctaDescription,
           ctaButtonText,
           ctaButtonLink,
-        }
-        // "testimonialsObject" is a "reference"
-        // We can resolve "itself" with the @ operator
-        _type == "testimonialsObject" => @-> {
+        },
+        _type == "gallery" => {
           _type,
-          name,
-          message,
-          location,
-          avatar,
-        }
+          images
+        },
       },
-  }`;
+  }`
+  );
+}
+
+export async function getPage(slug: string): Promise<Page> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "page" && slug.current == $slug][0]{
+      _id,
+      _createdAt,
+      pageHeading,
+      pageTagline,
+      "slug": slug.current,
+      content,
+      "pageBuilder": pageBuilder[]{
+          _type == "Info Section" => {
+            _type,
+            heading,
+            tagline,
+            description,
+            "image": image.asset->url
+          },
+          _type == "Call to Action" => {
+            _type,
+            ctaTitle,
+            ctaDescription,
+            ctaButtonText,
+            ctaButtonLink,
+          },
+          _type == "gallery" => {
+            _type,
+            galleryHeading,
+            "images": images[].asset->url
+          },
+        },
+    }`,
+    { slug }
+  );
 }

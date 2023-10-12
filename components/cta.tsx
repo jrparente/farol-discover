@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 type CtaProps = {
-  ctaTitle: string;
-  ctaDescription: string;
-  ctaButtonText: string;
-  ctaButtonLink: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaButtonText?: string;
+  ctaButtonLink?: string;
 };
 
 export default function Cta({

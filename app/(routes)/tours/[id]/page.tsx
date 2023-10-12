@@ -106,16 +106,18 @@ export default async function TourDetail({
             </div>
 
             {/* Program Highlights */}
-            <div>
-              <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                Highlights:
-              </h2>
-              <div className="flex flex-col justify-start items-start gap-2">
-                {program.highlights.map((highlight, index) => (
-                  <Badge key={index}>{highlight}</Badge>
-                ))}
+            {program.highlights && program.highlights.length > 0 && (
+              <div>
+                <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                  Highlights:
+                </h2>
+                <div className="flex flex-col justify-start items-start gap-2">
+                  {program.highlights?.map((highlight, index) => (
+                    <Badge key={index}>{highlight}</Badge>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* What's Included and What's Not */}
             {program.whatsIncluded && (

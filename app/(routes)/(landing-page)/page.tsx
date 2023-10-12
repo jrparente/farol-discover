@@ -1,15 +1,13 @@
 import LandingHero from "./components/landing-hero";
 import Testimonials from "./components/testimonials";
-import { getHomepage, getPages } from "@/sanity/sanity-utils";
+import { getHomepage } from "@/sanity/sanity-utils";
 import FeaturedPrograms from "./components/featured-programs";
 import CompanyFeatures from "./components/company-features";
-import Cta from "./components/cta";
+import Cta from "@/components/cta";
 import CompanyStatistics from "./components/company-statistics";
 
 export default async function Home() {
   const homepage = await getHomepage();
-  const pages = await getPages();
-  console.log(pages);
 
   if (!homepage) {
     return <div>No homepage data available</div>;
@@ -26,11 +24,14 @@ export default async function Home() {
     statsDestinations,
     featuresTitle,
     featuresSubtitle,
+    testimonials,
     ctaTitle,
     ctaDescription,
     ctaButtonText,
     ctaButtonLink,
   } = homepage[0];
+
+  console.log(testimonials);
 
   return (
     <div className="h-full">

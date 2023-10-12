@@ -6,7 +6,7 @@ import features from "./features-schemas";
 import page from "./page-builder-schemas";
 import sectionInfo from "./page-section-info-type";
 import callToAction from "./page-section-cta-type";
-import testimonialsSection from "./page-section-testimonials-type";
+import { imageGalleryType } from "./page-section-image-gallery";
 
 const schemas = [
   // Singletons
@@ -22,7 +22,7 @@ const schemas = [
   // Objects
   sectionInfo,
   callToAction,
-  testimonialsSection,
+  imageGalleryType,
 ];
 
 export default schemas;

@@ -1,4 +1,7 @@
+import { StarIcon } from "@sanity/icons";
+
 const callToAction = {
+  icon: StarIcon,
   name: "callToAction",
   type: "object",
   title: "Call to Action",
@@ -24,6 +27,18 @@ const callToAction = {
       type: "string",
     },
   ],
+  preview: {
+    select: {
+      title: "ctaTitle",
+    },
+    prepare(selected: any) {
+      return {
+        title: selected.title || "Untitled",
+        subtitle: "Call to Action",
+        media: StarIcon,
+      };
+    },
+  },
 };
 
 export default callToAction;

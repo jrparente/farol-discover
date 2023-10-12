@@ -1,12 +1,12 @@
 import { Compass, MapPin, Smile } from "lucide-react";
 
 type LandingStatsProps = {
-  statsTitle: string;
-  statsSubtitle: string;
-  statsDescription: string;
-  statsTours: string;
-  statsCustomers: string;
-  statsDestinations: string;
+  statsTitle?: string;
+  statsSubtitle?: string;
+  statsDescription?: string;
+  statsTours?: string;
+  statsCustomers?: string;
+  statsDestinations?: string;
 };
 
 export default function CompanyStatistics({

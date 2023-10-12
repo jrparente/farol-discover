@@ -27,7 +27,7 @@ export default async function FeaturedPrograms() {
                 )}
                 <div className="relative h-64 w-full rounded-t-lg overflow-hidden">
                   <Image
-                    src={program.image}
+                    src={program.image!}
                     alt={program.name}
                     layout="fill"
                     objectFit="cover"

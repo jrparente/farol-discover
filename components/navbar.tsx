@@ -8,6 +8,8 @@ import { ModeToggle } from "./mode-toggle";
 import MobileSidebar from "./mobile-sidebar";
 import { routes } from "@/constants";
 import { useEffect, useState } from "react";
+import { getPages } from "@/sanity/sanity-utils";
+import { Page } from "@/sanity/types/types";
 
 const font = Montserrat({
   weight: "900",
@@ -16,6 +18,7 @@ const font = Montserrat({
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [pages, setPages] = useState<Page[]>([]);
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -25,6 +28,14 @@ export default function Navbar() {
       setScrolled(false);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getPages();
+      setPages(result);
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -66,6 +77,19 @@ export default function Navbar() {
               </Button>
             </Link>
           ))}
+          {/* Display pages if there are any */}
+          {pages && pages.length > 0
+            ? pages.map((page, index) => (
+                <Link href={`/${page.slug}`} key={index}>
+                  <Button
+                    variant="link"
+                    className={cn("text-lg", scrolled ? "" : "text-white")}
+                  >
+                    {page.pageHeading}
+                  </Button>
+                </Link>
+              ))
+            : null}
         </div>
 
         <div className="flex items-center gap-x-2">

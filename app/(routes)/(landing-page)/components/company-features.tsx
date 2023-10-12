@@ -2,8 +2,8 @@ import { tourFeatures } from "@/constants";
 import TourFeatures from "./tour-features";
 
 type FeaturesProps = {
-  featuresTitle: string;
-  featuresSubtitle: string;
+  featuresTitle?: string;
+  featuresSubtitle?: string;
 };
 
 export default function CompanyFeatures({

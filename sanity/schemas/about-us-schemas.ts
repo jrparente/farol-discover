@@ -41,10 +41,10 @@ const aboutUs = {
       group: "header",
     },
     {
-      name: "pageDescription",
-      title: "Company Description",
-      type: "text",
-      group: "description",
+      name: "overview",
+      title: "Company Overview",
+      type: "array",
+      of: [{ type: "block" }],
     },
     {
       name: "title",

@@ -19,6 +19,10 @@ const homepage = {
       title: "Company Features",
     },
     {
+      name: "testimonials",
+      title: "Testimonials",
+    },
+    {
       name: "callToAction",
       title: "Call To Action",
     },
@@ -91,6 +95,13 @@ const homepage = {
       title: "Features",
       type: "features",
       group: "companyFeatures",
+    },
+    {
+      name: "testimonials",
+      title: "Testimonials",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "testimonials" }] }],
+      group: "testimonials",
     },
     {
       name: "ctaTitle",

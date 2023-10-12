@@ -14,12 +14,10 @@ export default function Content({ content }: ContentProps) {
           components={{
             block: {
               normal: ({ children }) => (
-                <p className="text-base leading-6 text-gray-700">{children}</p>
+                <p className="text-base leading-6 ">{children}</p>
               ),
               h1: ({ children }) => (
-                <h1 className="text-2xl font-bold leading-8 text-gray-900">
-                  {children}
-                </h1>
+                <h1 className="text-2xl font-bold leading-8 ">{children}</h1>
               ),
             },
           }}

@@ -9,7 +9,7 @@ type LandingStatsProps = {
   statsDestinations: string;
 };
 
-export default function LandingStats({
+export default function CompanyStatistics({
   statsTitle,
   statsSubtitle,
   statsDescription,

@@ -1,10 +1,10 @@
 import LandingHero from "./components/landing-hero";
-import LandingStats from "./components/landing-stats";
 import Testimonials from "./components/testimonials";
 import { getHomepage, getPages } from "@/sanity/sanity-utils";
-import FeaturedPrograms from "./components/landing-featured-programs";
-import CompanyFeatures from "./components/landing-company-features";
+import FeaturedPrograms from "./components/featured-programs";
+import CompanyFeatures from "./components/company-features";
 import Cta from "./components/cta";
+import CompanyStatistics from "./components/company-statistics";
 
 export default async function Home() {
   const homepage = await getHomepage();
@@ -35,7 +35,7 @@ export default async function Home() {
   return (
     <div className="h-full">
       <LandingHero pageHeading={pageHeading} pageTagline={pageTagline} />
-      <LandingStats
+      <CompanyStatistics
         statsTitle={statsTitle}
         statsSubtitle={statsSubtitle}
         statsDescription={statsDescription}

@@ -66,7 +66,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                           <User2 fill="currentColor" />
                         </AvatarFallback>
                       </Avatar>
-                      <div className="pr-3 font-medium text-gray-900 dark:text-white divide-x-2 divide-gray-500 dark:divide-gray-700">
+                      <div className="pr-3 font-medium text-gray-900 dark:text-white">
                         {testimonial.name}
                       </div>
                       <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
@@ -74,12 +74,12 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                       </div>
                     </div>
                     <div className="flex items-center space-x-3 mt-2">
-                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">
+                      <div className="font-light text-gray-500 dark:text-gray-400">
                         {testimonial.date}
                       </div>
                       <Link
                         href={`/tours/${testimonial.tour.slug}`}
-                        className="text-sm font-light text-blue-500 hover:underline"
+                        className="font-light text-primary hover:underline "
                       >
                         {testimonial.tour.name}
                       </Link>

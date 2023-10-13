@@ -30,7 +30,7 @@ export default async function Home() {
     ctaButtonText,
     ctaButtonLink,
   } = homepage[0];
-
+  console.log(homepage);
   return (
     <div className="h-full">
       <LandingHero pageHeading={pageHeading} pageTagline={pageTagline} />

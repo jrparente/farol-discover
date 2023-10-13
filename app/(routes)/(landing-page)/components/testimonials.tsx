@@ -15,7 +15,7 @@ type TestimonialsProps = {
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
   const [active, setActive] = useState<number>(0);
-
+  console.log(testimonials);
   if (!testimonials || testimonials.length === 0) {
     return null;
   }

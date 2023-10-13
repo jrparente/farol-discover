@@ -42,7 +42,7 @@ export type Testimonial = {
   message: string;
   location: string;
   date: string;
-  tour: { _ref: string; _type: string };
+  tour: { _ref: string; _type: string; name: string; slug: string };
   avatar?: string;
 };
 

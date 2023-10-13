@@ -58,15 +58,14 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                   </p>
                 </blockquote>
                 <figcaption className="flex items-center justify-center mt-6 space-x-3">
-                  <Avatar className="w-6 h-6">
-                    <AvatarImage src={testimonial.avatar} />
-                    <AvatarFallback>
-                      <User2 fill="currentColor" />
-                    </AvatarFallback>
-                  </Avatar>
-
                   <div className="flex flex-col items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
                     <div className="flex items-center space-x-3">
+                      <Avatar className="w-6 h-6">
+                        <AvatarImage src={testimonial.avatar} />
+                        <AvatarFallback>
+                          <User2 fill="currentColor" />
+                        </AvatarFallback>
+                      </Avatar>
                       <div className="pr-3 font-medium text-gray-900 dark:text-white">
                         {testimonial.name}
                       </div>
@@ -79,10 +78,10 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                         {testimonial.date}
                       </div>
                       <Link
-                        href={`/tours/${testimonial.tour._ref}`}
+                        href={`/tours/${testimonial.tour.slug}`}
                         className="text-sm font-light text-blue-500 hover:underline"
                       >
-                        {testimonial.tour._ref}
+                        {testimonial.tour.name}
                       </Link>
                     </div>
                   </div>

@@ -85,7 +85,7 @@ export default async function TourDetail({
           {/* Sidebar */}
           <div className="md:col-span-1 flex flex-col gap-8 bg-muted rounded-lg p-4 lg:p-8">
             {/* Aditional Info */}
-            <div>
+            <div className="flex flex-col space-y-3">
               <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Additional Info
               </h2>
@@ -106,9 +106,9 @@ export default async function TourDetail({
 
             {/* Program Highlights */}
             {program.highlights && program.highlights.length > 0 && (
-              <div>
+              <div className="flex flex-col space-y-3">
                 <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                  Highlights:
+                  Highlights
                 </h2>
                 <div className="flex flex-col justify-start items-start gap-2">
                   {program.highlights?.map((highlight, index) => (
@@ -120,7 +120,7 @@ export default async function TourDetail({
 
             {/* What's Included and What's Not */}
             {program.whatsIncluded && (
-              <div>
+              <div className="flex flex-col space-y-3">
                 <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                   What&apos;s Included
                 </h2>
@@ -135,7 +135,7 @@ export default async function TourDetail({
               </div>
             )}
             {program.whatsNotIncluded && (
-              <div>
+              <div className="flex flex-col space-y-3">
                 <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                   What&apos;s Not Included
                 </h2>
@@ -152,7 +152,7 @@ export default async function TourDetail({
 
             {/* FAQs */}
             {program.faqs && program.faqs.length > 0 && (
-              <div>
+              <div className="flex flex-col space-y-3">
                 <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                   FAQ
                 </h2>

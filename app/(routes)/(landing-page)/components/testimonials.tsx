@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Quote, User2 } from "lucide-react";
 import { Transition } from "@headlessui/react";
 import { Testimonial } from "@/sanity/types/types";
+import Link from "next/link";
 
 type TestimonialsProps = {
   testimonials?: Testimonial[];
@@ -64,12 +65,25 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                     </AvatarFallback>
                   </Avatar>
 
-                  <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
-                    <div className="pr-3 font-medium text-gray-900 dark:text-white">
-                      {testimonial.name}
+                  <div className="flex flex-col items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+                    <div className="flex items-center space-x-3">
+                      <div className="pr-3 font-medium text-gray-900 dark:text-white">
+                        {testimonial.name}
+                      </div>
+                      <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
+                        {testimonial.location}
+                      </div>
                     </div>
-                    <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
-                      {testimonial.location}
+                    <div className="flex items-center space-x-3 mt-2">
+                      <div className="text-sm font-light text-gray-500 dark:text-gray-400">
+                        {testimonial.date}
+                      </div>
+                      <Link
+                        href={`/tours/${testimonial.tour._ref}`}
+                        className="text-sm font-light text-blue-500 hover:underline"
+                      >
+                        {testimonial.tour._ref}
+                      </Link>
                     </div>
                   </div>
                 </figcaption>

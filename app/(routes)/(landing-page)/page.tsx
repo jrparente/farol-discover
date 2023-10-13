@@ -31,8 +31,6 @@ export default async function Home() {
     ctaButtonLink,
   } = homepage[0];
 
-  console.log(testimonials);
-
   return (
     <div className="h-full">
       <LandingHero pageHeading={pageHeading} pageTagline={pageTagline} />
@@ -49,7 +47,7 @@ export default async function Home() {
         featuresTitle={featuresTitle}
         featuresSubtitle={featuresSubtitle}
       />
-      <Testimonials />
+      <Testimonials testimonials={testimonials || []} />
       <Cta
         ctaTitle={ctaTitle}
         ctaDescription={ctaDescription}

@@ -1,36 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Quote, User2 } from "lucide-react";
 import { Transition } from "@headlessui/react";
-
-import { getTestimonials } from "@/sanity/sanity-utils";
 import { Testimonial } from "@/sanity/types/types";
 
-export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+type TestimonialsProps = {
+  testimonials?: Testimonial[];
+};
+
+export default function Testimonials({ testimonials }: TestimonialsProps) {
   const [active, setActive] = useState<number>(0);
 
-  useEffect(() => {
-    async function fetchData() {
-      const fectchedTestimonials = await getTestimonials();
-      setTestimonials(fectchedTestimonials);
-    }
-    fetchData();
-  }, []);
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
 
   const prevSlide = () => {
     setActive((prevActive) =>
-      prevActive - 1 < 0 ? testimonials.length - 1 : prevActive - 1
+      prevActive - 1 < 0 ? testimonials?.length - 1 : prevActive - 1
     );
   };
 
   const nextSlide = () => {
     setActive((prevActive) =>
-      prevActive + 1 === testimonials.length ? 0 : prevActive + 1
+      prevActive + 1 === testimonials?.length ? 0 : prevActive + 1
     );
   };
 

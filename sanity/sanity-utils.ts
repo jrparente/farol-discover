@@ -93,12 +93,14 @@ export async function getHomepage(): Promise<Homepage[]> {
       featuresTitle,
       featuresSubtitle,
       "testimonials": testimonials[]->{ 
+         _type == "testimonials" => {
         _id,
         _createdAt,
         name,
         message,
         location,
         "avatar": avatar.asset->url
+         }
       },
       ctaTitle,
       ctaDescription,

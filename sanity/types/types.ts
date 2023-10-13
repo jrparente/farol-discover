@@ -41,6 +41,8 @@ export type Testimonial = {
   name: string;
   message: string;
   location: string;
+  date: string;
+  tour: { _ref: string; _type: string };
   avatar?: string;
 };
 

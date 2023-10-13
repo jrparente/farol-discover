@@ -30,7 +30,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
       prevActive + 1 === testimonials?.length ? 0 : prevActive + 1
     );
   };
-
+  console.log(testimonials);
   return (
     <section className="my-8 bg-secondary py-12">
       <div className="max-w-screen-xl mx-auto px-4">

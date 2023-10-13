@@ -86,6 +86,8 @@ export async function getHomepage(): Promise<Homepage[]> {
         name,
         message,
         location,
+        date,
+        tour,
         "avatar": avatar.asset->url
          }
       },

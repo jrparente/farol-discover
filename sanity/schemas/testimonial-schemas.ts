@@ -22,6 +22,17 @@ const testimonials = {
       type: "string",
     },
     {
+      name: "date",
+      title: "Date",
+      type: "string",
+    },
+    {
+      name: "tour",
+      title: "Tour",
+      type: "reference",
+      to: [{ type: "program" }],
+    },
+    {
       name: "avatar",
       title: "Avatar",
       type: "image",

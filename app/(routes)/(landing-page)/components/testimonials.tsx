@@ -58,7 +58,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                   </p>
                 </blockquote>
                 <figcaption className="flex items-center justify-center mt-6 space-x-3">
-                  <div className="flex flex-col items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+                  <div className="flex flex-col items-center ">
                     <div className="flex items-center space-x-3">
                       <Avatar className="w-6 h-6">
                         <AvatarImage src={testimonial.avatar} />
@@ -66,7 +66,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                           <User2 fill="currentColor" />
                         </AvatarFallback>
                       </Avatar>
-                      <div className="pr-3 font-medium text-gray-900 dark:text-white">
+                      <div className="pr-3 font-medium text-gray-900 dark:text-white divide-x-2 divide-gray-500 dark:divide-gray-700">
                         {testimonial.name}
                       </div>
                       <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">

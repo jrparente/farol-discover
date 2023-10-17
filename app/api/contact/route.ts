@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     `;
 
     const msg = {
-      to: "paulopalhota@hotmail.com",
+      to: "info@faroldiscover.pt",
       from: formData.email,
       subject: "New Contact Form Submission",
       html: emailContent,

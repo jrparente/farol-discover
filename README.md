@@ -1,6 +1,6 @@
 # Farol Discover 🗺️
 
-![Farol Discover](/farol-discover-clipped.png)
+![Farol Discover](/public/farol-discover-clipped.png)
 
 ## Overview
 

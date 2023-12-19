@@ -7,6 +7,8 @@ import page from "./page-builder-schemas";
 import sectionInfo from "./page-section-info-type";
 import callToAction from "./page-section-cta-type";
 import { imageGalleryType } from "./page-section-image-gallery";
+import faqs from "./page-section-faqs";
+import seo from "./page-section-metadata";
 
 const schemas = [
   // Singletons
@@ -20,6 +22,8 @@ const schemas = [
   features,
 
   // Objects
+  seo,
+  faqs,
   sectionInfo,
   callToAction,
   imageGalleryType,

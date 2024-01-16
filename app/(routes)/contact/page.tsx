@@ -38,7 +38,6 @@ export default function Contact() {
 
   async function onSubmit(values: z.infer<typeof contactSchema>) {
     try {
-      console.log(values);
       const response = await fetch("/api/contact", {
         method: "POST",
         body: JSON.stringify(values),
@@ -50,8 +49,6 @@ export default function Contact() {
       if (!response.ok) {
         throw new Error("HTTP error! status: " + response.status);
       }
-
-      console.log(response);
 
       toast({
         title: "Success!",

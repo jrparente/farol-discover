@@ -5,11 +5,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Farol Discover - Authentic Walking Tours in Portugal",
+  title: "Farol Discover - Authentic Walking and Trekking Tours in Portugal",
   description:
     "Explore the unseen beauty of Portugal with Farol Discover. Join us for authentic walking and trekking tours that take you off the beaten path.",
 };
@@ -33,6 +34,7 @@ export default function RootLayout({
           </main>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-B5XVLF3C8L" />
     </html>
   );
 }

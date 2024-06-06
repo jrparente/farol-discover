@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="p-4 sm:p-6">
       <Separator className="my-6 lg:my-8" />
       <div className="max-w-screen-xl mx-auto">
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-start sm:justify-between">
           <div className="flex flex-col gap-2">
             <Link href="/">
               <h1
@@ -28,9 +28,9 @@ export default function Footer() {
               </h1>
             </Link>
             <span className="text-sm text-muted-foreground">
-              License Number: RNAVT: 10982
+              License Numbers: RNAVT: 10982 | RNAAT: 148/2024
             </span>
-            <span className="text-sm text-muted-foreground sm:text-center">
+            <span className="text-sm text-muted-foreground">
               © {new Date().getFullYear()}{" "}
               <Link href="/" className="hover:underline">
                 Farol Discover™

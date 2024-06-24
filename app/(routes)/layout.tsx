@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Farol Discover - Authentic Walking and Trekking Tours in Portugal",
   description:
     "Explore the unseen beauty of Portugal with Farol Discover. Join us for authentic walking and trekking tours that take you off the beaten path.",
+  verification: {
+    google: "MMefvhg2JlfCub9zE5XsMB_eMrktk58J6jMDLxSKF18",
+  },
 };
 
 export default function RootLayout({

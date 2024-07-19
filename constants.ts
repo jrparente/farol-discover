@@ -2,11 +2,6 @@ import { Info, MapPin, Mail, Map, Users, Shield, Bed } from "lucide-react";
 
 export const routes = [
   {
-    label: "About Us",
-    href: "/about-us",
-    icon: Info,
-  },
-  {
     label: "Programs",
     href: "/tours",
     icon: MapPin,

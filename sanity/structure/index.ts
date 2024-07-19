@@ -1,7 +1,6 @@
 import { Footprints, HomeIcon, Presentation, Users2 } from "lucide-react";
-import { StructureResolver } from "sanity/desk";
 
-export const structure: StructureResolver = (S) =>
+export const structure = (S: any) =>
   S.list()
     .title("Website Content")
     .items([

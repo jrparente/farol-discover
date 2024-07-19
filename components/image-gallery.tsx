@@ -1,8 +1,8 @@
-import Image from "next/image";
+import SanityImage from "./SanityImage";
 
 type GalleryProps = {
   galleryHeading?: string;
-  images: string[];
+  images: any[];
 };
 
 export default function ImageGallery({
@@ -24,11 +24,9 @@ export default function ImageGallery({
         {images.map((image, imgIndex) => (
           <div className="mb-4 lg:mb-0" key={imgIndex}>
             <div className="relative pb-[60%]">
-              <Image
-                className="absolute inset-0 w-full h-full object-cover"
-                src={image}
-                alt={`Gallery image ${imgIndex + 1}`}
-                layout="fill"
+              <SanityImage
+                className="absolute inset-0 object-cover w-full h-full rounded-lg shadow-lg"
+                source={image}
               />
             </div>
           </div>

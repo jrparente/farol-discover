@@ -100,6 +100,7 @@ export type Page = {
   pageBuilder?: Array<{
     _type: string;
     heading?: string;
+    subheading?: string;
     tagline?: string;
     description?: string;
     image?: string;
@@ -107,7 +108,19 @@ export type Page = {
     ctaDescription?: string;
     ctaButtonText?: string;
     ctaButtonLink?: string;
-    images?: string[];
+    images?: [];
     galleryHeading?: string;
+    teamMembers?: Array<{
+      name: string;
+      role: string;
+      gender: string;
+      image?: { asset: { url: string }; alt: string };
+      bio?: string;
+      linkedin?: string;
+    }>;
+    faqs?: {
+      question: string;
+      answer: string;
+    }[];
   }>;
 };

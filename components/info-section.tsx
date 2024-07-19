@@ -1,10 +1,10 @@
-import Image from "next/image";
+import SanityImage from "./SanityImage";
 
 type InfoSectionProps = {
   title?: string;
   subtitle?: string;
   description?: string;
-  image?: string;
+  image?: any;
 };
 
 export default function InfoSection({
@@ -40,7 +40,7 @@ export default function InfoSection({
         </div>
         {image && (
           <div className="relative aspect-square mt-8">
-            <Image fill className="mb-4" src={image} alt={title} />
+            <SanityImage className="mb-4" source={image} />
           </div>
         )}
       </div>

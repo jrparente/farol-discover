@@ -3,6 +3,8 @@ import ImageGallery from "@/components/image-gallery";
 import InfoSection from "@/components/info-section";
 import Content from "@/components/page-content";
 import Hero from "@/components/page-hero";
+import Team from "@/components/section-team";
+import SectionFAQ from "@/components/SectionFAQ";
 import { getPage } from "@/sanity/sanity-utils";
 
 type Props = {
@@ -49,6 +51,23 @@ export default async function Page({ params }: Props) {
                   images={section.images}
                 />
               ) : null;
+            case "faqs":
+              return (
+                <SectionFAQ
+                  key={index}
+                  heading={section.heading}
+                  faqs={section.faqs ?? []}
+                />
+              );
+            case "team":
+              return (
+                <Team
+                  key={index}
+                  heading={section.heading}
+                  subheading={section.subheading ?? ""}
+                  teamMembers={section.teamMembers ?? []}
+                />
+              );
             default:
               return null;
           }

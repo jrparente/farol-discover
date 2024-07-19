@@ -1,3 +1,4 @@
+import { type SchemaTypeDefinition } from "sanity";
 import project from "./documents/program-schema";
 import testimonials from "./documents/testimonial-schemas";
 import aboutUs from "./documents/about-us-schemas";
@@ -12,25 +13,27 @@ import seo from "./objects/page-section-metadata";
 import link from "./objects/link";
 import sectionTeam from "./objects/sectionTeam";
 
-const schemas = [
-  // Singletons
-  aboutUs,
-  homepage,
+const schema: { types: SchemaTypeDefinition[] } = {
+  types: [
+    // Singletons
+    aboutUs,
+    homepage,
 
-  // Documents
-  page,
-  project,
-  testimonials,
-  features,
+    // Documents
+    page,
+    project,
+    testimonials,
+    features,
 
-  // Objects
-  seo,
-  faqs,
-  sectionInfo,
-  callToAction,
-  imageGalleryType,
-  link,
-  sectionTeam,
-];
+    // Objects
+    seo,
+    faqs,
+    sectionInfo,
+    callToAction,
+    imageGalleryType,
+    link,
+    sectionTeam,
+  ],
+};
 
-export default schemas;
+export default schema;

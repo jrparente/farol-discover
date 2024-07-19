@@ -1,5 +1,7 @@
 import { createClient, groq } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
 import { AboutUs, Homepage, Page, Program, Testimonial } from "./types/types";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -11,6 +13,14 @@ const clientConfig = {
   apiVersion,
   useCdn: true,
 };
+
+const client = createClient(clientConfig);
+
+const builder = imageUrlBuilder(client);
+
+export function urlForImage(source: SanityImageSource) {
+  return builder.image(source);
+}
 
 export async function getPrograms(): Promise<Program[]> {
   return createClient(clientConfig).fetch(
@@ -111,26 +121,7 @@ export async function getPages(): Promise<Page[]> {
     pageTagline,
     "slug": slug.current,
     content,
-    "pageBuilder": pageBuilder[]{
-        _type == "Info Section" => {
-          _type,
-          heading,
-          tagline,
-          description,
-          "image": image.asset->url
-        },
-        _type == "Call to Action" => {
-          _type,
-          ctaTitle,
-          ctaDescription,
-          ctaButtonText,
-          ctaButtonLink,
-        },
-        _type == "gallery" => {
-          _type,
-          "images": images[].asset->url
-        },
-      },
+    "pageBuilder": pageBuilder[]
   }`
   );
 }
@@ -144,27 +135,7 @@ export async function getPage(slug: string): Promise<Page> {
       pageTagline,
       "slug": slug.current,
       content,
-      "pageBuilder": pageBuilder[]{
-          _type == "Info Section" => {
-            _type,
-            heading,
-            tagline,
-            description,
-            "image": image.asset->url
-          },
-          _type == "Call to Action" => {
-            _type,
-            ctaTitle,
-            ctaDescription,
-            ctaButtonText,
-            ctaButtonLink,
-          },
-          _type == "gallery" => {
-            _type,
-            galleryHeading,
-            "images": images[].asset->url
-          },
-        },
+      "pageBuilder": pageBuilder[]
     }`,
     { slug }
   );

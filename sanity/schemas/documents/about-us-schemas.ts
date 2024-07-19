@@ -1,13 +1,5 @@
 import { DocumentTextIcon } from "@sanity/icons";
-import {
-  FileQuestion,
-  Link,
-  PanelTop,
-  PenBox,
-  Search,
-  Text,
-  Users,
-} from "lucide-react";
+import { PenBox, Search } from "lucide-react";
 
 const aboutUs = {
   icon: DocumentTextIcon,

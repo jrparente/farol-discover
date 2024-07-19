@@ -1,11 +1,4 @@
-import {
-  Footprints,
-  HomeIcon,
-  Presentation,
-  Star,
-  Stars,
-  Users2,
-} from "lucide-react";
+import { Footprints, HomeIcon, Presentation, Users2 } from "lucide-react";
 import { StructureResolver } from "sanity/desk";
 
 export const structure: StructureResolver = (S) =>

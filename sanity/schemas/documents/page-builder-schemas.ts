@@ -76,8 +76,11 @@ const page = {
         },
         {
           name: "faqs",
-          title: "FAQs",
           type: "faqs",
+        },
+        {
+          name: "team",
+          type: "sectionTeam",
         },
       ],
     },

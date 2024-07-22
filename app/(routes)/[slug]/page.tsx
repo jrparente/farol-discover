@@ -5,11 +5,17 @@ import Content from "@/components/page-content";
 import Hero from "@/components/page-hero";
 import Team from "@/components/section-team";
 import SectionFAQ from "@/components/SectionFAQ";
-import { getPage } from "@/sanity/sanity-utils";
+import { getPage, getPages } from "@/sanity/sanity-utils";
 
 type Props = {
   params: { slug: string };
 };
+
+export async function generateStaticParams() {
+  const allPages = await getPages();
+
+  return allPages;
+}
 
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);

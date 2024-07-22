@@ -44,9 +44,6 @@ export default function Navbar() {
     };
   }, []);
 
-  console.log("pages", pages);
-  console.log("routes", routes);
-
   return (
     <div
       className={cn(

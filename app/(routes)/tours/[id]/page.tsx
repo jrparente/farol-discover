@@ -11,6 +11,12 @@ import { getPrograms } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import ImageGallery from "@/components/image-gallery";
 
+export async function generateStaticParams() {
+  const programs = await getPrograms();
+
+  return programs;
+}
+
 export default async function TourDetail({
   params,
 }: {

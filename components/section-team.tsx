@@ -32,7 +32,7 @@ function Team({ heading, subheading, teamMembers }: sectionTeamProps) {
           </h2>
         )}
         <div className="lg:col-span-3">
-          <div className="grid gap-8 mt-8 lg:grid-cols-2">
+          <div className="grid gap-8 mt-8 lg:grid-cols-3">
             {teamMembers.map((member, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div className="relative aspect-square">

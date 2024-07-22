@@ -2,11 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { getPrograms } from "@/sanity/sanity-utils";
+import { Program } from "@/sanity/types/types";
 
-export default async function FeaturedPrograms() {
-  const programs = await getPrograms();
-  console.log("programs:", programs);
+type ProgramsProps = {
+  programs: Program[];
+};
+
+export default async function FeaturedPrograms({ programs }: ProgramsProps) {
   return (
     <section className="my-8 py-12">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">

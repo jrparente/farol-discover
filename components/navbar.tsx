@@ -7,9 +7,10 @@ import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import MobileSidebar from "./mobile-sidebar";
 import { routes } from "@/constants";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getPages } from "@/sanity/sanity-utils";
 import { Page } from "@/sanity/types/types";
+import { Loader } from "lucide-react";
 
 const font = Montserrat({
   weight: "900",
@@ -19,6 +20,8 @@ const font = Montserrat({
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [pages, setPages] = useState<Page[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -29,13 +32,22 @@ export default function Navbar() {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
       const result = await getPages();
       setPages(result);
-    };
-    fetchData();
+    } catch (err) {
+      setError("Failed to load pages");
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -78,6 +90,8 @@ export default function Navbar() {
             </Link>
           ))}
           {/* Display pages if there are any */}
+          {loading && <Loader className="w-4 h-4 animate-spin text-white" />}
+          {error && <span className="text-red-500">{error}</span>}
           {pages && pages.length > 0
             ? pages.map((page, index) => (
                 <Link href={`/${page.slug}`} key={index}>

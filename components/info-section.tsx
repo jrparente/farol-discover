@@ -24,9 +24,24 @@ export default function InfoSection({
   imagePosition,
   content,
 }: InfoSectionProps) {
+  console.log("content", content);
+  console.log("image", image);
+  console.log("title", title);
+  console.log("subtitle", subtitle);
+  console.log("description", description);
+  console.log("buttonText", buttonText);
+  console.log("buttonLink", buttonLink);
+  console.log("imagePosition", imagePosition);
   return (
     <section className="my-2 py-2">
-      <div className="gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16">
+      <div
+        className={`gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16 ${imagePosition === "left" ? "lg:grid-flow-dense" : ""}`}
+      >
+        {image && imagePosition === "left" && (
+          <div className="relative aspect-square mt-8 lg:order-1 lg:col-span-1">
+            <SanityImage className="mb-4" source={image} />
+          </div>
+        )}
         <div
           className={`font-light sm:text-lg ${
             !image ? "lg:col-span-3" : "lg:col-span-2"
@@ -57,8 +72,8 @@ export default function InfoSection({
             </SanityLink>
           )}
         </div>
-        {image && (
-          <div className="relative aspect-square mt-8">
+        {image && imagePosition !== "left" && (
+          <div className="relative aspect-square mt-8 lg:col-span-1">
             <SanityImage className="mb-4" source={image} />
           </div>
         )}

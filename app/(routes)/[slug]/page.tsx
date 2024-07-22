@@ -43,6 +43,10 @@ export default async function Page({ params }: Props) {
                   subtitle={section.tagline ?? ""}
                   description={section.description ?? ""}
                   image={section.image ?? ""}
+                  buttonText={section.buttonText ?? ""}
+                  buttonLink={section.buttonLink ?? ""}
+                  imagePosition={section.imagePosition ?? ""}
+                  content={section.content ?? ""}
                 />
               );
             case "Call to Action":

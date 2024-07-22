@@ -53,27 +53,6 @@ export async function getPrograms(): Promise<Program[]> {
   );
 }
 
-export async function getAboutUs(): Promise<AboutUs[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "aboutUs"]{
-      _id,
-      _createdAt,
-      pageHeading,
-      pageTagline,
-      overview,
-      title,
-      subtitle,
-      description,
-      "image": image.asset->url,
-      faqs,
-      ctaTitle,
-      ctaDescription,
-      ctaButtonText,
-      ctaButtonLink,
-    }`
-  );
-}
-
 export async function getHomepage(): Promise<Homepage[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "homepage"]{

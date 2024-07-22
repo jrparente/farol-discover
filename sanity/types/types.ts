@@ -103,6 +103,10 @@ export type Page = {
     subheading?: string;
     tagline?: string;
     description?: string;
+    content?: PortableTextBlock[];
+    buttonText?: string;
+    buttonLink?: string;
+    imagePosition?: string;
     image?: string;
     ctaTitle?: string;
     ctaDescription?: string;

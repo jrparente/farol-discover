@@ -17,7 +17,6 @@ type sectionTeamProps = {
 };
 
 function Team({ heading, subheading, teamMembers }: sectionTeamProps) {
-  console.log(teamMembers);
   return (
     <section className="my-2 py-2">
       <div className="gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16">

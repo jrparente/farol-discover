@@ -21,8 +21,8 @@ export default function ImageGallery({
         </div>
       </div>
       <div className="gap-8 items-center px-4 py-6 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-8">
-        {images.map((image, imgIndex) => (
-          <div className="mb-4 lg:mb-0" key={imgIndex}>
+        {images.map((image, index) => (
+          <div key={image._key || index} className="mb-4 lg:mb-0">
             <div className="relative pb-[60%]">
               <SanityImage
                 className="absolute inset-0 object-cover w-full h-full rounded-lg shadow-lg"

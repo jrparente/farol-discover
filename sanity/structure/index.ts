@@ -1,4 +1,12 @@
-import { Footprints, HomeIcon, Presentation, Users2 } from "lucide-react";
+import {
+  FlagIcon,
+  Footprints,
+  HomeIcon,
+  Presentation,
+  Settings2Icon,
+  Stars,
+  ThumbsUp,
+} from "lucide-react";
 
 export const structure = (S: any) =>
   S.list()
@@ -8,11 +16,6 @@ export const structure = (S: any) =>
         .title("Homepage")
         .icon(HomeIcon)
         .child(S.document().schemaType("homepage").documentId("homepage")),
-
-      S.listItem()
-        .title("Page: About Us")
-        .icon(Users2)
-        .child(S.document().schemaType("aboutUs").documentId("aboutUs")),
 
       S.listItem()
         .title("Website Pages")
@@ -38,21 +41,55 @@ export const structure = (S: any) =>
             .filter('_type == "program"')
         ),
 
-      //   S.listItem()
-      //     .title("Testimonials")
-      //     .icon(Stars)
-      //     .child(
-      //       S.documentTypeList("testimonials")
-      //         .apiVersion("v2023-12-18")
-      //         .title("Testimonials")
-      //         .menuItems(S.documentTypeList("testimonials").getMenuItems())
-      //         .filter('_type == "testimonials"')
-      //     ),
+      S.listItem()
+        .title("Testimonials")
+        .icon(Stars)
+        .child(
+          S.documentTypeList("testimonials")
+            .apiVersion("v2023-12-18")
+            .title("Testimonials")
+            .menuItems(S.documentTypeList("testimonials").getMenuItems())
+            .filter('_type == "testimonials"')
+        ),
 
-      ...S.documentTypeListItems().filter((listItem: any) => {
-        const id = listItem.getId();
-        return id
-          ? !["homepage", "aboutUs", "page", "program"].includes(id)
-          : false;
-      }),
+      S.divider(),
+
+      S.listItem()
+        .title("Website Settings")
+        .icon(Settings2Icon)
+        .child(
+          S.list()
+            .title("Settings")
+            .items([
+              S.listItem()
+                .title("Languages")
+                .icon(FlagIcon)
+                .child(
+                  S.document()
+                    .title("Languages")
+                    .schemaType("settingsLanguages")
+                    .documentId("languages")
+                ),
+
+              S.listItem()
+                .title("Navigation")
+                .icon(Footprints)
+                .child(
+                  S.document()
+                    .title("Navigation")
+                    .schemaType("navigation")
+                    .documentId("navigation")
+                ),
+
+              S.listItem()
+                .title("Social Media Links")
+                .icon(ThumbsUp)
+                .child(
+                  S.document()
+                    .title("Social Media Links")
+                    .schemaType("settingsSocialMedia")
+                    .documentId("socialMedia")
+                ),
+            ])
+        ),
     ]);

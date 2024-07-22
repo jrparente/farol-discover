@@ -14,7 +14,7 @@ const clientConfig = {
   useCdn: true,
 };
 
-const client = createClient(clientConfig);
+export const client = createClient(clientConfig);
 
 const builder = imageUrlBuilder(client);
 
@@ -133,6 +133,7 @@ export async function getPage(slug: string): Promise<Page> {
       _createdAt,
       pageHeading,
       pageTagline,
+      seo,
       "slug": slug.current,
       content,
       "pageBuilder": pageBuilder[]

@@ -1,7 +1,6 @@
 import { type SchemaTypeDefinition } from "sanity";
 import project from "./documents/program-schema";
 import testimonials from "./documents/testimonial-schemas";
-import aboutUs from "./documents/about-us-schemas";
 import homepage from "./documents/homepage-schemas";
 import features from "./features-schemas";
 import page from "./documents/page-builder-schemas";
@@ -12,11 +11,13 @@ import faqs from "./objects/page-section-faqs";
 import seo from "./objects/page-section-metadata";
 import link from "./objects/link";
 import sectionTeam from "./objects/sectionTeam";
+import navigation from "./documents/settings-navigation";
+import settingsSocialMedia from "./documents/settings-social-media";
+import settingsLanguages from "./documents/settings-languages";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Singletons
-    aboutUs,
     homepage,
 
     // Documents
@@ -24,6 +25,9 @@ const schema: { types: SchemaTypeDefinition[] } = {
     project,
     testimonials,
     features,
+    navigation,
+    settingsSocialMedia,
+    settingsLanguages,
 
     // Objects
     seo,

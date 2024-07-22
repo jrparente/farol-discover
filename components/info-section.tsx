@@ -1,10 +1,17 @@
 import SanityImage from "./SanityImage";
+import SanityLink from "./SanityLink";
+import SanityPortableTextBlock from "./SanityPortableTextBlock";
+import { Button } from "./ui/button";
 
 type InfoSectionProps = {
   title?: string;
   subtitle?: string;
   description?: string;
+  content?: any;
   image?: any;
+  buttonText?: string;
+  buttonLink?: string;
+  imagePosition?: string;
 };
 
 export default function InfoSection({
@@ -12,6 +19,10 @@ export default function InfoSection({
   subtitle,
   description,
   image,
+  buttonText,
+  buttonLink,
+  imagePosition,
+  content,
 }: InfoSectionProps) {
   return (
     <section className="my-2 py-2">
@@ -36,6 +47,14 @@ export default function InfoSection({
             <p className="leading-7 [&:not(:first-child)]:mt-6">
               {description}
             </p>
+          )}
+          {content && <SanityPortableTextBlock data={content} />}
+          {buttonLink && (
+            <SanityLink href={buttonLink}>
+              <Button variant="link" className="uppercase">
+                {buttonText}
+              </Button>
+            </SanityLink>
           )}
         </div>
         {image && (

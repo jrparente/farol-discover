@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
-
+  console.log(page);
   if (!page) {
     notFound();
   }

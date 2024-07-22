@@ -6,6 +6,7 @@ import Hero from "@/components/page-hero";
 import Team from "@/components/section-team";
 import SectionFAQ from "@/components/SectionFAQ";
 import { getPage, getPages } from "@/sanity/sanity-utils";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { slug: string };
@@ -19,6 +20,10 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
+
+  if (!page) {
+    notFound();
+  }
 
   return (
     <div className="h-full">

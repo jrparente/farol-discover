@@ -10,6 +10,7 @@ import {
 import { getPrograms } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import ImageGallery from "@/components/image-gallery";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const programs = await getPrograms();
@@ -28,8 +29,9 @@ export default async function TourDetail({
   const program = programs.find((item) => item.slug === id);
 
   if (!program) {
-    return <div>Loading or not found...</div>;
+    notFound();
   }
+
   return (
     <div className="h-full">
       <Hero

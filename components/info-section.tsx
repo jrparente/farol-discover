@@ -24,14 +24,6 @@ export default function InfoSection({
   imagePosition,
   content,
 }: InfoSectionProps) {
-  console.log("content", content);
-  console.log("image", image);
-  console.log("title", title);
-  console.log("subtitle", subtitle);
-  console.log("description", description);
-  console.log("buttonText", buttonText);
-  console.log("buttonLink", buttonLink);
-  console.log("imagePosition", imagePosition);
   return (
     <section className="my-2 py-2">
       <div

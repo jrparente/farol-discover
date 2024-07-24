@@ -18,9 +18,32 @@ export async function generateStaticParams() {
   return allPages;
 }
 
+async function generateMetadata({ params }: Props) {
+  try {
+    const page = await getPage(params.slug);
+    if (!page) {
+      return null;
+    } else {
+      const { title, description, keywords } = page.seo;
+      const keywordString = keywords.join(", ");
+
+      return {
+        title: {
+          default: title,
+          template: `%s | Farol Discover`,
+        },
+        description,
+        keywords: keywordString,
+      };
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default async function Page({ params }: Props) {
   const page = await getPage(params.slug);
-  console.log(page);
+
   if (!page) {
     notFound();
   }
@@ -90,3 +113,5 @@ export default async function Page({ params }: Props) {
     </div>
   );
 }
+
+export { generateMetadata };

@@ -1,6 +1,6 @@
 import { createClient, groq } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-import { AboutUs, Homepage, Page, Program, Testimonial } from "./types/types";
+import { Homepage, Page, Program, Testimonial } from "./types/types";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -27,6 +27,7 @@ export async function getPrograms(): Promise<Program[]> {
     groq`*[_type == "program"]{
         _id,
         _createdAt,
+        _updatedAt,
         name,
         "slug": slug.current,
         location,

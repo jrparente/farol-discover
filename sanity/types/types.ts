@@ -97,6 +97,11 @@ export type Page = {
   pageTagline?: string;
   slug?: string;
   content?: PortableTextBlock[];
+  seo: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
   pageBuilder?: Array<{
     _type: string;
     heading?: string;

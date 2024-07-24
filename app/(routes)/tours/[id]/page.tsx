@@ -32,6 +32,8 @@ export default async function TourDetail({
     notFound();
   }
 
+  console.log("Program", program);
+
   return (
     <div className="h-full">
       <Hero
@@ -48,9 +50,9 @@ export default async function TourDetail({
               <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Details
               </h2>
-              <p className="text-muted-foreground text-base mb-2">
+              <div className="text-muted-foreground text-base mb-2">
                 <PortableText value={program.expandedDescription} />
-              </p>
+              </div>
             </div>
 
             {/* Itinerary */}

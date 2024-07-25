@@ -21,13 +21,13 @@ export async function generateStaticParams() {
 export default async function TourDetail({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }) {
   const programs = await getPrograms();
-  const { id } = params;
+  const { slug } = params;
   console.log("Params", params);
 
-  const program = programs.find((item) => item.slug === id);
+  const program = programs.find((item) => item.slug === slug);
 
   if (!program) {
     notFound();

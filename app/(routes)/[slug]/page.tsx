@@ -4,6 +4,7 @@ import InfoSection from "@/components/info-section";
 import Content from "@/components/page-content";
 import Hero from "@/components/page-hero";
 import Team from "@/components/section-team";
+import ContactForm from "@/components/sectionContactForm";
 import SectionFAQ from "@/components/SectionFAQ";
 import { getPage, getPages } from "@/sanity/sanity-utils";
 import { notFound } from "next/navigation";
@@ -104,6 +105,14 @@ export default async function Page({ params }: Props) {
                   heading={section.heading}
                   subheading={section.subheading ?? ""}
                   teamMembers={section.teamMembers ?? []}
+                />
+              );
+            case "contactForm":
+              return (
+                <ContactForm
+                  key={index}
+                  title={section.title ?? ""}
+                  subtitle={section.subtitle ?? ""}
                 />
               );
             default:

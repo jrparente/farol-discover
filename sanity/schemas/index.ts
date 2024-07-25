@@ -14,6 +14,7 @@ import sectionTeam from "./objects/sectionTeam";
 import navigation from "./documents/settings-navigation";
 import settingsSocialMedia from "./documents/settings-social-media";
 import settingsLanguages from "./documents/settings-languages";
+import contactForm from "./objects/page-section-contact-form";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -37,6 +38,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     imageGalleryType,
     link,
     sectionTeam,
+    contactForm,
   ],
 };
 

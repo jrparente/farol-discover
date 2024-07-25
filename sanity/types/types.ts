@@ -54,23 +54,6 @@ export type Faq = {
   answer: string;
 };
 
-export type AboutUs = {
-  _id: string;
-  _createdAt: string;
-  pageHeading: string;
-  pageTagline: string;
-  overview?: PortableTextBlock[];
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  image?: string;
-  faqs?: string[];
-  ctaTitle?: string;
-  ctaDescription?: string;
-  ctaButtonText?: string;
-  ctaButtonLink?: string;
-};
-
 export type Homepage = {
   _id: string;
   _createdAt: string;
@@ -88,7 +71,7 @@ export type Homepage = {
   ctaTitle?: string;
   ctaDescription?: string;
   ctaButtonText?: string;
-  ctaButtonLink?: string;
+  ctaButtonLink?: any;
 };
 
 export type Page = {
@@ -105,6 +88,8 @@ export type Page = {
   };
   pageBuilder?: Array<{
     _type: string;
+    title?: string;
+    subtitle?: string;
     heading?: string;
     subheading?: string;
     tagline?: string;
@@ -117,7 +102,7 @@ export type Page = {
     ctaTitle?: string;
     ctaDescription?: string;
     ctaButtonText?: string;
-    ctaButtonLink?: string;
+    ctaButtonLink?: any;
     images?: [];
     galleryHeading?: string;
     teamMembers?: Array<{
@@ -132,5 +117,9 @@ export type Page = {
       question: string;
       answer: string;
     }[];
+    contactForm?: {
+      title?: string;
+      subtitle?: string;
+    };
   }>;
 };

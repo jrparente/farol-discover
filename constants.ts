@@ -1,15 +1,10 @@
-import { Info, MapPin, Mail, Map, Users, Shield, Bed } from "lucide-react";
+import { MapPin, Map, Users, Shield, Bed } from "lucide-react";
 
 export const routes = [
   {
     label: "Programs",
     href: "/tours",
     icon: MapPin,
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-    icon: Mail,
   },
 ];
 

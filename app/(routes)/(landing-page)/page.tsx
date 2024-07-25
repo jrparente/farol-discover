@@ -1,5 +1,4 @@
 import LandingHero from "./components/landing-hero";
-
 import { getHomepage } from "@/sanity/sanity-utils";
 import FeaturedPrograms from "./components/featured-programs";
 import CompanyFeatures from "./components/company-features";

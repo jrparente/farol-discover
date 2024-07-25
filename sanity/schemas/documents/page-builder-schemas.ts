@@ -82,6 +82,10 @@ const page = {
           name: "team",
           type: "sectionTeam",
         },
+        {
+          name: "contactForm",
+          type: "contactForm",
+        },
       ],
     },
     {

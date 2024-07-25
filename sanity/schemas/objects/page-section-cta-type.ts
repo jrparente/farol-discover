@@ -24,7 +24,7 @@ const callToAction = {
     {
       name: "ctaButtonLink",
       title: "Call to Action Button Link",
-      type: "string",
+      type: "link",
     },
   ],
   preview: {

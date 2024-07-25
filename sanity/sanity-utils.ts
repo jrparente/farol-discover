@@ -54,6 +54,24 @@ export async function getPrograms(): Promise<Program[]> {
   );
 }
 
+export async function getTestimonials(): Promise<Testimonial[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "testimonials"]{
+      _id,
+      _createdAt,
+      name,
+      message,
+      location,
+      date,
+      "tour": tour->{
+        name,
+        "slug": slug.current
+      },
+      "avatar": avatar.asset->url
+    }`
+  );
+}
+
 export async function getHomepage(): Promise<Homepage[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "homepage"]{

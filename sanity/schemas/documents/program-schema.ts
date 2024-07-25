@@ -34,6 +34,18 @@ const program = {
       of: [{ type: "block" }],
     },
     {
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        list: [
+          { title: "Guided Tour", value: "Guided Tour" },
+          { title: "Self-Guided Tour", value: "Self-Guided Tour" },
+        ],
+      },
+    },
+    {
       name: "image",
       title: "Featured Image",
       type: "image",

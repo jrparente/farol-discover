@@ -7,10 +7,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { getPrograms } from "@/sanity/sanity-utils";
+import { getPrograms, getTestimonials } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import ImageGallery from "@/components/image-gallery";
 import { notFound } from "next/navigation";
+import Testimonials from "@/components/section-testimonials";
 
 export async function generateStaticParams() {
   const programs = await getPrograms();
@@ -27,6 +28,13 @@ export default async function TourDetail({
   const { slug } = params;
 
   const program = programs.find((item) => item.slug === slug);
+
+  const allTestimonials = await getTestimonials();
+
+  const testimonials = allTestimonials.filter((testimonial) => {
+    return testimonial.tour && testimonial.tour.slug === slug;
+  });
+  console.log(testimonials);
 
   if (!program) {
     notFound();
@@ -179,6 +187,12 @@ export default async function TourDetail({
           {/* Close Sidebar */}
         </div>
         {/* Close main grid */}
+      </div>
+      {/* Testimonials */}
+      {testimonials && testimonials.length > 0 && (
+        <Testimonials testimonials={testimonials} />
+      )}
+      <div className="max-w-screen-xl mx-auto px-4 py-12">
         {program.gallery &&
           program.gallery.length > 0 &&
           program.gallery[0].images && (

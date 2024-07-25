@@ -73,41 +73,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
 }
 
 export async function getHomepage(): Promise<Homepage[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "homepage"]{
-      _id,
-      _createdAt,
-      pageHeading,
-      pageTagline,
-      statsTitle,
-      statsSubtitle,
-      statsDescription,
-      statsTours,
-      statsCustomers,
-      statsDestinations,
-      featuresTitle,
-      featuresSubtitle,
-      "testimonials": testimonials[]->{ 
-         _type == "testimonials" => {
-        _id,
-        _createdAt,
-        name,
-        message,
-        location,
-        date,
-        "tour": tour->{
-          name,
-          "slug": slug.current
-        },
-        "avatar": avatar.asset->url
-         }
-      },
-      ctaTitle,
-      ctaDescription,
-      ctaButtonText,
-      ctaButtonLink,
-    }`
-  );
+  return createClient(clientConfig).fetch(groq`*[_type == "homepage"]`);
 }
 
 export async function getPages(): Promise<Page[]> {

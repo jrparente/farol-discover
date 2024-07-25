@@ -14,6 +14,7 @@ type TestimonialsProps = {
 };
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
+  console.log("testimonials in section-testimonials", testimonials);
   const [active, setActive] = useState<number>(0);
 
   if (!testimonials || testimonials.length === 0) {
@@ -77,12 +78,14 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                       <div className="font-light text-gray-500 dark:text-gray-400">
                         {testimonial.date}
                       </div>
-                      <Link
-                        href={`/tours/${testimonial.tour.slug}`}
-                        className="font-light text-primary hover:underline "
-                      >
-                        {testimonial.tour.name}
-                      </Link>
+                      {testimonial.tour && testimonial.tour.slug && (
+                        <Link
+                          href={`/tours/${testimonial.tour.slug}`}
+                          className="font-light text-primary hover:underline "
+                        >
+                          {testimonial.tour.name}
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </figcaption>

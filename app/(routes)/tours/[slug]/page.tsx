@@ -34,7 +34,6 @@ export default async function TourDetail({
   const testimonials = allTestimonials.filter((testimonial) => {
     return testimonial.tour && testimonial.tour.slug === slug;
   });
-  console.log(testimonials);
 
   if (!program) {
     notFound();

@@ -38,6 +38,7 @@ export type Program = {
 
 export type Testimonial = {
   _id: string;
+  _ref?: string;
   _createdAt: string;
   name: string;
   message: string;

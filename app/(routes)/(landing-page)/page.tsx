@@ -1,10 +1,11 @@
+import Cta from "@/components/cta";
+import Testimonials from "@/components/section-testimonials";
 import LandingHero from "./components/landing-hero";
-import { getHomepage } from "@/sanity/sanity-utils";
+import { getHomepage, getTestimonials } from "@/sanity/sanity-utils";
 import FeaturedPrograms from "./components/featured-programs";
 import CompanyFeatures from "./components/company-features";
-import Cta from "@/components/cta";
 import CompanyStatistics from "./components/company-statistics";
-import Testimonials from "@/components/section-testimonials";
+import { Testimonial } from "@/sanity/types/types";
 
 export default async function Home() {
   const homepage = await getHomepage();
@@ -24,12 +25,25 @@ export default async function Home() {
     statsDestinations,
     featuresTitle,
     featuresSubtitle,
-    testimonials,
+    testimonials: testimonialRefs,
     ctaTitle,
     ctaDescription,
     ctaButtonText,
     ctaButtonLink,
   } = homepage[0];
+
+  // Fetch all testimonials
+  const allTestimonials = await getTestimonials();
+
+  // Check if testimonialRefs is defined and has length
+  const selectedTestimonials: Testimonial[] =
+    testimonialRefs && testimonialRefs.length > 0
+      ? testimonialRefs
+          .map((testimonialRef) =>
+            allTestimonials.find((t) => t._id === testimonialRef._ref)
+          )
+          .filter((testimonial): testimonial is Testimonial => !!testimonial) // Type guard to remove undefined values
+      : [];
 
   return (
     <div className="h-full">
@@ -47,7 +61,9 @@ export default async function Home() {
         featuresTitle={featuresTitle}
         featuresSubtitle={featuresSubtitle}
       />
-      <Testimonials testimonials={testimonials || []} />
+      {selectedTestimonials.length > 0 && (
+        <Testimonials testimonials={selectedTestimonials} />
+      )}
       <Cta
         ctaTitle={ctaTitle}
         ctaDescription={ctaDescription}

@@ -54,8 +54,8 @@ export default function FeaturedPrograms({ programs }: ProgramsProps) {
   });
 
   return (
-    <section className="my-8 py-12">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="my-2 py-2">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16">
         <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           Our Programs
         </h2>

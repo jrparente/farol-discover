@@ -25,11 +25,8 @@ export default async function TourDetail({
 }) {
   const programs = await getPrograms();
   const { slug } = params;
-  console.log("Params", params);
 
   const program = programs.find((item) => item.slug === slug);
-
-  console.log("Program", program);
 
   if (!program) {
     notFound();
@@ -62,31 +59,27 @@ export default async function TourDetail({
                 <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                   Itinerary
                 </h2>
-                <ul className="mt-4 space-y-4">
+                <ul className="mt-4 space-y-6">
                   {program.itinerary.map((dayDetail, index) => (
                     <li key={index}>
-                      <div className="flex flex-col justify-between items-start">
-                        <div>
-                          <h3 className="text-lg font-semibold">
-                            Day {dayDetail.day}: {dayDetail.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {dayDetail.description}
-                          </p>
-                        </div>
+                      <div className="flex flex-col justify-between items-start gap-2">
+                        <h3 className="text-lg font-semibold">
+                          Day {dayDetail.day}: {dayDetail.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {dayDetail.description}
+                        </p>
+
                         {dayDetail.meals && (
-                          <div className="mt-2">
-                            <span className="text-sm font-light">
-                              Meals: {dayDetail.meals.join(", ")}
-                            </span>
-                          </div>
+                          <p className="text-sm font-light">
+                            Meals: {dayDetail.meals.join(", ")}
+                          </p>
+                        )}
+
+                        {dayDetail.notes && (
+                          <p className="text-xs  italic">{dayDetail.notes}</p>
                         )}
                       </div>
-                      {dayDetail.notes && (
-                        <p className="mt-2 text-xs  italic">
-                          {dayDetail.notes}
-                        </p>
-                      )}
                     </li>
                   ))}
                 </ul>

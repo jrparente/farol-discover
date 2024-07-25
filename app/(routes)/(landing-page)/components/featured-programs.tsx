@@ -12,11 +12,27 @@ export default async function FeaturedPrograms() {
     <section className="my-2 py-2">
       <div className="max-w-screen-xl px-4 py-10 mx-auto flex flex-col lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-          Featured Programs
+          Explore Our Exclusive Programs
         </h1>
+
+        <p className="text-lg text-muted-foreground mb-6">
+          Discover the best of Portugal with our curated tours. Whether
+          you&apos;re looking for adventure, relaxation, or cultural immersion,
+          we have something for everyone. Explore our featured programs below or
+          create your own custom tour.
+        </p>
+        <div className="flex gap-2 mb-6">
+          <Link href="/tours">
+            <Button>See All Tours</Button>
+          </Link>
+          <Link href="/contact">
+            <Button variant={"secondary"}>Create Your Own Tour</Button>
+          </Link>
+        </div>
         <div className="grid grid-cols-1 gap-3">
           {programs
             .filter((program) => program.featured)
+            .reverse()
             .map((program, index) => (
               <div
                 key={index}
@@ -29,8 +45,8 @@ export default async function FeaturedPrograms() {
                 <div className={index % 2 !== 0 ? "md:order-2" : ""}>
                   <Link href={`/tours/${program.slug}`}>
                     <Image
-                      width={500}
-                      height={500}
+                      width={1000}
+                      height={1000}
                       src={program.image!}
                       alt={program.name}
                     />

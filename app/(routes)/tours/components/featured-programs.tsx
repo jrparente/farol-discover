@@ -20,7 +20,6 @@ type ProgramsProps = {
 };
 
 export default function FeaturedPrograms({ programs }: ProgramsProps) {
-  console.log("programs", programs);
   const [sortOption, setSortOption] = useState("newest");
   const [filterOption, setFilterOption] = useState("all");
 

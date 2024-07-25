@@ -25,6 +25,7 @@ export default async function TourDetail({
 }) {
   const programs = await getPrograms();
   const { id } = params;
+  console.log("Params", params);
 
   const program = programs.find((item) => item.slug === id);
 

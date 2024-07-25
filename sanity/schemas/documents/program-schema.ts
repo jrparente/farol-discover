@@ -50,6 +50,13 @@ const program = {
       name: "difficulty",
       title: "Difficulty",
       type: "string",
+      options: {
+        list: [
+          { title: "Easy", value: "Easy" },
+          { title: "Moderate", value: "Moderate" },
+          { title: "Challenging", value: "Challenging" },
+        ],
+      },
     },
     {
       name: "duration",
@@ -58,8 +65,8 @@ const program = {
     },
     {
       name: "price",
-      title: "Price",
-      type: "string",
+      title: "Price Starting From (per person):",
+      type: "number",
     },
     {
       name: "highlights",

@@ -3,6 +3,7 @@ import { PortableTextBlock } from "sanity";
 export type Program = {
   _id: string;
   _createdAt: string;
+  _updatedAt: string;
   name: string;
   slug: string;
   location: string;

@@ -29,11 +29,11 @@ export default async function TourDetail({
 
   const program = programs.find((item) => item.slug === slug);
 
+  console.log("Program", program);
+
   if (!program) {
     notFound();
   }
-
-  console.log("Program", program);
 
   return (
     <div className="h-full">

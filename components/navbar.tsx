@@ -22,6 +22,11 @@ export default function Navbar() {
   const [pages, setPages] = useState<Page[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -55,6 +60,8 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <div

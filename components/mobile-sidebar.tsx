@@ -6,7 +6,6 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "./ui/sheet";
 import { FileText, Menu } from "lucide-react";
 import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { routes } from "@/constants";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Page } from "@/sanity/types/types";
@@ -72,24 +71,6 @@ export default function MobileSidebar() {
               </Link>
             </SheetClose>
             <div className="space-y-1">
-              {routes.map((route, index) => (
-                <SheetClose asChild key={index}>
-                  <Link
-                    href={route.href}
-                    className={cn(
-                      "text-sm flex p-3 w-full justify-start font-medium cursor-pointer hover:text-muted-foreground hover:bg-muted rounded-lg transition",
-                      pathname === route.href
-                        ? "text-muted-foreground bg-muted"
-                        : "text-zinc-400"
-                    )}
-                  >
-                    <div className="flex items-center flex-1">
-                      <route.icon className={cn("h-5 w-5 mr-3")} />
-                      {route.label}
-                    </div>
-                  </Link>
-                </SheetClose>
-              ))}
               {pages && pages.length > 0
                 ? pages.map((page, index) => (
                     <SheetClose asChild key={index}>
@@ -104,7 +85,7 @@ export default function MobileSidebar() {
                       >
                         <div className="flex items-center flex-1">
                           <FileText className={cn("h-5 w-5 mr-3")} />
-                          {page.pageHeading}
+                          {page.pageName}
                         </div>
                       </Link>
                     </SheetClose>

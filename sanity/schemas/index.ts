@@ -15,6 +15,8 @@ import navigation from "./documents/settings-navigation";
 import settingsSocialMedia from "./documents/settings-social-media";
 import settingsLanguages from "./documents/settings-languages";
 import contactForm from "./objects/page-section-contact-form";
+import sectionPrograms from "./objects/page-section-programs";
+import sectionRichText from "./objects/page-section-rich-text";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -39,6 +41,8 @@ const schema: { types: SchemaTypeDefinition[] } = {
     link,
     sectionTeam,
     contactForm,
+    sectionPrograms,
+    sectionRichText,
   ],
 };
 

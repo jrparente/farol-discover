@@ -1,3 +1,4 @@
+import { Description } from "@radix-ui/react-toast";
 import { DocumentTextIcon } from "@sanity/icons";
 import { PenBox, Search } from "lucide-react";
 
@@ -32,11 +33,23 @@ const page = {
   ],
   fields: [
     {
+      name: "pageName",
+      title: "Page Name",
+      type: "string",
+      fieldset: "header",
+      group: "content",
+      description: "The name of the page, to be used in links and navigation",
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
       name: "pageHeading",
       title: "Page Heading",
       type: "string",
       fieldset: "header",
       group: "content",
+      description:
+        "The main heading of the page, used in the hero banner at the top of the page",
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "pageTagline",
@@ -44,14 +57,16 @@ const page = {
       type: "string",
       fieldset: "header",
       group: "content",
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
-      options: { source: "pageHeading", maxLength: 96 },
+      options: { source: "pageName", maxLength: 96 },
       fieldset: "header",
       group: "content",
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: "content",
@@ -85,6 +100,10 @@ const page = {
         {
           name: "contactForm",
           type: "contactForm",
+        },
+        {
+          name: "sectionPrograms",
+          type: "sectionPrograms",
         },
       ],
     },

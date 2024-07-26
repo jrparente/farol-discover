@@ -81,6 +81,7 @@ export async function getPages(): Promise<Page[]> {
     groq`*[_type == "page"]{
     _id,
     _createdAt,
+    pageName,
     pageHeading,
     pageTagline,
     "slug": slug.current,

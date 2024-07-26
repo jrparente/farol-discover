@@ -8,6 +8,7 @@ import ContactForm from "@/components/sectionContactForm";
 import SectionFAQ from "@/components/SectionFAQ";
 import { getPage, getPages } from "@/sanity/sanity-utils";
 import { notFound } from "next/navigation";
+import FeaturedPrograms from "@/components/section-featured-programs";
 
 type Props = {
   params: { slug: string };
@@ -113,6 +114,13 @@ export default async function Page({ params }: Props) {
                   key={index}
                   title={section.title ?? ""}
                   subtitle={section.subtitle ?? ""}
+                />
+              );
+            case "sectionPrograms":
+              return (
+                <FeaturedPrograms
+                  key={index}
+                  programs={section.programs ?? []}
                 />
               );
             default:

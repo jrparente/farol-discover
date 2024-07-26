@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import MobileSidebar from "./mobile-sidebar";
-import { routes } from "@/constants";
 import { useCallback, useEffect, useState } from "react";
 import { getPages } from "@/sanity/sanity-utils";
 import { Page } from "@/sanity/types/types";
@@ -63,6 +62,8 @@ export default function Navbar() {
 
   if (!mounted) return null;
 
+  console.log("pages", pages);
+
   return (
     <div
       className={cn(
@@ -86,16 +87,6 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="hidden lg:flex items-center gap-x-2">
-          {routes.map((route, index) => (
-            <Link href={route.href} key={index}>
-              <Button
-                variant="link"
-                className={cn("text-lg", scrolled ? "" : "text-white")}
-              >
-                {route.label}
-              </Button>
-            </Link>
-          ))}
           {/* Display pages if there are any */}
           {loading && <Loader className="w-4 h-4 animate-spin text-white" />}
           {error && <span className="text-red-500">{error}</span>}
@@ -106,7 +97,7 @@ export default function Navbar() {
                     variant="link"
                     className={cn("text-lg", scrolled ? "" : "text-white")}
                   >
-                    {page.pageHeading}
+                    {page.pageName}
                   </Button>
                 </Link>
               ))
@@ -115,7 +106,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-x-2">
           <ModeToggle scrolled={scrolled} />
-          <Link href="/contact">
+          <Link href="/contact-us">
             <Button variant="default" className="rounded-full md:text-lg">
               Book Now
             </Button>

@@ -4,24 +4,46 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { Program } from "@/sanity/types/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { getPrograms } from "@/sanity/sanity-utils";
 
 type ProgramsProps = {
   programs: Program[];
 };
 
-export default function FeaturedPrograms({ programs }: ProgramsProps) {
+export default function FeaturedPrograms({
+  programs: programsRef,
+}: ProgramsProps) {
   const [sortOption, setSortOption] = useState("newest");
   const [filterOption, setFilterOption] = useState("all");
+  const [programs, setPrograms] = useState<Program[]>([]);
+
+  // Fetch all programs and filter selected programs
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      const allPrograms = await getPrograms();
+
+      const selectedPrograms: Program[] =
+        programsRef && programsRef.length > 0
+          ? programsRef
+              .map((programRef) =>
+                allPrograms.find((p: Program) => p._id === programRef._ref)
+              )
+              .filter((program): program is Program => !!program) // Type guard to remove undefined values
+          : [];
+
+      setPrograms(selectedPrograms);
+    };
+
+    fetchPrograms();
+  }, [programsRef]);
 
   // Sorting logic
   const sortedPrograms = [...programs].sort((a, b) => {

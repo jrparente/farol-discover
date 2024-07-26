@@ -14,7 +14,6 @@ type TestimonialsProps = {
 };
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
-  console.log("testimonials in section-testimonials", testimonials);
   const [active, setActive] = useState<number>(0);
 
   if (!testimonials || testimonials.length === 0) {

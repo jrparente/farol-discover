@@ -4,6 +4,7 @@ export type Program = {
   _id: string;
   _createdAt: string;
   _updatedAt: string;
+  _ref: string;
   name: string;
   slug: string;
   location: string;
@@ -78,6 +79,8 @@ export type Homepage = {
 export type Page = {
   _id: string;
   _createdAt?: Date;
+  _updatedAt?: Date;
+  pageName?: string;
   pageHeading?: string;
   pageTagline?: string;
   slug?: string;
@@ -122,5 +125,6 @@ export type Page = {
       title?: string;
       subtitle?: string;
     };
+    programs?: Program[];
   }>;
 };

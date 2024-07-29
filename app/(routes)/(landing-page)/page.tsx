@@ -17,6 +17,11 @@ export default async function Home() {
   const {
     pageHeading,
     pageTagline,
+    pageHeadingImage,
+    pageHeadingMainButtonText,
+    pageHeadingMainButtonLink,
+    pageHeadingSecondaryButtonText,
+    pageHeadingSecondaryButtonLink,
     statsTitle,
     statsSubtitle,
     statsDescription,
@@ -47,7 +52,14 @@ export default async function Home() {
 
   return (
     <div className="h-full">
-      <LandingHero pageHeading={pageHeading} pageTagline={pageTagline} />
+      <LandingHero
+        pageHeading={pageHeading}
+        pageTagline={pageTagline}
+        pageHeadingImage={pageHeadingImage}
+        pageHeadingMainButtonText={pageHeadingMainButtonText}
+        pageHeadingMainButtonLink={pageHeadingMainButtonLink}
+        pageHeadingSecondaryButtonText={pageHeadingSecondaryButtonText}
+      />
       <CompanyStatistics
         statsTitle={statsTitle}
         statsSubtitle={statsSubtitle}

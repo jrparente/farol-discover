@@ -1,4 +1,4 @@
-import { client } from "@/sanity/sanity-utils";
+import { client, fetchDocumentSlug } from "@/sanity/sanity-utils";
 import Link from "next/link";
 import React from "react";
 
@@ -7,14 +7,6 @@ interface CustomLinkSchema {
   children: any;
   className?: string;
   passHref?: any;
-}
-
-async function fetchDocumentSlug(ref: any) {
-  const response = await client.getDocument(ref._ref);
-
-  return response && response.pageInfo.slug
-    ? `/${response.language}/${response.pageInfo.slug.current}`
-    : "/";
 }
 
 async function SanityLink({

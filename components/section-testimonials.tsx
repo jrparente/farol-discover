@@ -37,7 +37,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
       <div className="max-w-screen-xl mx-auto px-4">
         {testimonials.map((testimonial, index) => (
           <Transition
-            key={testimonial.name}
+            key={`${testimonial.name}-${index}`}
             show={active === index}
             enter={`transition ease-in-out duration-500`}
             enterFrom="opacity-0"

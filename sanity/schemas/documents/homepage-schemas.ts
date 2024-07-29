@@ -47,6 +47,15 @@ const homepage = {
   ],
   fields: [
     {
+      name: "pageName",
+      title: "Page Name",
+      type: "string",
+      group: "content",
+      fieldset: "header",
+      validation: (rule: any) => rule.required(),
+      hidden: true,
+    },
+    {
       name: "pageHeading",
       title: "Page Heading",
       type: "string",
@@ -61,6 +70,51 @@ const homepage = {
       group: "content",
       fieldset: "header",
       validation: (rule: any) => rule.required(),
+    },
+    {
+      name: "pageHeadingImage",
+      title: "Page Heading Image",
+      type: "image",
+      group: "content",
+      fieldset: "header",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        },
+      ],
+    },
+    {
+      name: "pageHeadingMainButtonText",
+      title: "Main Button Text",
+      type: "string",
+      group: "content",
+      fieldset: "header",
+    },
+    {
+      name: "pageHeadingMainButtonLink",
+      title: "Main Button Link",
+      type: "link",
+      group: "content",
+      fieldset: "header",
+    },
+    {
+      name: "pageHeadingSecondaryButtonText",
+      title: "Secondary Button Text",
+      type: "string",
+      group: "content",
+      fieldset: "header",
+    },
+    {
+      name: "pageHeadingSecondaryButtonLink",
+      title: "Secondary Button Link",
+      type: "link",
+      group: "content",
+      fieldset: "header",
     },
     {
       name: "statsTitle",

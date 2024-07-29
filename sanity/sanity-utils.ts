@@ -22,6 +22,19 @@ export function urlForImage(source: SanityImageSource) {
   return builder.image(source);
 }
 
+export async function fetchDocumentSlug(ref: any) {
+  const response = await client.getDocument(ref._ref);
+
+  return response && response.slug ? `/${response.slug.current}` : "/";
+}
+
+export async function getNavigation() {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "navigation"]
+    `
+  );
+}
+
 export async function getPrograms(): Promise<Program[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "program"]{

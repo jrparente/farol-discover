@@ -1,12 +1,4 @@
-import { MapPin, Map, Users, Shield, Bed } from "lucide-react";
-
-export const routes = [
-  {
-    label: "Programs",
-    href: "/tours",
-    icon: MapPin,
-  },
-];
+import { Map, Users, Shield, Bed } from "lucide-react";
 
 export const tourFeatures = [
   {

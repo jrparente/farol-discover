@@ -7,8 +7,11 @@ import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import MobileSidebar from "./mobile-sidebar";
 import { useCallback, useEffect, useState } from "react";
-import { getPages } from "@/sanity/sanity-utils";
-import { Page } from "@/sanity/types/types";
+import {
+  fetchDocumentSlug,
+  getNavigation,
+  getPages,
+} from "@/sanity/sanity-utils";
 import { Loader } from "lucide-react";
 
 const font = Montserrat({
@@ -18,7 +21,7 @@ const font = Montserrat({
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [pages, setPages] = useState<Page[]>([]);
+  const [links, setLinks] = useState<{ title: string; slug: string }[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
@@ -40,8 +43,18 @@ export default function Navbar() {
     setLoading(true);
     setError(null);
     try {
-      const result = await getPages();
-      setPages(result);
+      const navItemsRef = await getNavigation();
+      if (!navItemsRef || navItemsRef.length === 0) {
+        setError("No navigation items found");
+      } else {
+        const selectedLinks = await Promise.all(
+          navItemsRef[0].navItems.map(async (item: any) => {
+            const slug = await fetchDocumentSlug(item.link.internal);
+            return { title: item.title, slug };
+          })
+        );
+        setLinks(selectedLinks);
+      }
     } catch (err) {
       setError("Failed to load pages");
     } finally {
@@ -62,7 +75,7 @@ export default function Navbar() {
 
   if (!mounted) return null;
 
-  console.log("pages", pages);
+  console.log("links", links);
 
   return (
     <div
@@ -90,14 +103,14 @@ export default function Navbar() {
           {/* Display pages if there are any */}
           {loading && <Loader className="w-4 h-4 animate-spin text-white" />}
           {error && <span className="text-red-500">{error}</span>}
-          {pages && pages.length > 0
-            ? pages.map((page, index) => (
+          {links && links.length > 0
+            ? links.map((page, index) => (
                 <Link href={`/${page.slug}`} key={index}>
                   <Button
                     variant="link"
                     className={cn("text-lg", scrolled ? "" : "text-white")}
                   >
-                    {page.pageName}
+                    {page.title}
                   </Button>
                 </Link>
               ))

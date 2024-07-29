@@ -61,6 +61,11 @@ export type Homepage = {
   _createdAt: string;
   pageHeading: string;
   pageTagline: string;
+  pageHeadingImage?: { asset: { url: string }; alt?: string };
+  pageHeadingMainButtonText?: string;
+  pageHeadingMainButtonLink?: any;
+  pageHeadingSecondaryButtonText?: string;
+  pageHeadingSecondaryButtonLink?: any;
   statsTitle?: string;
   statsSubtitle?: string;
   statsDescription?: string;
@@ -80,6 +85,8 @@ export type Page = {
   _id: string;
   _createdAt?: Date;
   _updatedAt?: Date;
+  _ref?: string;
+  link?: any;
   pageName?: string;
   pageHeading?: string;
   pageTagline?: string;

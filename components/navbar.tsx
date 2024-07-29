@@ -105,7 +105,7 @@ export default function Navbar() {
           {error && <span className="text-red-500">{error}</span>}
           {links && links.length > 0
             ? links.map((page, index) => (
-                <Link href={`/${page.slug}`} key={index}>
+                <Link href={`${page.slug}`} key={index}>
                   <Button
                     variant="link"
                     className={cn("text-lg", scrolled ? "" : "text-white")}

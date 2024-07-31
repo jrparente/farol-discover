@@ -18,6 +18,7 @@ import sectionPrograms from "./objects/page-section-programs";
 import sectionRichText from "./objects/page-section-rich-text";
 import settingsNavigation from "./documents/settings-navigation";
 import navigation from "./objects/navigation";
+import sectionFeatures from "./objects/page-section-features";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -45,6 +46,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     sectionPrograms,
     sectionRichText,
     navigation,
+    sectionFeatures,
   ],
 };
 

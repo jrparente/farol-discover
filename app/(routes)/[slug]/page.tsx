@@ -9,6 +9,7 @@ import SectionFAQ from "@/components/SectionFAQ";
 import { getPage, getPages } from "@/sanity/sanity-utils";
 import { notFound } from "next/navigation";
 import FeaturedPrograms from "@/components/section-featured-programs";
+import SectionFeatures from "@/components/SectionFeatures";
 
 type Props = {
   params: { slug: string };
@@ -66,7 +67,6 @@ export default async function Page({ params }: Props) {
                   key={index}
                   title={section.heading ?? ""}
                   subtitle={section.tagline ?? ""}
-                  description={section.description ?? ""}
                   image={section.image ?? ""}
                   buttonText={section.buttonText ?? ""}
                   buttonLink={section.buttonLink ?? ""}
@@ -121,6 +121,19 @@ export default async function Page({ params }: Props) {
                 <FeaturedPrograms
                   key={index}
                   programs={section.programs ?? []}
+                />
+              );
+            case "sectionFeatures":
+              return (
+                <SectionFeatures
+                  key={index}
+                  featuresTitle={section.featuresTitle ?? ""}
+                  featuresSubtitle={section.featuresSubtitle ?? ""}
+                  features={
+                    section.features ?? [
+                      { title: "", description: "", image: "" },
+                    ]
+                  }
                 />
               );
             default:

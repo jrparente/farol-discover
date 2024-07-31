@@ -105,6 +105,10 @@ const page = {
           name: "sectionPrograms",
           type: "sectionPrograms",
         },
+        {
+          name: "sectionFeatures",
+          type: "sectionFeatures",
+        },
       ],
     },
     {

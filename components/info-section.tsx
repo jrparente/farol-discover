@@ -6,7 +6,6 @@ import { Button } from "./ui/button";
 type InfoSectionProps = {
   title?: string;
   subtitle?: string;
-  description?: string;
   content?: any;
   image?: any;
   buttonText?: string;
@@ -17,14 +16,12 @@ type InfoSectionProps = {
 export default function InfoSection({
   title = "",
   subtitle,
-  description,
   image,
   buttonText,
   buttonLink,
   imagePosition,
   content,
 }: InfoSectionProps) {
-  console.log(`imagePosition for ${title} `, imagePosition);
   return (
     <section className="my-2 py-2">
       <div

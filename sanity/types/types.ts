@@ -134,5 +134,13 @@ export type Page = {
       subtitle?: string;
     };
     programs?: Program[];
+
+    featuresTitle?: string;
+    featuresSubtitle?: string;
+    features?: {
+      title?: string;
+      description?: string;
+      image?: any;
+    }[];
   }>;
 };

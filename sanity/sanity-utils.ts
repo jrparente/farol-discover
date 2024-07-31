@@ -35,6 +35,13 @@ export async function getNavigation() {
   );
 }
 
+export async function getSocialMedia() {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "settingsSocialMedia"]
+    `
+  );
+}
+
 export async function getPrograms(): Promise<Program[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "program"]{

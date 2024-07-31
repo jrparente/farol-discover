@@ -77,8 +77,8 @@ export const structure = (S: any) =>
                 .child(
                   S.document()
                     .title("Navigation")
-                    .schemaType("navigation")
-                    .documentId("navigation")
+                    .schemaType("settingsNavigation")
+                    .documentId("settingsNavigation")
                 ),
 
               S.listItem()

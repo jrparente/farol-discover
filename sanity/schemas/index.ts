@@ -11,12 +11,13 @@ import faqs from "./objects/page-section-faqs";
 import seo from "./objects/page-section-metadata";
 import link from "./objects/link";
 import sectionTeam from "./objects/sectionTeam";
-import navigation from "./documents/settings-navigation";
 import settingsSocialMedia from "./documents/settings-social-media";
 import settingsLanguages from "./documents/settings-languages";
 import contactForm from "./objects/page-section-contact-form";
 import sectionPrograms from "./objects/page-section-programs";
 import sectionRichText from "./objects/page-section-rich-text";
+import settingsNavigation from "./documents/settings-navigation";
+import navigation from "./objects/navigation";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -28,7 +29,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     project,
     testimonials,
     features,
-    navigation,
+    settingsNavigation,
     settingsSocialMedia,
     settingsLanguages,
 
@@ -43,6 +44,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     contactForm,
     sectionPrograms,
     sectionRichText,
+    navigation,
   ],
 };
 

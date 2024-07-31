@@ -1,12 +1,17 @@
 import { MenuIcon } from "lucide-react";
 
-const navigation = {
-  name: "navigation",
+const settingsNavigation = {
+  name: "settingsNavigation",
   title: "Navigation",
   icon: MenuIcon,
   type: "document",
 
   fields: [
+    {
+      name: "headerNav",
+      title: "Header Navigation",
+      type: "navigation",
+    },
     {
       name: "navItems",
       title: "Navigation Items",
@@ -32,4 +37,4 @@ const navigation = {
   ],
 };
 
-export default navigation;
+export default settingsNavigation;

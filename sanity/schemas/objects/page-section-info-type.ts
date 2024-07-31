@@ -15,10 +15,6 @@ const sectionInfo = {
       type: "string",
     },
     {
-      name: "description",
-      type: "text",
-    },
-    {
       name: "content",
       type: "array",
       of: [{ type: "block" }],

@@ -31,7 +31,6 @@ type SocialMediaData = {
 
 export default async function Footer() {
   const socialMedia: SocialMediaData[] = await getSocialMedia();
-  console.log(socialMedia);
 
   // Map of social media names to icons
   const socialMediaIcons: {

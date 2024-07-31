@@ -30,7 +30,7 @@ export async function fetchDocumentSlug(ref: any) {
 
 export async function getNavigation() {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "navigation"]
+    groq`*[_type == "settingsNavigation"]
     `
   );
 }

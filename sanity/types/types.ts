@@ -7,9 +7,10 @@ export type Program = {
   _ref: string;
   name: string;
   slug: string;
-  location: string;
+  location: string[];
   description: string;
   expandedDescription: PortableTextBlock[];
+  categories?: string;
   image?: string;
   difficulty?: string;
   duration?: number;

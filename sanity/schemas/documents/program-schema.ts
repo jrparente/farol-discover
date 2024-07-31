@@ -19,8 +19,9 @@ const program = {
     },
     {
       name: "location",
-      title: "Location",
-      type: "string",
+      title: "Destinations",
+      type: "array",
+      of: [{ type: "string" }],
     },
     {
       name: "description",
@@ -36,8 +37,7 @@ const program = {
     {
       name: "categories",
       title: "Categories",
-      type: "array",
-      of: [{ type: "string" }],
+      type: "string",
       options: {
         list: [
           { title: "Guided Tour", value: "Guided Tour" },

@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getPrograms } from "@/sanity/sanity-utils";
+import { MapPin } from "lucide-react";
 
 type ProgramsProps = {
   programs: Program[];
@@ -126,16 +127,25 @@ export default function FeaturedPrograms({
                   />
                 </div>
                 <CardHeader className="px-6 py-4">
-                  <CardTitle className="font-bold text-xl mb-2">
-                    {program.name}
+                  <CardTitle>
+                    <h2 className="font-bold text-xl mb-2">{program.name}</h2>
+                    <p className="flex items-center text-sm text-primary font-semibold tracking-wide uppercase">
+                      <MapPin className="w-4 h-4 mr-1" />{" "}
+                      {program.location.join(", ")}
+                    </p>
                   </CardTitle>
+                </CardHeader>
+                <CardContent className="px-6 pb-4 flex flex-col gap-3">
                   <p className="text-muted-foreground text-base">
                     {program.description}
                   </p>
-                </CardHeader>
-                <CardContent className="px-6 p-4 md:p-6">
-                  <Badge variant="secondary">{program.duration} days</Badge>
-                  <Badge variant="secondary">{program.difficulty}</Badge>
+                  <div className="flex gap-2">
+                    <Badge variant="secondary">{program.duration} days</Badge>
+                    <Badge variant="secondary">{program.difficulty}</Badge>
+                    {program.categories && (
+                      <Badge variant="secondary">{program.categories}</Badge>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             </Link>

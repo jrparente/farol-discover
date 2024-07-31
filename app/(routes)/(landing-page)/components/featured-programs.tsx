@@ -22,10 +22,10 @@ export default async function FeaturedPrograms() {
           create your own custom tour.
         </p>
         <div className="flex gap-2 mb-6">
-          <Link href="/tours">
+          <Link href="/tours-and-programs">
             <Button>See All Tours</Button>
           </Link>
-          <Link href="/contact">
+          <Link href="/contact-us">
             <Button variant={"secondary"}>Create Your Own Tour</Button>
           </Link>
         </div>
@@ -57,7 +57,8 @@ export default async function FeaturedPrograms() {
                     {program.name}.
                   </h2>
                   <p className="flex items-center mb-6 md:text-md text-primary font-semibold tracking-wide uppercase">
-                    <MapPin className="w-4 h-4 mr-1" /> {program.location}
+                    <MapPin className="w-4 h-4 mr-1" />{" "}
+                    {program.location.join(", ")}
                   </p>
                   <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
                     {program.description}

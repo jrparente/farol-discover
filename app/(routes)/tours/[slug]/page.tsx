@@ -1,6 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 import Hero from "@/components/page-hero";
-import { Check, Clock, Flag, HelpCircle, X } from "lucide-react";
+import {
+  Check,
+  Clock,
+  Flag,
+  HelpCircle,
+  Map,
+  UserCheck,
+  X,
+} from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -38,6 +46,7 @@ export default async function TourDetail({
   if (!program) {
     notFound();
   }
+  console.log("program", program);
 
   return (
     <div className="h-full">
@@ -93,6 +102,7 @@ export default async function TourDetail({
               </div>
             )}
           </div>
+
           {/* Sidebar */}
           <div className="md:col-span-1 flex flex-col gap-8 bg-muted rounded-lg p-4 lg:p-8">
             {/* Aditional Info */}
@@ -112,8 +122,33 @@ export default async function TourDetail({
                   <Flag className="w-3 h-3 mr-1" />
                   {program.difficulty}
                 </Badge>
+                {program.categories && (
+                  <Badge variant="outline">
+                    {program.categories === "Guided Tour" ? (
+                      <UserCheck className="w-3 h-3 mr-1" />
+                    ) : (
+                      <Map className="w-3 h-3 mr-1" />
+                    )}
+                    {program.categories.charAt(0).toUpperCase() +
+                      program.categories.slice(1)}
+                  </Badge>
+                )}
               </div>
             </div>
+
+            {/* Price starting from */}
+            {program.price && (
+              <div className="flex flex-col space-y-3">
+                <h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                  Price Starting From
+                </h2>
+                <div className="flex flex-col justify-start items-start gap-2">
+                  <span className="text-xl font-semibold">
+                    {program.price} EUR
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* Program Highlights */}
             {program.highlights && program.highlights.length > 0 && (

@@ -46,6 +46,7 @@ export async function getPrograms(): Promise<Program[]> {
         location,
         description,
         expandedDescription,
+        categories,
         "image": image.asset->url,
         difficulty,
         duration,

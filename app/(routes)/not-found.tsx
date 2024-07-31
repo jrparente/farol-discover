@@ -22,7 +22,7 @@ export default function NotFound() {
             <ul className="list-none text-center">
               <li className="my-2">
                 <a
-                  href="/trails"
+                  href="/tours-and-programs"
                   className="text-base font-medium text-primary hover:text-blue-500"
                 >
                   Discover our Trails
@@ -30,7 +30,7 @@ export default function NotFound() {
               </li>
               <li className="my-2">
                 <a
-                  href="/about"
+                  href="/our-team"
                   className="text-base font-medium text-primary hover:text-blue-500"
                 >
                   Learn About Us
@@ -38,7 +38,7 @@ export default function NotFound() {
               </li>
               <li className="my-2">
                 <a
-                  href="/contact"
+                  href="/contact-us"
                   className="text-base font-medium text-primary hover:text-blue-500"
                 >
                   Contact Us

@@ -72,7 +72,7 @@ export default function Navbar() {
                             : subNavItem.link.href;
                         return {
                           title: subNavItem.title,
-                          description: subNavItem.description,
+                          description: subNavItem.subtitle,
                           href: subLinkURL,
                         };
                       })

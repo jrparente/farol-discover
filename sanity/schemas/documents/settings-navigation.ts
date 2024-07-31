@@ -12,28 +12,6 @@ const settingsNavigation = {
       title: "Header Navigation",
       type: "navigation",
     },
-    {
-      name: "navItems",
-      title: "Navigation Items",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "title",
-              title: "Title",
-              type: "string",
-            },
-            {
-              name: "link",
-              title: "Link",
-              type: "link",
-            },
-          ],
-        },
-      ],
-    },
   ],
 };
 

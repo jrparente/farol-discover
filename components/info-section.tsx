@@ -30,8 +30,11 @@ export default function InfoSection({
         className={`gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16 ${imagePosition === "left" ? "lg:grid-flow-dense" : ""}`}
       >
         {image && imagePosition === "left" && (
-          <div className="relative aspect-square mt-8 lg:order-1 lg:col-span-1">
-            <SanityImage className="mb-4" source={image} />
+          <div className="relative aspect-square lg:order-1 lg:col-span-1">
+            <SanityImage
+              className="w-full h-full object-cover"
+              source={image}
+            />
           </div>
         )}
         <div
@@ -65,8 +68,11 @@ export default function InfoSection({
           )}
         </div>
         {image && imagePosition !== "left" && (
-          <div className="relative aspect-square mt-8 lg:col-span-1">
-            <SanityImage className="mb-4" source={image} />
+          <div className="relative aspect-square lg:col-span-1">
+            <SanityImage
+              className="w-full h-full object-cover"
+              source={image}
+            />
           </div>
         )}
       </div>

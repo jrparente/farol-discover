@@ -54,12 +54,13 @@ export default function InfoSection({
               {subtitle}
             </h2>
           )}
-          {description && (
-            <p className="leading-7 [&:not(:first-child)]:mt-6">
-              {description}
-            </p>
+
+          {content && (
+            <div className="mt-6">
+              <SanityPortableTextBlock data={content} />
+            </div>
           )}
-          {content && <SanityPortableTextBlock data={content} />}
+
           {buttonLink && (
             <SanityLink href={buttonLink}>
               <Button variant="link" className="uppercase">

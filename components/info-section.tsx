@@ -24,13 +24,14 @@ export default function InfoSection({
   imagePosition,
   content,
 }: InfoSectionProps) {
+  console.log(`imagePosition for ${title} `, imagePosition);
   return (
     <section className="my-2 py-2">
       <div
         className={`gap-16 items-center px-4 py-10 mx-auto max-w-screen-xl lg:grid lg:grid-cols-3 lg:py-16 ${imagePosition === "left" ? "lg:grid-flow-dense" : ""}`}
       >
         {image && imagePosition === "left" && (
-          <div className="relative aspect-square lg:order-1 lg:col-span-1">
+          <div className="relative aspect-square lg:-order-1 lg:col-span-1">
             <SanityImage
               className="w-full h-full object-cover"
               source={image}

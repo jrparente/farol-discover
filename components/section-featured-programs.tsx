@@ -25,7 +25,9 @@ export default function FeaturedPrograms({
   const [sortOption, setSortOption] = useState("Newest");
   const [difficultyFilter, setDifficultyFilter] = useState("All");
   const [categoryFilter, setCategoryFilter] = useState("All");
+  const [destinationFilter, setDestinationFilter] = useState("All");
   const [programs, setPrograms] = useState<Program[]>([]);
+  const [destinations, setDestinations] = useState<string[]>([]);
 
   // Fetch all programs and filter selected programs
   useEffect(() => {
@@ -42,6 +44,18 @@ export default function FeaturedPrograms({
           : [];
 
       setPrograms(selectedPrograms);
+
+      // Extract unique destinations
+      const uniqueDestinations = Array.from(
+        new Set(
+          selectedPrograms.flatMap((program) => {
+            // Log each program's location to debug
+            console.log("Program Location:", program.location);
+            return program.location || [];
+          })
+        )
+      );
+      setDestinations(uniqueDestinations);
     };
 
     fetchPrograms();
@@ -78,7 +92,10 @@ export default function FeaturedPrograms({
     const matchesCategory =
       categoryFilter === "All" ||
       (program.categories && program.categories.includes(categoryFilter));
-    return matchesDifficulty && matchesCategory;
+    const matchesDestination =
+      destinationFilter === "All" ||
+      (program.location && program.location.includes(destinationFilter));
+    return matchesDifficulty && matchesCategory && matchesDestination;
   });
 
   return (
@@ -143,6 +160,29 @@ export default function FeaturedPrograms({
                 <SelectItem value="Self-Guided Tour">
                   Self-Guided Tours
                 </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-muted-foreground text-sm">
+              Filter by Destination:
+            </label>
+            <Select
+              value={destinationFilter}
+              onValueChange={(value) => setDestinationFilter(value as string)}
+            >
+              <SelectTrigger className="w-[200px]">
+                <SelectValue>
+                  {destinationFilter === "All" ? "All" : destinationFilter}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="All">All</SelectItem>
+                {destinations.map((destination, index) => (
+                  <SelectItem key={index} value={destination}>
+                    {destination}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>

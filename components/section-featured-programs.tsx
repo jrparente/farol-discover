@@ -22,8 +22,9 @@ type ProgramsProps = {
 export default function FeaturedPrograms({
   programs: programsRef,
 }: ProgramsProps) {
-  const [sortOption, setSortOption] = useState("newest");
-  const [filterOption, setFilterOption] = useState("all");
+  const [sortOption, setSortOption] = useState("Newest");
+  const [difficultyFilter, setDifficultyFilter] = useState("All");
+  const [categoryFilter, setCategoryFilter] = useState("All");
   const [programs, setPrograms] = useState<Program[]>([]);
 
   // Fetch all programs and filter selected programs
@@ -48,7 +49,7 @@ export default function FeaturedPrograms({
 
   // Sorting logic
   const sortedPrograms = [...programs].sort((a, b) => {
-    if (sortOption === "newest") {
+    if (sortOption === "Newest") {
       return (
         new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime()
       );
@@ -72,8 +73,12 @@ export default function FeaturedPrograms({
 
   // Filtering logic
   const filteredPrograms = sortedPrograms.filter((program) => {
-    if (filterOption === "all") return true;
-    return program.difficulty === filterOption;
+    const matchesDifficulty =
+      difficultyFilter === "All" || program.difficulty === difficultyFilter;
+    const matchesCategory =
+      categoryFilter === "All" ||
+      (program.categories && program.categories.includes(categoryFilter));
+    return matchesDifficulty && matchesCategory;
   });
 
   return (
@@ -82,30 +87,67 @@ export default function FeaturedPrograms({
         <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           Our Programs
         </h2>
-        <div className="flex gap-2 mt-5">
-          <Select onValueChange={(value) => setSortOption(value as string)}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={"Sort by:"} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="newest">Newest</SelectItem>
-              <SelectItem value="lastUpdated">Last Updated</SelectItem>
-              <SelectItem value="priceLowToHigh">Price: Low to High</SelectItem>
-              <SelectItem value="priceHighToLow">Price: High to Low</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select onValueChange={(value) => setFilterOption(value as string)}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={"Filter by Difficulty:"} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="Easy">Easy</SelectItem>
-              <SelectItem value="Moderate">Moderate</SelectItem>
-              <SelectItem value="Challenging">Challenging</SelectItem>
-            </SelectContent>
-          </Select>
+        <p className="text-primary font-semibold text-sm mb-4">
+          Showing {filteredPrograms.length} programs
+        </p>
+        <div className="flex flex-wrap gap-4 mb-6">
+          <div className="flex flex-col gap-1">
+            <label className="text-muted-foreground text-sm">Sort by:</label>
+            <Select onValueChange={(value) => setSortOption(value as string)}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder={sortOption} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Newest">Newest</SelectItem>
+                <SelectItem value="lastUpdated">Last Updated</SelectItem>
+                <SelectItem value="priceLowToHigh">
+                  Price: Low to High
+                </SelectItem>
+                <SelectItem value="priceHighToLow">
+                  Price: High to Low
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-muted-foreground text-sm">
+              Filter by Difficulty:
+            </label>
+            <Select
+              onValueChange={(value) => setDifficultyFilter(value as string)}
+            >
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder={difficultyFilter} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="All">All</SelectItem>
+                <SelectItem value="Easy">Easy</SelectItem>
+                <SelectItem value="Moderate">Moderate</SelectItem>
+                <SelectItem value="Challenging">Challenging</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="text-muted-foreground text-sm">
+              Filter by Category:
+            </label>
+            <Select
+              onValueChange={(value) => setCategoryFilter(value as string)}
+            >
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder={categoryFilter} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="All">All</SelectItem>
+                <SelectItem value="Guided Tour">Guided Tours</SelectItem>
+                <SelectItem value="Self-Guided Tour">
+                  Self-Guided Tours
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-5">
           {filteredPrograms.map((program, index) => (
             <Link key={index} href={`/tours/${program.slug}`}>

@@ -32,7 +32,7 @@ async function generateMetadata({ params }: Props) {
       return {
         title: {
           default: title,
-          template: `%s | Farol Discover`,
+          template: `%s | Farol Discover Portugal`,
         },
         description,
         keywords: keywordString,

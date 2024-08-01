@@ -142,5 +142,10 @@ export type Page = {
       description?: string;
       image?: any;
     }[];
+    highlights?: {
+      title?: string;
+      description?: string;
+      image?: any;
+    }[];
   }>;
 };

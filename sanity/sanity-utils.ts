@@ -124,6 +124,11 @@ export async function getPage(slug: string): Promise<Page> {
       content,
       "pageBuilder": pageBuilder[]
     }`,
-    { slug }
+    { slug },
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 }

@@ -109,6 +109,10 @@ const page = {
           name: "sectionFeatures",
           type: "sectionFeatures",
         },
+        {
+          name: "sectionHighlights",
+          type: "sectionHighlights",
+        },
       ],
     },
     {

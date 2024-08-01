@@ -26,14 +26,14 @@ function SectionFeatures({
         )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 mt-12">
         {features.map((feature, index) => (
           <div
             className="bg-muted rounded-lg mb-6 md:mb-0 shadow-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-xl"
             key={index}
           >
             {feature.image && (
-              <div className="relative h-48">
+              <div className="relative h-72">
                 <SanityImage
                   source={feature.image}
                   alt={feature.title}

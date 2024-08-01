@@ -5,9 +5,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import { cn } from "@/lib/utils";
 
 type SectionFAQProps = {
   heading?: string;
+  backgroundColor?: string;
   faqs: {
     question: string;
     answer: string;
@@ -16,10 +18,12 @@ type SectionFAQProps = {
 
 function SectionFAQ({
   heading = "Frequently Asked Questions",
+  backgroundColor,
   faqs,
 }: SectionFAQProps) {
+  console.log("backgroundColor", backgroundColor);
   return (
-    <section className="my-8 bg-secondary py-12">
+    <section className={cn("my-8 py-12", backgroundColor)}>
       <div className="max-w-screen-xl mx-auto px-4">
         <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           {heading}

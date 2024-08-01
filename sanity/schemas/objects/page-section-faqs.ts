@@ -7,6 +7,17 @@ const faqs = {
   icon: FileQuestion,
   fields: [
     {
+      name: "backgroundColor",
+      title: "Background Color",
+      type: "string",
+      options: {
+        list: [
+          { title: "White", value: "bg-white" },
+          { title: "Gray", value: "bg-secondary" },
+        ],
+      },
+    },
+    {
       name: "faqs",
       title: "Frequently Asked Questions",
       type: "array",

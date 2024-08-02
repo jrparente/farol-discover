@@ -1,14 +1,19 @@
-import { tourFeatures } from "@/constants";
 import TourFeatures from "./tour-features";
 
 type FeaturesProps = {
   featuresTitle?: string;
   featuresSubtitle?: string;
+  features?: {
+    icon?: any;
+    title?: string;
+    items?: string[];
+  }[];
 };
 
 export default function CompanyFeatures({
   featuresTitle,
   featuresSubtitle,
+  features,
 }: FeaturesProps) {
   return (
     <section className="max-w-screen-xl mx-auto px-4 y-12">
@@ -18,14 +23,15 @@ export default function CompanyFeatures({
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 mt-12">
-        {tourFeatures.map((feature, index) => (
-          <TourFeatures
-            icon={feature.icon}
-            title={feature.title}
-            items={feature.items}
-            key={index}
-          />
-        ))}
+        {features &&
+          features.map((feature, index) => (
+            <TourFeatures
+              icon={feature.icon}
+              title={feature.title}
+              items={feature.items}
+              key={index}
+            />
+          ))}
       </div>
     </section>
   );

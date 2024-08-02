@@ -28,6 +28,7 @@ export default async function Home() {
     stats,
     featuresTitle,
     featuresSubtitle,
+    features,
     testimonials: testimonialRefs,
     ctaTitle,
     ctaDescription,
@@ -69,7 +70,9 @@ export default async function Home() {
       <CompanyFeatures
         featuresTitle={featuresTitle}
         featuresSubtitle={featuresSubtitle}
+        features={features}
       />
+
       {selectedTestimonials.length > 0 && (
         <Testimonials testimonials={selectedTestimonials} />
       )}

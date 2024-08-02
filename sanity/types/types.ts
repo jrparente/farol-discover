@@ -83,7 +83,7 @@ export type Homepage = {
   features?: {
     title: string;
     description: string;
-    icon: string;
+    icon: any;
   }[];
   testimonials?: Testimonial[];
   ctaTitle?: string;

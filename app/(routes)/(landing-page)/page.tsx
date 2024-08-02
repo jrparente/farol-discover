@@ -25,9 +25,7 @@ export default async function Home() {
     statsTitle,
     statsSubtitle,
     statsDescription,
-    statsTours,
-    statsCustomers,
-    statsDestinations,
+    stats,
     featuresTitle,
     featuresSubtitle,
     testimonials: testimonialRefs,
@@ -59,14 +57,13 @@ export default async function Home() {
         pageHeadingMainButtonText={pageHeadingMainButtonText}
         pageHeadingMainButtonLink={pageHeadingMainButtonLink}
         pageHeadingSecondaryButtonText={pageHeadingSecondaryButtonText}
+        pageHeadingSecondaryButtonLink={pageHeadingSecondaryButtonLink}
       />
       <CompanyStatistics
         statsTitle={statsTitle}
         statsSubtitle={statsSubtitle}
         statsDescription={statsDescription}
-        statsTours={statsTours}
-        statsCustomers={statsCustomers}
-        statsDestinations={statsDestinations}
+        stats={stats}
       />
       <FeaturedPrograms />
       <CompanyFeatures

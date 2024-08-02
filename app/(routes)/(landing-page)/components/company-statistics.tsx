@@ -1,21 +1,22 @@
+import SanityImage from "@/components/SanityImage";
 import { Compass, MapPin, Smile } from "lucide-react";
 
 type LandingStatsProps = {
   statsTitle?: string;
   statsSubtitle?: string;
   statsDescription?: string;
-  statsTours?: string;
-  statsCustomers?: string;
-  statsDestinations?: string;
+  stats?: {
+    title: string;
+    value: string;
+    icon: any;
+  }[];
 };
 
 export default function CompanyStatistics({
   statsTitle,
   statsSubtitle,
   statsDescription,
-  statsTours,
-  statsCustomers,
-  statsDestinations,
+  stats,
 }: LandingStatsProps) {
   return (
     <section className="bg-secondary py-12">
@@ -34,47 +35,27 @@ export default function CompanyStatistics({
 
         <div className="mt-10">
           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
-            <div className="relative">
-              <dt>
-                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary/10 text-white">
-                  <MapPin className="text-primary" />
+            {stats &&
+              stats.length > 0 &&
+              stats.map((stat) => (
+                <div key={stat.title} className="relative">
+                  <dt>
+                    <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary/10 text-white">
+                      <SanityImage
+                        source={stat.icon}
+                        alt={stat.title}
+                        className="size-8"
+                      />
+                    </div>
+                    <p className="ml-16 text-lg leading-6 font-medium ">
+                      {stat.title}
+                    </p>
+                  </dt>
+                  <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
+                    {stat.value}
+                  </dd>
                 </div>
-                <p className="ml-16 text-lg leading-6 font-medium ">
-                  Tours Given
-                </p>
-              </dt>
-              <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
-                {statsTours}
-              </dd>
-            </div>
-
-            <div className="relative">
-              <dt>
-                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary/10 text-white">
-                  <Smile className="text-primary" />
-                </div>
-                <p className="ml-16 text-lg leading-6 font-medium ">
-                  Satisfied Customers
-                </p>
-              </dt>
-              <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
-                {statsCustomers}
-              </dd>
-            </div>
-
-            <div className="relative">
-              <dt>
-                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary/10 text-white">
-                  <Compass className="text-primary" />
-                </div>
-                <p className="ml-16 text-lg leading-6 font-medium ">
-                  Destinations Covered
-                </p>
-              </dt>
-              <dd className="mt-2 ml-16 text-3xl font-extrabold tracking-tight text-primary">
-                {statsDestinations}
-              </dd>
-            </div>
+              ))}
           </dl>
         </div>
       </div>

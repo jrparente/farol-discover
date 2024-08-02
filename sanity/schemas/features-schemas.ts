@@ -12,7 +12,12 @@ const features = {
         {
           name: "icon",
           title: "Icon",
-          type: "string",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          description:
+            "Icon should be a png file with a transparent background, 100x100 pixels, color should be #16A34A. Recommended source: https://icons8.com/",
         },
         {
           name: "title",

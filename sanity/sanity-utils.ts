@@ -31,14 +31,26 @@ export async function fetchDocumentSlug(ref: any) {
 export async function getNavigation() {
   return createClient(clientConfig).fetch(
     groq`*[_type == "settingsNavigation"]
-    `
+    `,
+    {},
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 }
 
 export async function getSocialMedia() {
   return createClient(clientConfig).fetch(
     groq`*[_type == "settingsSocialMedia"]
-    `
+    `,
+    {},
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 }
 
@@ -71,7 +83,13 @@ export async function getPrograms(): Promise<Program[]> {
             "images": images[].asset->url
           },
         },
-    }`
+    }`,
+    {},
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 }
 
@@ -89,12 +107,26 @@ export async function getTestimonials(): Promise<Testimonial[]> {
         "slug": slug.current
       },
       "avatar": avatar.asset->url
-    }`
+    }`,
+    {},
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   );
 }
 
 export async function getHomepage(): Promise<Homepage[]> {
-  return createClient(clientConfig).fetch(groq`*[_type == "homepage"]`);
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "homepage"]`,
+    {},
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
 }
 
 export async function getPages(): Promise<Page[]> {

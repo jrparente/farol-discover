@@ -23,7 +23,7 @@ function SectionFAQ({
 }: SectionFAQProps) {
   console.log("backgroundColor", backgroundColor);
   return (
-    <section className={cn("my-8 py-12", backgroundColor)}>
+    <section className={cn("my-12 py-12", backgroundColor)}>
       <div className="max-w-screen-xl mx-auto px-4">
         <h2 className="mt-10 scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           {heading}

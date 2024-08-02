@@ -70,11 +70,21 @@ export type Homepage = {
   statsTitle?: string;
   statsSubtitle?: string;
   statsDescription?: string;
+  stats?: {
+    title: string;
+    value: string;
+    icon: string;
+  }[];
   statsTours?: string;
   statsCustomers?: string;
   statsDestinations?: string;
   featuresTitle?: string;
   featuresSubtitle?: string;
+  features?: {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
   testimonials?: Testimonial[];
   ctaTitle?: string;
   ctaDescription?: string;

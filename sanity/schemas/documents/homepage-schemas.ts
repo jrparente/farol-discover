@@ -138,25 +138,38 @@ const homepage = {
       fieldset: "homepageStats",
     },
     {
-      name: "statsTours",
-      title: "Tours Given",
-      type: "string",
+      name: "stats",
+      title: "Statistics",
+      type: "array",
       group: "content",
       fieldset: "homepageStats",
-    },
-    {
-      name: "statsCustomers",
-      title: "Satisfied Customers",
-      type: "string",
-      group: "content",
-      fieldset: "homepageStats",
-    },
-    {
-      name: "statsDestinations",
-      title: "Destinations Covered",
-      type: "string",
-      group: "content",
-      fieldset: "homepageStats",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "value",
+              title: "Value",
+              type: "string",
+            },
+            {
+              name: "icon",
+              title: "Icon",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+              description:
+                "Icon should be a png file with a transparent background, 100x100 pixels, color should be #16A34A. Recommended source: https://icons8.com/",
+            },
+          ],
+        },
+      ],
     },
     {
       name: "featuresTitle",

@@ -23,7 +23,7 @@ function SectionHighlights({
   const { theme } = useTheme();
 
   return (
-    <section className="my-8 bg-secondary py-24">
+    <section className="my-12 bg-secondary py-24">
       <div className="max-w-screen-xl mx-auto px-4">
         <div className="max-w-screen-md mb-8 lg:mb-16">
           {title && (

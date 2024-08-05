@@ -110,11 +110,11 @@ export default async function Footer() {
                 <li>
                   {/* Phone */}
                   <Link
-                    href="tel:+351 913 613 578"
+                    href="tel:+351 917 104 248"
                     className="text-sm no-underline text-[#a1a1aa] hover:text-white flex items-center whitespace-nowrap"
                   >
                     <Phone className="w-4 h-4 mr-2 text-[#a1a1aa] flex-shrink-0" />
-                    +351 913 613 578
+                    +351 917 104 248
                   </Link>
                 </li>
                 <li>

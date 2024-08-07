@@ -140,7 +140,7 @@ export default function Navbar({
       <div className="max-w-screen-xl mx-auto flex md:px-4 items-center justify-between ">
         <div className="flex items-center">
           <MobileSidebar headerNav={headerNav} />
-          <Link href="/">
+          <Link href={`/${locale}`}>
             <h1
               className={cn(
                 "hidden lg:block text-2xl font-extrabold tracking-tight leading-none",

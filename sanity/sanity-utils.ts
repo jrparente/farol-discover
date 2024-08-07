@@ -23,7 +23,7 @@ export function urlForImage(source: SanityImageSource) {
   return builder.image(source);
 }
 
-function getLocaleFromLanguage(language: string) {
+export function getLocaleFromLanguage(language: string) {
   const lang = i18n.languages.find((lang) => lang.id === language);
   return lang ? lang.locale : language;
 }

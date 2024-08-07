@@ -121,6 +121,11 @@ const page = {
       type: "seo",
       group: "seo",
     },
+    {
+      name: "language",
+      type: "string",
+      readOnly: true,
+    },
   ],
 };
 

@@ -30,6 +30,10 @@ const homepage = {
       options: { collapsible: true, collapsed: true },
     },
     {
+      name: "featuredPrograms",
+      options: { collapsible: true, collapsed: true },
+    },
+    {
       name: "companyFeatures",
       title: "Company Features",
       options: { collapsible: true, collapsed: true },
@@ -172,6 +176,66 @@ const homepage = {
       ],
     },
     {
+      name: "featuredProgramsTitle",
+      title: "Featured Programs Title",
+      type: "string",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsSubtitle",
+      title: "Featured Programs Subtitle",
+      type: "text",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsCta1Text",
+      title: "Featured Programs CTA 1 Text",
+      type: "string",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsCta1Link",
+      title: "Featured Programs CTA 1 Link",
+      type: "link",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsCta2Text",
+      title: "Featured Programs CTA 2 Text",
+      type: "string",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsCta2Link",
+      title: "Featured Programs CTA 2 Link",
+      type: "link",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsHighlightsTitle",
+      type: "string",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsDurationText",
+      type: "string",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
+      name: "featuredProgramsLearnMoreText",
+      type: "string",
+      group: "content",
+      fieldset: "featuredPrograms",
+    },
+    {
       name: "featuresTitle",
       title: "Features Title",
       type: "string",
@@ -224,7 +288,7 @@ const homepage = {
     {
       name: "ctaButtonLink",
       title: "Call to Action Button Link",
-      type: "string",
+      type: "link",
       group: "content",
       fieldset: "callToAction",
     },
@@ -233,6 +297,12 @@ const homepage = {
       title: "SEO",
       type: "seo",
       group: "seo",
+    },
+
+    {
+      name: "language",
+      type: "string",
+      readOnly: true,
     },
   ],
 };

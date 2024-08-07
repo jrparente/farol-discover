@@ -4,30 +4,52 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getPrograms } from "@/sanity/sanity-utils";
+import SanityLink from "@/components/SanityLink";
 
-export default async function FeaturedPrograms() {
+export default async function FeaturedPrograms({
+  featuredProgramsTitle,
+  featuredProgramsSubtitle,
+  featuredProgramsCta1Text,
+  featuredProgramsCta1Link,
+  featuredProgramsCta2Text,
+  featuredProgramsCta2Link,
+  featuredProgramsHighlightsTitle,
+  featuredProgramsDurationText,
+  featuredProgramsLearnMoreText,
+}: {
+  featuredProgramsTitle: string;
+  featuredProgramsSubtitle: string;
+  featuredProgramsCta1Text: string;
+  featuredProgramsCta1Link: any;
+  featuredProgramsCta2Text: string;
+  featuredProgramsCta2Link: any;
+  featuredProgramsHighlightsTitle: string;
+  featuredProgramsDurationText: string;
+  featuredProgramsLearnMoreText: string;
+}) {
   const programs = await getPrograms();
 
   return (
     <section className="my-2 py-2">
       <div className="max-w-screen-xl px-4 py-10 mx-auto flex flex-col lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-          Explore Our Exclusive Programs
+          {featuredProgramsTitle}
         </h1>
 
         <p className="text-lg text-muted-foreground mb-6">
-          Discover the best of Portugal with our curated tours. Whether
-          you&apos;re looking for adventure, relaxation, or cultural immersion,
-          we have something for everyone. Explore our featured programs below or
-          create your own custom tour.
+          {featuredProgramsSubtitle}
         </p>
         <div className="flex gap-2 mb-6">
-          <Link href="/tours-and-programs">
-            <Button>See All Tours</Button>
-          </Link>
-          <Link href="/contact-us">
-            <Button variant={"secondary"}>Create Your Own Tour</Button>
-          </Link>
+          {featuredProgramsCta1Link && featuredProgramsCta1Text && (
+            <SanityLink href={featuredProgramsCta1Link}>
+              <Button>{featuredProgramsCta1Text}</Button>
+            </SanityLink>
+          )}
+          {featuredProgramsCta2Link && featuredProgramsCta2Text && (
+            <SanityLink href={featuredProgramsCta2Link}>
+              <Button variant={"secondary"}>{featuredProgramsCta2Text}</Button>
+            </SanityLink>
+          )}
         </div>
         <div className="grid grid-cols-1 gap-3">
           {programs
@@ -65,7 +87,9 @@ export default async function FeaturedPrograms() {
                   </p>
                   {program.highlights && program.highlights?.length > 0 && (
                     <p className="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
-                      <span className="font-bold">Highlights: </span>
+                      <span className="font-bold">
+                        {featuredProgramsHighlightsTitle}:{" "}
+                      </span>
                       {program.highlights.join(", ")}
                     </p>
                   )}
@@ -76,12 +100,12 @@ export default async function FeaturedPrograms() {
                     </Badge>
                     <Badge variant="outline">
                       <Clock className="w-3 h-3 mr-1" />
-                      {program.duration} days
+                      {program.duration} {featuredProgramsDurationText}
                     </Badge>
                   </div>
                   <Link href={`/tours/${program.slug}`}>
                     <Button variant="default" className="flex gap-2">
-                      Learn More
+                      {featuredProgramsLearnMoreText}{" "}
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>

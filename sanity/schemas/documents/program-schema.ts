@@ -182,6 +182,12 @@ const program = {
         },
       ],
     },
+
+    {
+      name: "language",
+      type: "string",
+      readOnly: true,
+    },
   ],
 };
 

@@ -15,7 +15,7 @@ import {
 import { Separator } from "./ui/separator";
 import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { getSocialMedia } from "@/sanity/sanity-utils";
+import { getFooter, getSocialMedia } from "@/sanity/sanity-utils";
 
 const font = Montserrat({
   weight: "900",
@@ -32,21 +32,32 @@ type SocialMediaData = {
   tripadvisor?: string;
 };
 
-export default async function Footer() {
-  const socialMedia: SocialMediaData[] = await getSocialMedia();
+// Map of social media names to icons
+const socialMediaIcons: {
+  [key: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+} = {
+  facebook: Facebook,
+  instagram: Instagram,
+  twitter: Twitter,
+  linkedin: Linkedin,
+  pinterest: Pin,
+  youtube: Youtube,
+  tripadvisor: Map,
+};
 
-  // Map of social media names to icons
-  const socialMediaIcons: {
-    [key: string]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  } = {
-    facebook: Facebook,
-    instagram: Instagram,
-    twitter: Twitter,
-    linkedin: Linkedin,
-    pinterest: Pin,
-    youtube: Youtube,
-    tripadvisor: Map,
-  };
+export default async function Footer({ language }: { language: string }) {
+  const socialMedia: SocialMediaData[] = await getSocialMedia();
+  const footerData = await getFooter({ language });
+  let companyDescription =
+    "Specialized travel agency that offers unique guided and self-guided walking and trekking tours throughout the enchanting landscapes of Portugal.";
+  let licenseNumbersTitle = "License Numbers";
+  let allRightsReserved = "All rights reserved";
+
+  if (footerData && footerData.length > 0) {
+    companyDescription = footerData[0].companyDescription;
+    licenseNumbersTitle = footerData[0].licenseNumbersTitle;
+    allRightsReserved = footerData[0].allRightsReserved;
+  }
 
   return (
     <footer className="p-4 sm:p-6 bg-[#27272A]">
@@ -64,11 +75,7 @@ export default async function Footer() {
                 Farol Discover
               </h1>
             </Link>
-            <span className="text-sm text-[#a1a1aa]">
-              Specialized travel agency that offers unique guided and
-              self-guided walking and trekking tours throughout the enchanting
-              landscapes of Portugal.
-            </span>
+            <span className="text-sm text-[#a1a1aa]">{companyDescription}</span>
             <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
               {socialMedia.map((media: SocialMediaData) => {
                 return Object.keys(media).map((key) => {
@@ -216,14 +223,14 @@ export default async function Footer() {
             </Link>
           </div>
           <span className="text-xs text-[#a1a1aa] text-balance">
-            <strong>License Numbers:</strong> RNAVT:10982 | RNAAT:148/2024
+            <strong>{licenseNumbersTitle}:</strong> RNAVT:10982 | RNAAT:148/2024
           </span>
           <span className="text-xs text-[#a1a1aa]">
             © {new Date().getFullYear()}{" "}
             <Link href="/" className="hover:underline">
               Farol Discover™
             </Link>
-            . All Rights Reserved.
+            . {allRightsReserved}.
           </span>
         </div>
       </div>

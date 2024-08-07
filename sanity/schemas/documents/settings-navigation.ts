@@ -12,6 +12,11 @@ const settingsNavigation = {
       title: "Header Navigation",
       type: "navigation",
     },
+    {
+      name: "language",
+      type: "string",
+      readOnly: true,
+    },
   ],
 };
 

@@ -20,6 +20,8 @@ import settingsNavigation from "./documents/settings-navigation";
 import navigation from "./objects/navigation";
 import sectionFeatures from "./objects/page-section-features";
 import sectionHighlights from "./objects/page-section-highlights";
+import settingsFooter from "./documents/settingsFooter";
+import settingsCompanyInfo from "./documents/settingsCompanyInfo";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -34,6 +36,8 @@ const schema: { types: SchemaTypeDefinition[] } = {
     settingsNavigation,
     settingsSocialMedia,
     settingsLanguages,
+    settingsFooter,
+    settingsCompanyInfo,
 
     // Objects
     seo,

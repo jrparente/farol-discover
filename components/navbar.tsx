@@ -19,13 +19,21 @@ import {
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import React from "react";
+import LanguageToggle from "./language-toggle";
+import { getNavigationQuery } from "@/sanity/lib/sanity.queries";
 
 const font = Montserrat({
   weight: "900",
   subsets: ["latin"],
 });
 
-export default function Navbar() {
+export default function Navbar({
+  language,
+  defaultLanguage,
+}: {
+  language: string;
+  defaultLanguage: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [headerNav, setHeaderNav] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -49,62 +57,67 @@ export default function Navbar() {
     setLoading(true);
     setError(null);
     try {
-      const navItemsRef = await getNavigation();
-      console.log("navItemsRef", navItemsRef);
+      let queryParams = { language };
+      let navItemsRef = await getNavigation(queryParams);
+
       if (!navItemsRef || navItemsRef.length === 0) {
-        setError("No navigation items found");
-      } else {
-        const fetchUrls = async (navItems: any[]) => {
-          return Promise.all(
-            navItems.map(async (navItem: any) => {
-              const linkURL =
-                navItem.link._type === "reference"
-                  ? await fetchDocumentSlug(navItem.link)
-                  : navItem.link.href;
-
-              const subNavItems =
-                navItem.subNavItems && navItem.subNavItems.length > 0
-                  ? await Promise.all(
-                      navItem.subNavItems.map(async (subNavItem: any) => {
-                        const subLinkURL =
-                          subNavItem.link._type === "reference"
-                            ? await fetchDocumentSlug(subNavItem.link)
-                            : subNavItem.link.href;
-                        return {
-                          title: subNavItem.title,
-                          description: subNavItem.subtitle,
-                          href: subLinkURL,
-                        };
-                      })
-                    )
-                  : [];
-
-              return {
-                ...navItem,
-                link: linkURL,
-                subNavItems,
-              };
-            })
-          );
-        };
-
-        const updatedHeaderNav = await fetchUrls(
-          navItemsRef[0].headerNav.navItems
-        );
-        console.log("updatedHeaderNav", updatedHeaderNav);
-        setHeaderNav(updatedHeaderNav);
+        queryParams = { language: defaultLanguage };
+        console.log("queryParams", queryParams);
+        navItemsRef = await getNavigation(queryParams);
+        console.log("navItemsRef", navItemsRef);
+        if (!navItemsRef || navItemsRef.length === 0) {
+          setError("No navigation items found");
+        }
       }
+
+      const fetchUrls = async (navItems: any[]) => {
+        return Promise.all(
+          navItems.map(async (navItem: any) => {
+            const linkURL =
+              navItem.link._type === "reference"
+                ? await fetchDocumentSlug(navItem.link)
+                : navItem.link.href;
+
+            const subNavItems =
+              navItem.subNavItems && navItem.subNavItems.length > 0
+                ? await Promise.all(
+                    navItem.subNavItems.map(async (subNavItem: any) => {
+                      const subLinkURL =
+                        subNavItem.link._type === "reference"
+                          ? await fetchDocumentSlug(subNavItem.link)
+                          : subNavItem.link.href;
+                      return {
+                        title: subNavItem.title,
+                        description: subNavItem.subtitle,
+                        href: subLinkURL,
+                      };
+                    })
+                  )
+                : [];
+
+            return {
+              ...navItem,
+              link: linkURL,
+              subNavItems,
+            };
+          })
+        );
+      };
+
+      const updatedHeaderNav = await fetchUrls(
+        navItemsRef[0].headerNav.navItems
+      );
+
+      setHeaderNav(updatedHeaderNav);
     } catch (err) {
       setError("Failed to load navigation");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [language, defaultLanguage]);
 
   useEffect(() => {
-    console.log("fetchData");
     fetchData();
-    console.log("fetchData done");
   }, [fetchData]);
 
   useEffect(() => {
@@ -125,7 +138,7 @@ export default function Navbar() {
     >
       <div className="max-w-screen-xl mx-auto flex md:px-4 items-center justify-between ">
         <div className="flex items-center">
-          <MobileSidebar />
+          <MobileSidebar headerNav={headerNav} />
           <Link href="/">
             <h1
               className={cn(
@@ -219,9 +232,13 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-x-2">
+          <LanguageToggle language={language} />
           <ModeToggle scrolled={scrolled} />
           <Link href="/contact-us">
-            <Button variant="default" className="rounded-full md:text-lg">
+            <Button
+              variant="default"
+              className="rounded-md text-sm font-medium"
+            >
               Book Now
             </Button>
           </Link>

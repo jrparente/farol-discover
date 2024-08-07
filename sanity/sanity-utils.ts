@@ -28,11 +28,24 @@ export async function fetchDocumentSlug(ref: any) {
   return response && response.slug ? `/${response.slug.current}` : "/";
 }
 
-export async function getNavigation() {
+export async function getNavigation({ language }: { language: string }) {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "settingsNavigation"]
+    groq`*[_type == "settingsNavigation" && language == $language]
     `,
-    {},
+    { language },
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
+}
+
+export async function getFooter({ language }: { language: string }) {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "settingsFooter" && language == $language]
+    `,
+    { language },
     {
       next: {
         revalidate: 60,

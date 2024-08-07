@@ -8,16 +8,16 @@ import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Page } from "@/sanity/types/types";
-import { getPages } from "@/sanity/sanity-utils";
+import React from "react";
+import { Separator } from "./ui/separator";
 
 const font = Montserrat({
   weight: "900",
   subsets: ["latin"],
 });
 
-export default function MobileSidebar() {
-  const [pages, setPages] = useState<Page[]>([]);
+export default function MobileSidebar({ headerNav }: { headerNav: any }) {
+  console.log("headerNav", headerNav);
   const pathname = usePathname();
 
   const [scrolled, setScrolled] = useState(false);
@@ -30,14 +30,6 @@ export default function MobileSidebar() {
       setScrolled(false);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getPages();
-      setPages(result);
-    };
-    fetchData();
-  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -62,36 +54,59 @@ export default function MobileSidebar() {
       </SheetTrigger>
       <SheetContent side="left" className="p-0 border-0">
         <div className="space-y-4 py-4 flex flex-col h-full ">
-          <div className="px-3 py-2 flex-1">
+          <div className="px-3 py-6 flex-1 space-y-1">
             <SheetClose asChild>
-              <Link href="/" className="flex items-center pl-3 mb-14">
+              <Link href="/" className="flex items-center">
                 <h1 className={cn("text-xl font-bold", font.className)}>
                   Farol Discover
                 </h1>
               </Link>
             </SheetClose>
-            <div className="space-y-1">
-              {pages && pages.length > 0
-                ? pages.map((page, index) => (
-                    <SheetClose asChild key={index}>
-                      <Link
-                        href={`/${page.slug}`}
-                        className={cn(
-                          "text-sm flex p-3 w-full justify-start font-medium cursor-pointer hover:text-muted-foreground hover:bg-muted rounded-lg transition",
-                          pathname === `/${page.slug}`
-                            ? "text-muted-foreground bg-muted"
-                            : "text-zinc-400"
+
+            {headerNav &&
+              headerNav.length > 0 &&
+              headerNav.map((item: any) => (
+                <React.Fragment key={item._key}>
+                  <SheetClose asChild>
+                    <Link
+                      href={item.link}
+                      className={cn(
+                        "text-sm flex p-3 pl-0 w-full justify-start font-medium cursor-pointer hover:text-muted-foreground hover:bg-muted rounded-lg transition",
+                        pathname === `/${item.link}`
+                          ? "text-muted-foreground bg-muted"
+                          : "text-zinc-400"
+                      )}
+                    >
+                      {item.title}
+                    </Link>
+                  </SheetClose>
+                  <Separator className="border border-muted-foreground/10" />
+                  {item.subNavItems &&
+                    item.subNavItems.length > 0 &&
+                    item.subNavItems.map((subNavItem: any) => (
+                      <React.Fragment key={subNavItem._key}>
+                        {subNavItem.href !== item.link && (
+                          <>
+                            <SheetClose asChild>
+                              <Link
+                                href={subNavItem.href}
+                                className={cn(
+                                  "text-sm flex p-3 pl-0 w-full justify-start font-medium cursor-pointer hover:text-muted-foreground hover:bg-muted rounded-lg transition",
+                                  pathname === `/${subNavItem.href}`
+                                    ? "text-muted-foreground bg-muted"
+                                    : "text-zinc-400"
+                                )}
+                              >
+                                {subNavItem.title}
+                              </Link>
+                            </SheetClose>
+                            <Separator className="border border-muted-foreground/10" />
+                          </>
                         )}
-                      >
-                        <div className="flex items-center flex-1">
-                          <FileText className={cn("h-5 w-5 mr-3")} />
-                          {page.pageName}
-                        </div>
-                      </Link>
-                    </SheetClose>
-                  ))
-                : null}
-            </div>
+                      </React.Fragment>
+                    ))}
+                </React.Fragment>
+              ))}
           </div>
         </div>
       </SheetContent>

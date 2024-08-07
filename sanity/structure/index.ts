@@ -2,6 +2,8 @@ import {
   FlagIcon,
   Footprints,
   HomeIcon,
+  Info,
+  PanelBottom,
   Presentation,
   Settings2Icon,
   Stars,
@@ -62,6 +64,16 @@ export const structure = (S: any) =>
             .title("Settings")
             .items([
               S.listItem()
+                .title("Company Information")
+                .icon(Info)
+                .child(
+                  S.document()
+                    .title("Company Information")
+                    .schemaType("settingsCompanyInfo")
+                    .documentId("settingsCompanyInfo")
+                ),
+
+              S.listItem()
                 .title("Languages")
                 .icon(FlagIcon)
                 .child(
@@ -69,6 +81,16 @@ export const structure = (S: any) =>
                     .title("Languages")
                     .schemaType("settingsLanguages")
                     .documentId("languages")
+                ),
+
+              S.listItem()
+                .title("Footer")
+                .icon(PanelBottom)
+                .child(
+                  S.document()
+                    .title("Footer")
+                    .schemaType("settingsFooter")
+                    .documentId("settingsFooter")
                 ),
 
               S.listItem()

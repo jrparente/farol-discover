@@ -41,7 +41,11 @@ export default function RootLayout(props: {
     <html lang={language} suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar language={language} defaultLanguage={defaultLanguage} />
+          <Navbar
+            language={language}
+            locale={locale}
+            defaultLanguage={defaultLanguage}
+          />
           <main className="flex flex-col min-h-screen overflow-auto">
             <div className="flex-grow mx-auto w-full">
               {props.children}

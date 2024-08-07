@@ -2,6 +2,7 @@ import { createClient, groq } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { Homepage, Page, Program, Testimonial } from "./types/types";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { i18n } from "@/lib/languages";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
@@ -22,10 +23,21 @@ export function urlForImage(source: SanityImageSource) {
   return builder.image(source);
 }
 
+function getLocaleFromLanguage(language: string) {
+  const lang = i18n.languages.find((lang) => lang.id === language);
+  return lang ? lang.locale : language;
+}
+
 export async function fetchDocumentSlug(ref: any) {
   const response = await client.getDocument(ref._ref);
+  console.log(response);
 
-  return response && response.slug ? `/${response.slug.current}` : "/";
+  if (response && response.slug && response.language) {
+    const locale = getLocaleFromLanguage(response.language);
+    return `/${locale}/${response.slug.current}`;
+  } else {
+    return "/";
+  }
 }
 
 export async function getNavigation({ language }: { language: string }) {

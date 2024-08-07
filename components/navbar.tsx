@@ -20,7 +20,6 @@ import {
 } from "./ui/navigation-menu";
 import React from "react";
 import LanguageToggle from "./language-toggle";
-import { getNavigationQuery } from "@/sanity/lib/sanity.queries";
 
 const font = Montserrat({
   weight: "900",
@@ -29,9 +28,11 @@ const font = Montserrat({
 
 export default function Navbar({
   language,
+  locale,
   defaultLanguage,
 }: {
   language: string;
+  locale: string;
   defaultLanguage: string;
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -62,9 +63,9 @@ export default function Navbar({
 
       if (!navItemsRef || navItemsRef.length === 0) {
         queryParams = { language: defaultLanguage };
-        console.log("queryParams", queryParams);
+
         navItemsRef = await getNavigation(queryParams);
-        console.log("navItemsRef", navItemsRef);
+
         if (!navItemsRef || navItemsRef.length === 0) {
           setError("No navigation items found");
         }

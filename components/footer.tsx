@@ -185,18 +185,7 @@ export default async function Footer({ language }: { language: string }) {
                 alt="Visit Algarve Member"
               />
             </Link>
-            <Link
-              href="https://visitalgarve.pt/equipamento/10439/farol-discover"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src="/visit_algarve_white.png"
-                width={150}
-                height={150}
-                alt="Visit Algarve Member"
-              />
-            </Link>
+
             <Link
               href="https://www.visitalentejo.pt/pt/catalogo/o-que-fazer/animacao-turistica/farol-discover/"
               target="_blank"

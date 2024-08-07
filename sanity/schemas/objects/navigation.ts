@@ -25,6 +25,17 @@ const navigation = {
               title: "Link",
               type: "reference",
               to: [{ type: "homepage" }, { type: "page" }],
+              options: {
+                filter: ({ document }: { document: any }) => {
+                  if (!document.language) {
+                    return {};
+                  }
+                  return {
+                    filter: "language == $language",
+                    params: { language: document.language },
+                  };
+                },
+              },
             },
             {
               name: "subNavItems",
@@ -52,6 +63,17 @@ const navigation = {
                       title: "Internal Link",
                       type: "reference",
                       to: [{ type: "homepage" }, { type: "page" }],
+                      options: {
+                        filter: ({ document }: { document: any }) => {
+                          if (!document.language) {
+                            return {};
+                          }
+                          return {
+                            filter: "language == $language",
+                            params: { language: document.language },
+                          };
+                        },
+                      },
                     },
                     {
                       name: "externalLink",

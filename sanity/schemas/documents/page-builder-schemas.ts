@@ -113,6 +113,10 @@ const page = {
           name: "sectionHighlights",
           type: "sectionHighlights",
         },
+        {
+          name: "sectionTestimonials",
+          type: "sectionTestimonials",
+        },
       ],
     },
     {

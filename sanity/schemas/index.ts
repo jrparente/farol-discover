@@ -22,6 +22,7 @@ import sectionFeatures from "./objects/page-section-features";
 import sectionHighlights from "./objects/page-section-highlights";
 import settingsFooter from "./documents/settingsFooter";
 import settingsCompanyInfo from "./documents/settingsCompanyInfo";
+import sectionTestimonials from "./objects/page-section-testimonials";
 
 const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -53,6 +54,7 @@ const schema: { types: SchemaTypeDefinition[] } = {
     navigation,
     sectionFeatures,
     sectionHighlights,
+    sectionTestimonials,
   ],
 };
 

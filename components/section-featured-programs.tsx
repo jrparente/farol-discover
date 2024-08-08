@@ -5,8 +5,10 @@ import { sanityFetch } from "@/sanity/lib/sanity.fetch";
 import { getLanguageFromLocale } from "@/sanity/sanity-utils";
 
 export default async function FeaturedPrograms({
+  programs,
   language,
 }: {
+  programs: Program[];
   language: string;
 }) {
   const query = getProgramsQuery;

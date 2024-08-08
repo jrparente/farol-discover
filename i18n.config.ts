@@ -1,12 +1,14 @@
 const languages = [
   { id: "en", title: "English", locale: "en-US", isDefault: true },
-  { id: "de", title: "German", locale: "de-DE" },
-  { id: "pt", title: "Portuguese", locale: "pt-PT" },
+  { id: "de", title: "Deutsch", locale: "de-DE" },
+  { id: "pt", title: "Português", locale: "pt-PT" },
 ];
+
+const defaultLanguage = languages.find((item) => item.isDefault);
 
 const i18n = {
   languages,
-  base: languages.find((item) => item.isDefault).id,
+  base: defaultLanguage ? defaultLanguage.id : "en", // Provide a fallback value
 };
 
 const googleTranslateLanguages = languages.map(({ id, title }) => ({

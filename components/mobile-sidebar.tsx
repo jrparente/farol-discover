@@ -17,7 +17,6 @@ const font = Montserrat({
 });
 
 export default function MobileSidebar({ headerNav }: { headerNav: any }) {
-  console.log("headerNav", headerNav);
   const pathname = usePathname();
 
   const [scrolled, setScrolled] = useState(false);

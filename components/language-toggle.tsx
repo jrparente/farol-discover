@@ -6,8 +6,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import Link from "next/link";
-import { i18n } from "@/lib/languages";
 import { Button } from "./ui/button";
+import { i18n } from "@/i18n.config";
 
 function LanguageToggle({ language }: { language: string }) {
   const allLanguages = i18n.languages;

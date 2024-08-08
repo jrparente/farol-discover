@@ -46,7 +46,6 @@ export default async function TourDetail({
   if (!program) {
     notFound();
   }
-  console.log("program", program);
 
   return (
     <div className="h-full">

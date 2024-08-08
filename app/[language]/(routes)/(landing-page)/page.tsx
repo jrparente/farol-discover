@@ -7,9 +7,9 @@ import CompanyFeatures from "./components/company-features";
 import CompanyStatistics from "./components/company-statistics";
 import { Testimonial } from "@/sanity/types/types";
 import { getHomepageQuery } from "@/sanity/lib/sanity.queries";
-import { i18n } from "@/lib/languages";
 import { sanityFetch } from "@/sanity/lib/sanity.fetch";
 import { SanityDocument } from "next-sanity";
+import { i18n } from "@/i18n.config";
 
 export async function generateStaticParams() {
   const allLanguages = i18n.languages;

@@ -49,8 +49,6 @@ export default function FeaturedPrograms({
       const uniqueDestinations = Array.from(
         new Set(
           selectedPrograms.flatMap((program) => {
-            // Log each program's location to debug
-            console.log("Program Location:", program.location);
             return program.location || [];
           })
         )

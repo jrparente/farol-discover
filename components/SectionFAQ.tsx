@@ -21,7 +21,6 @@ function SectionFAQ({
   backgroundColor,
   faqs,
 }: SectionFAQProps) {
-  console.log("backgroundColor", backgroundColor);
   return (
     <section className={cn("my-12 py-12", backgroundColor)}>
       <div className="max-w-screen-xl mx-auto px-4">

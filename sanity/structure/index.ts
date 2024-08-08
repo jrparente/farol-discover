@@ -1,4 +1,6 @@
+import { i18n } from "@/i18n.config";
 import {
+  FileText,
   FlagIcon,
   Footprints,
   HomeIcon,
@@ -23,24 +25,115 @@ export const structure = (S: any) =>
         .title("Website Pages")
         .icon(Presentation)
         .child(
-          S.documentTypeList("page")
-            .apiVersion("v2023-12-18")
-            .title("Custom Page")
-            .menuItems(S.documentTypeList("page").getMenuItems())
-            .filter('_type == "page"')
+          S.list()
+            .title("Page Versions")
+            .items([
+              ...i18n.languages.map((language: any) =>
+                S.listItem()
+                  .title(`Pages (${language.id.toLocaleUpperCase()})`)
+                  .schemaType("page")
+                  .icon(FileText)
+                  .child(
+                    S.documentList()
+                      .apiVersion("v2023-12-18")
+                      .id(language.id)
+                      .title(`${language.title} Pages`)
+                      .schemaType("page")
+                      .filter('_type == "page" && language == $language')
+                      .params({ type: "page", language: language.id })
+                      .initialValueTemplates([
+                        S.initialValueTemplateItem("page", {
+                          _type: "page",
+                          language: language.id,
+                        }),
+                      ])
+                      .canHandleIntent((intentName: any, params: any) => {
+                        // TODO: Handle **existing** documents (like search results when clicked)
+                        // to return `true` on the correct language list!
+                        if (intentName === "edit") {
+                          // return params?.language === language.id
+                          return false;
+                        }
+
+                        // Not an initial value template
+                        if (!params.template) {
+                          return true;
+                        }
+
+                        // Template name structure example: "lesson-en"
+                        const languageValue = params?.template
+                          ?.split(`-`)
+                          .pop();
+
+                        return languageValue === language.id;
+                      })
+                  )
+              ),
+            ])
         ),
 
       S.divider(),
 
+      // S.listItem()
+      //   .title("Programs")
+      //   .icon(Footprints)
+      //   .child(
+      //     S.documentTypeList("program")
+      //       .apiVersion("v2023-12-18")
+      //       .title("Programs")
+      //       .menuItems(S.documentTypeList("program").getMenuItems())
+      //       .filter('_type == "program"')
+      //   ),
+
       S.listItem()
-        .title("Programs")
+        .title("Tours and Programs")
         .icon(Footprints)
         .child(
-          S.documentTypeList("program")
-            .apiVersion("v2023-12-18")
-            .title("Programs")
-            .menuItems(S.documentTypeList("program").getMenuItems())
-            .filter('_type == "program"')
+          S.list()
+            .title("Program Versions")
+            .items([
+              ...i18n.languages.map((language: any) =>
+                S.listItem()
+                  .title(`Programs (${language.id.toLocaleUpperCase()})`)
+                  .schemaType("program")
+                  .icon(FileText)
+                  .child(
+                    S.documentList()
+                      .apiVersion("v2023-12-18")
+                      .id(language.id)
+                      .title(`${language.title} Programs`)
+                      .schemaType("program")
+                      .filter('_type == "program" && language == $language')
+                      .params({ type: "program", language: language.id })
+                      .initialValueTemplates([
+                        S.initialValueTemplateItem("program", {
+                          _type: "program",
+                          language: language.id,
+                        }),
+                      ])
+                      .canHandleIntent((intentName: any, params: any) => {
+                        // TODO: Handle **existing** documents (like search results when clicked)
+                        // to return `true` on the correct language list!
+                        if (intentName === "edit") {
+                          // return params?.language === language.id
+                          return false;
+                        }
+
+                        // Not an initial value template
+                        if (!params.template) {
+                          return true;
+                        }
+
+                        // Template name structure example: "lesson-en"
+                        const languageValue = params?.template
+                          ?.split(`-`)
+                          .pop();
+
+                        return languageValue === language.id;
+                      })
+                  )
+              ),
+            ])
         ),
 
       S.listItem()

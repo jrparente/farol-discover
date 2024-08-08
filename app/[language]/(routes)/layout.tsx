@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Navbar from "@/components/navbar";
-import { i18n } from "@/lib/languages";
+import { i18n } from "@/i18n.config";
 
 const inter = Inter({ subsets: ["latin"] });
 

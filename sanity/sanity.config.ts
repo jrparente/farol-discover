@@ -4,7 +4,7 @@ import { structureTool } from "sanity/structure";
 import schemas from "./schemas";
 import { visionTool } from "@sanity/vision";
 import { structure } from "./structure";
-import { i18n } from "@/lib/languages";
+import { i18n } from "@/i18n.config";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;

@@ -165,16 +165,15 @@ export default function Navbar({
                   <NavigationMenuItem key={index}>
                     {item.subNavItems && item.subNavItems.length > 0 ? (
                       <>
-                        <Link href={item.link} passHref>
-                          <NavigationMenuTrigger
-                            className={cn(
-                              "text-lg",
-                              navigationMenuTriggerStyle()
-                            )}
-                          >
-                            {item.title}
-                          </NavigationMenuTrigger>
-                        </Link>
+                        <NavigationMenuTrigger
+                          className={cn(
+                            "text-lg",
+                            navigationMenuTriggerStyle()
+                          )}
+                        >
+                          {item.title}
+                        </NavigationMenuTrigger>
+
                         <NavigationMenuContent>
                           <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             {item.subNavItems.map(

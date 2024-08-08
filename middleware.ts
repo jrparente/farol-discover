@@ -2,11 +2,11 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
-import { languages } from "./lib/languages";
+import { languages } from "./i18n.config";
 
 const locales = languages.map((lang) => lang.locale);
 const defaultLocale =
-  languages.find((lang) => lang.isDefault)?.locale ?? "en_US";
+  languages.find((lang) => lang.isDefault)?.locale ?? "en-US";
 
 function getLocale(request: NextRequest) {
   const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
@@ -26,11 +26,12 @@ export function middleware(request: NextRequest) {
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
-    console.log("locale in function middleware", locale);
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
+
     return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url)
+      new URL(
+        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+        request.url
+      )
     );
   }
 }

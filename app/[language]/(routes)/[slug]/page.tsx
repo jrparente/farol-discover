@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 import FeaturedPrograms from "@/components/section-featured-programs";
 import SectionFeatures from "@/components/SectionFeatures";
 import SectionHighlights from "@/components/SectionHighlights";
+import SectionTestimonials2 from "@/components/sectionTestimonials2";
 
 type Props = {
   params: { slug: string; language: string };
@@ -153,6 +154,11 @@ export default async function Page({ params }: Props) {
                   }
                 />
               );
+            case "sectionTestimonials":
+              <SectionTestimonials2
+                key={index}
+                title={section.sectionTitle ?? ""}
+              />;
             default:
               return null;
           }

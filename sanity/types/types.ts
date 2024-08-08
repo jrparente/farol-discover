@@ -158,5 +158,6 @@ export type Page = {
       description?: string;
       image?: any;
     }[];
+    sectionTitle?: string;
   }>;
 };

@@ -1,9 +1,10 @@
 import Image from "next/image";
+import SanityImage from "./SanityImage";
 
 interface HeroProps {
   title: string;
   subtitle: string;
-  image?: string;
+  image?: any;
 }
 
 export default function Hero({
@@ -15,13 +16,23 @@ export default function Hero({
     <section className="relative">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
-          width={1920}
-          height={1440}
-          src={image}
-          alt="Farol Discover"
-          className="w-full h-full object-cover"
-        />
+        {image && image._type === "image" ? (
+          <SanityImage
+            width={1920}
+            height={1440}
+            source={image}
+            alt="Farol Discover"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            width={1920}
+            height={1440}
+            src={image}
+            alt="Farol Discover"
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50 z-1"></div>

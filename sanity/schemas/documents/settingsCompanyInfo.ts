@@ -55,6 +55,14 @@ const settingsCompanyInfo = {
       ],
     },
   ],
+
+  preview: {
+    prepare() {
+      return {
+        title: "Company Information",
+      };
+    },
+  },
 };
 
 export default settingsCompanyInfo;

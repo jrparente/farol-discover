@@ -5,13 +5,14 @@ export type Program = {
   _createdAt: string;
   _updatedAt: string;
   _ref: string;
+  language: string;
   name: string;
-  slug: string;
+  slug: any;
   location: string[];
   description: string;
   expandedDescription: PortableTextBlock[];
   categories?: string;
-  image?: string;
+  image?: any;
   difficulty?: string;
   duration?: number;
   price?: string;

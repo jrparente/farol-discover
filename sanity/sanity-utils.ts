@@ -28,6 +28,11 @@ export function getLocaleFromLanguage(language: string) {
   return lang ? lang.locale : language;
 }
 
+export function getLanguageFromLocale(locale: string) {
+  const lang = i18n.languages.find((lang) => lang.locale === locale);
+  return lang ? lang.id : locale;
+}
+
 export async function fetchDocumentSlug(ref: any) {
   const response = await client.getDocument(ref._ref);
 
@@ -78,37 +83,11 @@ export async function getSocialMedia() {
   );
 }
 
-export async function getPrograms(): Promise<Program[]> {
+export async function getPrograms({ language }: { language: string }) {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "program"]{
-        _id,
-        _createdAt,
-        _updatedAt,
-        name,
-        "slug": slug.current,
-        location,
-        description,
-        expandedDescription,
-        categories,
-        "image": image.asset->url,
-        difficulty,
-        duration,
-        price,
-        highlights,
-        featured,
-        whatsIncluded,
-        whatsNotIncluded,
-        faqs,
-        itinerary,
-        mapUrl,
-        "gallery": gallery[]{
-          _type == "gallery" => {
-            _type,
-            "images": images[].asset->url
-          },
-        },
-    }`,
-    {},
+    groq`*[_type == "program" && language == $language]
+    `,
+    { language },
     {
       next: {
         revalidate: 60,
@@ -132,18 +111,6 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       },
       "avatar": avatar.asset->url
     }`,
-    {},
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
-  );
-}
-
-export async function getHomepage(): Promise<Homepage[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "homepage"]`,
     {},
     {
       next: {

@@ -239,7 +239,11 @@ export default function Navbar({
               variant="default"
               className="rounded-md text-sm font-medium"
             >
-              Book Now
+              {language === "en"
+                ? "Book Now"
+                : language === "pt"
+                  ? "Reservar"
+                  : "Kontakt"}
             </Button>
           </Link>
         </div>

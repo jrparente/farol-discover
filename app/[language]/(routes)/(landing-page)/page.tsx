@@ -122,6 +122,7 @@ export default async function Home({
         stats={stats}
       />
       <FeaturedPrograms
+        language={language}
         featuredProgramsTitle={featuredProgramsTitle}
         featuredProgramsSubtitle={featuredProgramsSubtitle}
         featuredProgramsCta1Text={featuredProgramsCta1Text}

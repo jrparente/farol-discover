@@ -13,11 +13,25 @@ const settingsNavigation = {
       type: "navigation",
     },
     {
+      name: "bookNowButtonText",
+      title: "Book Now Button Text",
+      type: "string",
+      validate: (Rule: any) => Rule.required(),
+    },
+    {
       name: "language",
       type: "string",
       readOnly: true,
     },
   ],
+
+  preview: {
+    prepare() {
+      return {
+        title: "Navigation",
+      };
+    },
+  },
 };
 
 export default settingsNavigation;

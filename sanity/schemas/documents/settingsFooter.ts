@@ -22,6 +22,14 @@ const settingsFooter = {
       readOnly: true,
     },
   ],
+
+  preview: {
+    prepare() {
+      return {
+        title: "Footer",
+      };
+    },
+  },
 };
 
 export default settingsFooter;

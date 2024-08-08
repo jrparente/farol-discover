@@ -15,27 +15,38 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { getPrograms, getTestimonials } from "@/sanity/sanity-utils";
+import {
+  getLanguageFromLocale,
+  getPrograms,
+  getTestimonials,
+} from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 import ImageGallery from "@/components/image-gallery";
 import { notFound } from "next/navigation";
 import Testimonials from "@/components/section-testimonials";
+import { getProgramsQuery } from "@/sanity/lib/sanity.queries";
+import { sanityFetch } from "@/sanity/lib/sanity.fetch";
+import { SanityDocument } from "next-sanity";
+import { Program } from "@/sanity/types/types";
 
-export async function generateStaticParams() {
-  const programs = await getPrograms();
+type Props = {
+  params: { slug: string; language: string };
+};
 
-  return programs;
-}
+export default async function TourDetail({ params }: Props) {
+  const { language, slug } = params;
+  const locale = getLanguageFromLocale(language);
+  const query = getProgramsQuery;
+  const queryParams = { language: locale };
 
-export default async function TourDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const programs = await getPrograms();
-  const { slug } = params;
+  const programData = await sanityFetch<SanityDocument>({
+    query,
+    params: queryParams,
+  });
 
-  const program = programs.find((item) => item.slug === slug);
+  const program = programData.find(
+    (item: Program) => item.slug.current === slug
+  );
 
   const allTestimonials = await getTestimonials();
 
@@ -75,7 +86,7 @@ export default async function TourDetail({
                   Itinerary
                 </h2>
                 <ul className="mt-4 space-y-6">
-                  {program.itinerary.map((dayDetail, index) => (
+                  {program.itinerary.map((dayDetail: any, index: any) => (
                     <li key={index}>
                       <div className="flex flex-col justify-between items-start gap-2">
                         <h3 className="text-lg font-semibold">
@@ -156,7 +167,7 @@ export default async function TourDetail({
                   Highlights
                 </h2>
                 <div className="flex flex-col justify-start items-start gap-2">
-                  {program.highlights?.map((highlight, index) => (
+                  {program.highlights?.map((highlight: any, index: any) => (
                     <Badge key={index}>{highlight}</Badge>
                   ))}
                 </div>
@@ -170,7 +181,7 @@ export default async function TourDetail({
                   What&apos;s Included
                 </h2>
                 <ul>
-                  {program.whatsIncluded.map((item, index) => (
+                  {program.whatsIncluded.map((item: any, index: any) => (
                     <li key={index} className="flex items-center gap-1 mb-1">
                       <Check className="w-5 h-5 bg-primary/10 text-primary rounded-lg p-1" />{" "}
                       {item}
@@ -185,7 +196,7 @@ export default async function TourDetail({
                   What&apos;s Not Included
                 </h2>
                 <ul>
-                  {program.whatsNotIncluded.map((item, index) => (
+                  {program.whatsNotIncluded.map((item: any, index: any) => (
                     <li key={index} className="flex items-center gap-1 mb-1">
                       <X className="w-5 h-5 bg-destructive text-destructive-foreground rounded-lg p-1" />
                       {item}
@@ -202,7 +213,7 @@ export default async function TourDetail({
                   FAQ
                 </h2>
                 <Accordion type="single" collapsible className="w-full">
-                  {program.faqs.map((question, index) => (
+                  {program.faqs.map((question: any, index: any) => (
                     <AccordionItem value={`item-${index}`} key={index}>
                       <AccordionTrigger>
                         <div className="flex items-center">

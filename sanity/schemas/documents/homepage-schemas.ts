@@ -305,6 +305,14 @@ const homepage = {
       readOnly: true,
     },
   ],
+
+  preview: {
+    prepare() {
+      return {
+        title: "Homepage",
+      };
+    },
+  },
 };
 
 export default homepage;

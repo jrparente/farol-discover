@@ -13,7 +13,7 @@ import SectionFeatures from "@/components/SectionFeatures";
 import SectionHighlights from "@/components/SectionHighlights";
 
 type Props = {
-  params: { slug: string };
+  params: { slug: string; language: string };
 };
 
 export async function generateStaticParams() {
@@ -46,6 +46,8 @@ async function generateMetadata({ params }: Props) {
 }
 
 export default async function Page({ params }: Props) {
+  const { language } = params;
+
   const page = await getPage(params.slug);
 
   if (!page) {
@@ -122,6 +124,7 @@ export default async function Page({ params }: Props) {
                 <FeaturedPrograms
                   key={index}
                   programs={section.programs ?? []}
+                  language={language}
                 />
               );
             case "sectionFeatures":

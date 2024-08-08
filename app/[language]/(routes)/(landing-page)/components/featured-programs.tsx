@@ -1,12 +1,17 @@
 import { ArrowRight, Clock, Flag, MapPin, Pin } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getPrograms } from "@/sanity/sanity-utils";
 import SanityLink from "@/components/SanityLink";
+import { getProgramsQuery } from "@/sanity/lib/sanity.queries";
+import { sanityFetch } from "@/sanity/lib/sanity.fetch";
+import { SanityDocument } from "next-sanity";
+import SanityImage from "@/components/SanityImage";
+import { Program } from "@/sanity/types/types";
+import { getLocaleFromLanguage } from "@/sanity/sanity-utils";
 
 export default async function FeaturedPrograms({
+  language,
   featuredProgramsTitle,
   featuredProgramsSubtitle,
   featuredProgramsCta1Text,
@@ -17,6 +22,7 @@ export default async function FeaturedPrograms({
   featuredProgramsDurationText,
   featuredProgramsLearnMoreText,
 }: {
+  language: string;
   featuredProgramsTitle: string;
   featuredProgramsSubtitle: string;
   featuredProgramsCta1Text: string;
@@ -27,7 +33,12 @@ export default async function FeaturedPrograms({
   featuredProgramsDurationText: string;
   featuredProgramsLearnMoreText: string;
 }) {
-  const programs = await getPrograms();
+  const query = getProgramsQuery;
+  const queryParams = { language };
+  const programData = await sanityFetch<SanityDocument>({
+    query,
+    params: queryParams,
+  });
 
   return (
     <section className="my-2 py-2">
@@ -52,10 +63,10 @@ export default async function FeaturedPrograms({
           )}
         </div>
         <div className="grid grid-cols-1 gap-3">
-          {programs
-            .filter((program) => program.featured)
+          {programData
+            .filter((program: Program) => program.featured)
             .reverse()
-            .map((program, index) => (
+            .map((program: Program, index: any) => (
               <div
                 key={index}
                 className={`w-full border-0 gap-8 items-center py-8 sm:py-16 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 ${
@@ -65,11 +76,13 @@ export default async function FeaturedPrograms({
                 }`}
               >
                 <div className={index % 2 !== 0 ? "md:order-2" : ""}>
-                  <Link href={`/tours/${program.slug}`}>
-                    <Image
+                  <Link
+                    href={`${getLocaleFromLanguage(language)}/tours/${program.slug.current}`}
+                  >
+                    <SanityImage
                       width={1000}
                       height={1000}
-                      src={program.image!}
+                      source={program.image!}
                       alt={program.name}
                     />
                   </Link>
@@ -103,7 +116,7 @@ export default async function FeaturedPrograms({
                       {program.duration} {featuredProgramsDurationText}
                     </Badge>
                   </div>
-                  <Link href={`/tours/${program.slug}`}>
+                  <Link href={`/tours/${program.slug.current}`}>
                     <Button variant="default" className="flex gap-2">
                       {featuredProgramsLearnMoreText}{" "}
                       <ArrowRight className="w-4 h-4" />

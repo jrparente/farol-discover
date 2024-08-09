@@ -8,8 +8,7 @@ async function SectionTestimonials({ title }: { title: string }) {
 
   // Sort testimonials by creation date from newest to oldest
   testimonials = testimonials.sort(
-    (a, b) =>
-      new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   return (

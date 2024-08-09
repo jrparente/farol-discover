@@ -24,7 +24,7 @@ const testimonials = {
     {
       name: "date",
       title: "Date",
-      type: "string",
+      type: "date",
     },
     {
       name: "tour",
